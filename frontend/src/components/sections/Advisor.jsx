@@ -1,6 +1,6 @@
 export default function Advisor() {
     return (
-        <section className="components">
+        <section className="advisor">
             Advisor
         </section>
     );

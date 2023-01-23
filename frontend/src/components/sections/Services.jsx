@@ -1,6 +1,6 @@
 export default function Services() {
     return (
-        <section className="components">
+        <section className="services">
         Services
         </section>
     );

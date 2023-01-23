@@ -1,6 +1,6 @@
 export default function Nav() {
   return (
-    <nav className="components">
+    <nav className="nav">
       Nav
     </nav>
   );

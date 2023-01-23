@@ -1,26 +1,18 @@
 @import "./styles/variables";
 @import "./styles/global";
+@import "./styles/layouts/nav";
+@import "./styles/components/banner";
+@import "./styles/components/services";
+@import "./styles/components/projects";
+@import "./styles/components/form";
+@import "./styles/components/about";
+@import "./styles/components/advisor";
+@import "./styles/layouts/footer";
 
-.components{
-  border : 3px solid $primary;
-  padding : 10px;
-}
 
-.form {
-  border : 3px solid $primary;
-  padding : 10px;
-  width : 50%;
-}
 
-.about {
-  border : 3px solid $primary;
-  padding : 10px;
-  width : 50%;
-  margin-left: auto;
-}
 
-.form-and-about {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+
+
+
+
