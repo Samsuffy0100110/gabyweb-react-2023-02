@@ -6,12 +6,12 @@ import FormAndAbout from "@components/sections/Form&About";
 
 export default function Home() {
   return (
-    <header>
+    <main>
       <Banner />
       <Services />
       <Projects />
       <FormAndAbout />
       <Advisor />
-    </header>
+    </main>
   );
 }
