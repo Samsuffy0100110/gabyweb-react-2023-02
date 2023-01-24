@@ -1,8 +1,73 @@
+import React, { useState, useEffect } from 'react';
+
 export default function Main() {
+    const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+        const getProjects = async () => {
+            try {
+                const response = await fetch("http://localhost:5000/projects");
+                const data = await response.json();
+                setProjects(data);
+                setLoading(false);
+            } catch (error) {
+                setError(true);
+                setErrorMessage(error.message);
+            }
+        };
+        getProjects();
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    
+    if (error) {
+        return <div>{errorMessage}</div>;
+    }
+
     return (
-        <div className="main">
-            <h3>Main</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam non numquam aut ratione adipisci dolorum rem officia. Minus, est. Nostrum temporibus laudantium eligendi autem dicta atque maiores, pariatur necessitatibus architecto!</p>
+        <div className='projects'>
+            <h3>Projects</h3>
+            {projects.map((project) => (
+                <table key={project._id} className='admin_projects'>
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th>Project Description</th>
+                                <th>Project Image</th>
+                                <th>Project Stack</th>
+                                <th>Project Link</th>
+                                <th>Project Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{project.title}</td>
+                                <td>{project.description}</td>
+                                <td><img src={project.image} alt={project.title} width="200"/></td>
+                                <td>{project.stack}</td>
+                                <td>{project.link}</td>
+                                <td>{project.date}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <button>Edit</button>
+                                </td>
+                                <td>
+                                    <button>Delete</button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </tbody>
+                </table>
+            ))}
         </div>
-    )
+    );
 }

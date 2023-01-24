@@ -17,5 +17,6 @@ CREATE TABLE project (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO project (`title`, `description`, `date`, `image`, `stack`, `link`) VALUES 
-('Pep\'s Design', 'Pep\'s Design est un projet de site de vente en ligne.', '2022-12-31 00:00:00', 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg', 'Symfony, Bootstrap, Twig, PHP, MySQL, HTML, SCSS, JavaScript', 'https://www.pepsdesign.fr');
+('Pep\'s Design', 'Pep\'s Design est un projet de site de vente en ligne.', '2022-12-31 00:00:00', 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg', 'Symfony, Bootstrap, Twig, PHP, MySQL, HTML, SCSS, JavaScript', 'https://www.pepsdesign.fr')
+,('Gaby\'s Web', 'Gaby\'s Web est un projet de site de vente en ligne.', '2022-12-31 00:00:00', 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg', 'Symfony, Bootstrap, Twig, PHP, MySQL, HTML, SCSS, JavaScript', 'https://www.gabyweb.fr')
 
