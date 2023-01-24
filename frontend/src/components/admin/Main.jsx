@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Main() {
     const [projects, setProjects] = useState([]);
@@ -21,10 +22,26 @@ export default function Main() {
         getProjects();
     }, []);
 
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:5000/projects/${id}`, {
+                method: "DELETE",
+            });
+            const data = await response.json();
+            console.log(data);
+            setLoading(false);
+        } catch (error) {
+            setError(true);
+            setErrorMessage(error.message);
+        } finally {
+            window.location.reload();
+        }
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
-    
+
     if (error) {
         return <div>{errorMessage}</div>;
     }
@@ -32,40 +49,39 @@ export default function Main() {
     return (
         <div className='projects'>
             <h3>Projects</h3>
+            <Link to="/projects/new">Add project</Link>
             {projects.map((project) => (
-                <table key={project._id} className='admin_projects'>
+                <table key={project.id} className='admin_projects'>
+                    <thead>
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Project Description</th>
+                            <th>Project Image</th>
+                            <th>Project Stack</th>
+                            <th>Project Link</th>
+                            <th>Project Date</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <thead>
-                            <tr>
-                                <th>Project Name</th>
-                                <th>Project Description</th>
-                                <th>Project Image</th>
-                                <th>Project Stack</th>
-                                <th>Project Link</th>
-                                <th>Project Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{project.title}</td>
-                                <td>{project.description}</td>
-                                <td><img src={project.image} alt={project.title} width="200"/></td>
-                                <td>{project.stack}</td>
-                                <td>{project.link}</td>
-                                <td>{project.date}</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>
-                                    <button>Edit</button>
-                                </td>
-                                <td>
-                                    <button>Delete</button>
-                                </td>
-                            </tr>
-                        </tfoot>
+                        <tr>
+                            <td>{project.title}</td>
+                            <td>{project.description}</td>
+                            <td><img src={project.image} alt={project.title} width="200" /></td>
+                            <td>{project.stack}</td>
+                            <td>{project.link}</td>
+                            <td>{project.date}</td>
+                        </tr>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <button>Edit</button>
+                            </td>
+                            <td>
+                                <button onClick={() => handleDelete(project.id)}>Delete</button>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             ))}
         </div>
