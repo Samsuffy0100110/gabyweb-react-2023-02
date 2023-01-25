@@ -1,21 +1,66 @@
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 export default function ProjectNew() {
+    const [project, setProject] = useState({
+        title: "",
+        description: "",
+        image: "",
+        stack: "",
+        link: "",
+        date: "",
+    });
+
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
+
+    const handleChange = (event) => {
+        setProject({ ...project, [event.target.name]: event.target.value });
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await fetch("http://localhost:5000/projects", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(project),
+            });
+            const data = await response.json();
+            console.log(data);
+            setLoading(false);
+        } catch (error) {
+            setError(true);
+            setErrorMessage(error.message);
+        } finally {
+            navigate("/admin");
+        }
+    }
+
+    if (error) {
+        return <div>{errorMessage}</div>;
+    }
+
     return (
-        <div className='project_new'>
-            <h3>Add a new project</h3>
-            <form>
-                <label htmlFor="project_name">Project Name</label>
-                <input type="text" id="project_name" name="project_name" />
-                <label htmlFor="project_description">Project Description</label>
-                <input type="text" id="project_description" name="project_description" />
-                <label htmlFor="project_image">Project Image</label>
-                <input type="text" id="project_image" name="project_image" />
-                <label htmlFor="project_stack">Project Stack</label>
-                <input type="text" id="project_stack" name="project_stack" />
-                <label htmlFor="project_link">Project Link</label>
-                <input type="text" id="project_link" name="project_link" />
-                <label htmlFor="project_date">Project Date</label>
-                <input type="text" id="project_date" name="project_date" />
-                <button type="submit">Add project</button>
+        <div className='project-new-form'>
+            <h3>Add Project</h3>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="title">Title</label>
+                <input type="text" name="title" value={project.title} onChange={handleChange} />
+                <label htmlFor="description">Description</label>
+                <input type="text" name="description" value={project.description} onChange={handleChange} />
+                <label htmlFor="image">Image</label>
+                <input type="text" name="image" value={project.image} onChange={handleChange} />
+                <label htmlFor="stack">Stack</label>
+                <input type="text" name="stack" value={project.stack} onChange={handleChange} />
+                <label htmlFor="link">Link</label>
+                <input type="text" name="link" value={project.link} onChange={handleChange} />
+                <label htmlFor="date">Date</label>
+                <input type="text" name="date" value={project.date} onChange={handleChange} />
+                <button type="submit">Add Project</button>
             </form>
         </div>
     );

@@ -54,7 +54,7 @@ export default function Main() {
                 <table key={project.id} className='admin_projects'>
                     <thead>
                         <tr>
-                            <th>Project Name</th>
+                            <th>Project Title</th>
                             <th>Project Description</th>
                             <th>Project Image</th>
                             <th>Project Stack</th>
@@ -75,7 +75,7 @@ export default function Main() {
                     <tfoot>
                         <tr>
                             <td>
-                                <button>Edit</button>
+                                <Link to={`/projects/${project.id}`}>Update</Link>
                             </td>
                             <td>
                                 <button onClick={() => handleDelete(project.id)}>Delete</button>

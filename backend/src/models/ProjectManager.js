@@ -7,13 +7,15 @@ class ProjectManager extends AbstractManager {
 
   insert(project) {
     return this.connection.query(
-      `insert into ${this.table} (title, description, date, image, stack, link) values (?, ?, ?, ?, ?, ?, ?)`,
-      [project.title],
-      [project.description],
-      [project.date],
-      [project.image],
-      [project.stack],
-      [project.link]
+      `INSERT INTO ${this.table} (title, description, date, image, stack, link) values (?, ?, ?, ?, ?, ?)`,
+      [
+        project.title,
+        project.description,
+        project.date,
+        project.image,
+        project.stack,
+        project.link,
+      ]
     );
   }
 
