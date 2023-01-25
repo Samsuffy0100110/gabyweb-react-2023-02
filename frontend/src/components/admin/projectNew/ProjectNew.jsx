@@ -15,6 +15,7 @@ export default function ProjectNew() {
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+    const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     const handleChange = (event) => {
         setProject({ ...project, [event.target.name]: event.target.value });
@@ -23,7 +24,7 @@ export default function ProjectNew() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:5000/projects", {
+            const response = await fetch(`${baseURL}/project`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

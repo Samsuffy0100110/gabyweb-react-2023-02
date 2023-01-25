@@ -5,7 +5,7 @@ import style from './projectView.module.scss';
 export default function ProjectView() {
     const [project, setProject] = useState('');
     const { id } = useParams();
-    const baseURL = 'http://localhost:5000';
+    const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
         try {

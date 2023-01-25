@@ -6,11 +6,12 @@ export default function Projects() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
         const getProjects = async () => {
             try {
-                const response = await fetch("http://localhost:5000/projects");
+                const response = await fetch(`${baseURL}/projects`);
                 const data = await response.json();
                 setProjects(data);
                 setLoading(false);
