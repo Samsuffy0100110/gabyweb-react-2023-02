@@ -75,7 +75,10 @@ export default function Main() {
                     <tfoot>
                         <tr>
                             <td>
-                                <Link to={`/projects/${project.id}`}>Update</Link>
+                                <Link to={`/project/${project.id}`}>See</Link>
+                            </td>
+                            <td>
+                                <Link to={`/projects/${project.id}/update`}>Update</Link>
                             </td>
                             <td>
                                 <button onClick={() => handleDelete(project.id)}>Delete</button>
