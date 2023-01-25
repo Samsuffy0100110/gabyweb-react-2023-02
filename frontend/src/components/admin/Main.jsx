@@ -24,7 +24,7 @@ export default function Main() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/projects/${id}`, {
+            const response = await fetch(`http://localhost:5000/project/${id}`, {
                 method: "DELETE",
             });
             const data = await response.json();
@@ -49,7 +49,7 @@ export default function Main() {
     return (
         <div className='projects'>
             <h3>Projects</h3>
-            <Link to="/projects/new">Add project</Link>
+            <Link to="/project/new">Add project</Link>
             {projects.map((project) => (
                 <table key={project.id} className='admin_projects'>
                     <thead>
@@ -78,7 +78,7 @@ export default function Main() {
                                 <Link to={`/project/${project.id}`}>See</Link>
                             </td>
                             <td>
-                                <Link to={`/projects/${project.id}/update`}>Update</Link>
+                                <Link to={`/project/${project.id}/update`}>Update</Link>
                             </td>
                             <td>
                                 <button onClick={() => handleDelete(project.id)}>Delete</button>

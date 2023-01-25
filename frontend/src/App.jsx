@@ -17,8 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/projects/new" element={<ProjectNew />} />
-          <Route path="/projects/:id/update" element={<ProjectUpdate />} />
+          <Route path="/project/new" element={<ProjectNew />} />
+          <Route path="/project/:id/update" element={<ProjectUpdate />} />
           <Route path="/project/:id" element={<ProjectView />} />
         </Routes>
         <Footer />
