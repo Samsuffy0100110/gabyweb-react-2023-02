@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from "./pages/Home";
-import Nav from "./components/layouts/Nav";
-import Footer from "./components/layouts/Footer";
+import Home from "./pages/home/Home";
+import Nav from "./components/layouts/nav/Nav";
+import Footer from "./components/layouts/footer/Footer";
 import Admin from "./pages/admin/Admin";
-import ProjectNew from '@components/admin/ProjectNew';
-import ProjectUpdate from '@components/admin/ProjectUpdate';
-import ProjectView from '@components/admin/ProjectView';
+import ProjectNew from '@components/admin/projectNew/ProjectNew';
+import ProjectUpdate from '@components/admin/projectUpdate/ProjectUpdate';
+import ProjectView from '@components/admin/projectView/ProjectView';
 
 import "./App.scss";
 

@@ -1,0 +1,8 @@
+@import '../../styles/variables.scss';
+
+.container {
+    border : 3px solid $primary;
+    padding : 10px;
+    width : 50%;
+    margin-left: auto;
+}
