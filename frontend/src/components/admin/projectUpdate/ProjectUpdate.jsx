@@ -44,6 +44,12 @@ export function ProjectUpdate () {
         }
     };
 
+    if (!project) {
+        return <div>Loading...</div>;
+    }
+
+    const projectDate = new Date(project.date);
+
     return (
         <div>
             <h3>Update project</h3>
@@ -56,10 +62,10 @@ export function ProjectUpdate () {
                 <input type="text" name="image" defaultValue={project.image} />
                 <label htmlFor="stack">Stack</label>
                 <input type="text" name="stack" defaultValue={project.stack} />
-                <label htmlFor="link">Link</label>
-                <input type="text" name="link" defaultValue={project.url} />
+                <label htmlFor="url">Link</label>
+                <input type="text" name="url" defaultValue={project.url} />
                 <label htmlFor="date">Date</label>
-                <input type="text" name="date" defaultValue={project.date} />
+                <input type="text" name="date" defaultValue={projectDate.toISOString().slice(0, 10)} />
                 <button type="submit">Update</button>
             </form>
             <Link to={`/admin`}>Retour</Link>

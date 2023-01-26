@@ -6,9 +6,9 @@ import { ProjectNew } from '@components/admin/projectNew/ProjectNew';
 import { Footer } from "./components/layouts/footer/Footer";
 import { LoginForm } from "./components/login/LoginForm";
 import { Nav } from "./components/layouts/nav/Nav";
+import { Logout } from "./pages/logout/Logout";
 import { Admin } from "./pages/admin/Admin";
 import { Home } from "./pages/home/Home";
-import { Logout } from "./pages/logout/Logout";
 import "./App.scss";
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/logout" element={<Logout />} />
           <Route 
-            path="/admin" 
+            path="/admin/*" 
             element={
               <ProtectedRoute>
                 <Admin />

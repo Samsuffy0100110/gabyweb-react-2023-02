@@ -49,7 +49,7 @@ export function Main() {
     }
 
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const formatDateUTC = (date) => {
+    const formatDate = (date) => {
         const dateUTC = new Date(date);
         const dateUTCString = dateUTC.toLocaleString("fr-FR", {
             timeZone: timeZone,
@@ -80,7 +80,7 @@ export function Main() {
                             <td><img src={project.image} alt={project.title} width="200" /></td>
                             <td>{project.stack}</td>
                             <td>{project.url}</td>
-                            <td>{formatDateUTC(project.date)}</td>
+                            <td>{formatDate(project.date)}</td>
                         </tr>
                     </tbody>
                     <tfoot>

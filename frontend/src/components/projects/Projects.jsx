@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import style from './project.module.scss';
+import style from './projects.module.scss';
 
 export function Projects() {
     const [projects, setProjects] = useState([]);
@@ -36,12 +36,7 @@ export function Projects() {
             <h3>Projects</h3>
             {projects.map((project) => (
                 <div key={project.id}>
-                    <h2>{project.title}</h2>
-                    <p>{project.description}</p>
                     <img src={project.image} alt={project.title} width="200" />
-                    <p>{project.stack}</p>  
-                    <p>{project.url}</p>
-                    <p>{project.date}</p>
                 </div>
             ))}
         </div>

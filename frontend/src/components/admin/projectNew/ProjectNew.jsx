@@ -67,8 +67,8 @@ export function ProjectNew() {
                 <input type="text" name="image" value={project.image} onChange={handleChange} />
                 <label htmlFor="stack">Stack</label>
                 <input type="text" name="stack" value={project.stack} onChange={handleChange} />
-                <label htmlFor="link">Link</label>
-                <input type="text" name="link" value={project.url} onChange={handleChange} />
+                <label htmlFor="url">Link</label>
+                <input type="text" name="url" value={project.url} onChange={handleChange} />
                 <label htmlFor="date">Date</label>
                 <input type="text" name="date" value={project.date} onChange={handleChange} />
                 <button type="submit">Add Project</button>
