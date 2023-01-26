@@ -1,6 +1,6 @@
 import style from './contact.module.scss';
 
-export default function Form() {
+export function ContactForm() {
     return (
         <div className={style.container}>
             <div>

@@ -1,6 +1,6 @@
 import style from './banner.module.scss';
 
-export default function Banner() {
+export function Banner() {
   return (
     <section className={style.container}>
       Banner

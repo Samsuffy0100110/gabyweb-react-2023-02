@@ -1,12 +1,11 @@
+import { ProjectUpdate } from '@components/admin/projectUpdate/ProjectUpdate';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from "./pages/home/Home";
-import Nav from "./components/layouts/nav/Nav";
-import Footer from "./components/layouts/footer/Footer";
-import Admin from "./pages/admin/Admin";
-import ProjectNew from '@components/admin/projectNew/ProjectNew';
-import ProjectUpdate from '@components/admin/projectUpdate/ProjectUpdate';
-import ProjectView from '@components/admin/projectView/ProjectView';
-
+import { ProjectView } from '@components/admin/projectView/ProjectView';
+import { ProjectNew } from '@components/admin/projectNew/ProjectNew';
+import { Footer } from "./components/layouts/footer/Footer";
+import { Nav } from "./components/layouts/nav/Nav";
+import { Admin } from "./pages/admin/Admin";
+import { Home } from "./pages/home/Home";
 import "./App.scss";
 
 function App() {

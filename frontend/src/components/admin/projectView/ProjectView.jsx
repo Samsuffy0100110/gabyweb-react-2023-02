@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import style from './projectView.module.scss';
 
-export default function ProjectView() {
+export function ProjectView() {
     const [project, setProject] = useState('');
     const { id } = useParams();
     const baseURL = import.meta.env.VITE_BACKEND_URL;

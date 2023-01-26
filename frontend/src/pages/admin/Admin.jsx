@@ -1,7 +1,7 @@
-import Main from "@components/admin/main/Main"
-import style from "./admin.module.scss"
+import { Main } from "@components/admin/main/Main";
+import style from "./admin.module.scss";
 
-export default function Admin() {
+export function Admin() {
     return (
         <div className={style.container}>
             <h1>Admin</h1>

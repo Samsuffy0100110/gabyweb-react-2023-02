@@ -1,6 +1,6 @@
 import style from './aboutUs.module.scss';
 
-export default function AboutUs() {
+export function AboutUs() {
     return (
         <div className={style.container}>
             <div>

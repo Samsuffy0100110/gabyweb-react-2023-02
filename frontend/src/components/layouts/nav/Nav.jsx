@@ -1,8 +1,8 @@
-import React from 'react';
 import { Link } from "react-router-dom";
 import style from './nav.module.scss';
+import React from 'react';
 
-export default function Nav() {
+export function Nav() {
   return (
     <nav className={style.container}>
         <Link to="/">Home</Link>

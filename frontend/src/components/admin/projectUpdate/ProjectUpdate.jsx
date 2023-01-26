@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import style from "./projectUpdate.module.scss";
 
-export default function ProjectUpdate () {
+export function ProjectUpdate () {
     const [project, setProject] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();

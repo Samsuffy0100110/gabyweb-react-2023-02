@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import style from './project.module.scss';
 
-export default function Projects() {
+export function Projects() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
