@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import style from './loginForm.module.scss';
+import React, { useState } from 'react';
 
 
 export function LoginForm() {
@@ -39,7 +39,7 @@ export function LoginForm() {
     };
 
     return (
-        <div className={style.container}>
+        <div className={style.form}>
             <h3>Login</h3>
             <form onSubmit={handleSubmit}>
                 <div>
