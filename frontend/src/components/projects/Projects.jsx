@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import style from './projects.module.scss';
+import { Link } from 'react-router-dom';
 
 export function Projects() {
     const [projects, setProjects] = useState([]);
@@ -36,7 +37,7 @@ export function Projects() {
             <h3>Projects</h3>
             {projects.map((project) => (
                 <div key={project.id}>
-                    <img src={project.image} alt={project.title} width="200" />
+                    <Link to={`/project/${project.id}`}><img src={project.image} alt={project.title} width="200" /></Link>
                 </div>
             ))}
         </div>

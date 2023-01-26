@@ -60,7 +60,7 @@ export function Main() {
     return (
         <div className={style.container}>
             <h3>Projects</h3>
-            <Link to="/project/new">Add project</Link>
+            <Link to="/admin/project/new">Add project</Link>
             {projects.map((project) => (
                 <table key={project.id} className={style.admin_projects}>
                     <thead>
@@ -86,10 +86,10 @@ export function Main() {
                     <tfoot>
                         <tr>
                             <td>
-                                <Link to={`/project/${project.id}`}>See</Link>
+                                <Link to={`/admin/project/${project.id}`}>See</Link>
                             </td>
                             <td>
-                                <Link to={`/project/${project.id}/update`}>Update</Link>
+                                <Link to={`/admin/project/${project.id}/update`}>Update</Link>
                             </td>
                             <td>
                                 <button onClick={() => handleDelete(project.id)}>Delete</button>
