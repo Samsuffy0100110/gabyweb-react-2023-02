@@ -89,6 +89,9 @@ export function Main() {
                     </tfoot>
                 </table>
             ))}
+            <div>
+                <Link to="/logout">Logout</Link>
+            </div>
         </div>
     );
 }
