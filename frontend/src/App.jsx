@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ProjectView } from '@components/admin/projectView/ProjectView';
 import { ProjectNew } from '@components/admin/projectNew/ProjectNew';
 import { Footer } from "./components/layouts/footer/Footer";
+import { LoginForm } from "./components/login/LoginForm";
 import { Nav } from "./components/layouts/nav/Nav";
 import { Admin } from "./pages/admin/Admin";
 import { Home } from "./pages/home/Home";
@@ -19,6 +20,7 @@ function App() {
           <Route path="/project/new" element={<ProjectNew />} />
           <Route path="/project/:id/update" element={<ProjectUpdate />} />
           <Route path="/project/:id" element={<ProjectView />} />
+          <Route path="/login" element={<LoginForm />} />
         </Routes>
         <Footer />
       </Router>
