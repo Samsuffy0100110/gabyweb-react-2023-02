@@ -24,9 +24,9 @@ export function ProjectUpdate () {
         const description = e.target.description.value;
         const image = e.target.image.value;
         const stack = e.target.stack.value;
-        const link = e.target.link.value;
+        const url = e.target.url.value;
         const date = e.target.date.value;
-        const body = { title, description, image, stack, link, date };
+        const body = { title, description, image, stack, url, date };
         try {
             const response = await fetch(`${baseURL}/project/${id}`, {
                 method: "PUT",
@@ -57,7 +57,7 @@ export function ProjectUpdate () {
                 <label htmlFor="stack">Stack</label>
                 <input type="text" name="stack" defaultValue={project.stack} />
                 <label htmlFor="link">Link</label>
-                <input type="text" name="link" defaultValue={project.link} />
+                <input type="text" name="link" defaultValue={project.url} />
                 <label htmlFor="date">Date</label>
                 <input type="text" name="date" defaultValue={project.date} />
                 <button type="submit">Update</button>

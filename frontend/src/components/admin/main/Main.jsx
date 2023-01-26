@@ -48,6 +48,15 @@ export function Main() {
         return <div>{errorMessage}</div>;
     }
 
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const formatDateUTC = (date) => {
+        const dateUTC = new Date(date);
+        const dateUTCString = dateUTC.toLocaleString("fr-FR", {
+            timeZone: timeZone,
+        });
+        return dateUTCString;
+    };
+
     return (
         <div className={style.container}>
             <h3>Projects</h3>
@@ -70,8 +79,8 @@ export function Main() {
                             <td>{project.description}</td>
                             <td><img src={project.image} alt={project.title} width="200" /></td>
                             <td>{project.stack}</td>
-                            <td>{project.link}</td>
-                            <td>{project.date}</td>
+                            <td>{project.url}</td>
+                            <td>{formatDateUTC(project.date)}</td>
                         </tr>
                     </tbody>
                     <tfoot>

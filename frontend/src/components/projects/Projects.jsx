@@ -39,6 +39,9 @@ export function Projects() {
                     <h2>{project.title}</h2>
                     <p>{project.description}</p>
                     <img src={project.image} alt={project.title} width="200" />
+                    <p>{project.stack}</p>  
+                    <p>{project.url}</p>
+                    <p>{project.date}</p>
                 </div>
             ))}
         </div>

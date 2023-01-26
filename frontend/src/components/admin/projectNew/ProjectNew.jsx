@@ -3,13 +3,20 @@ import style from './projectNew.module.scss';
 import React, { useState } from 'react';
 
 export function ProjectNew() {
+
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const today = `${year}-${month}-${day}`;
+
     const [project, setProject] = useState({
         title: "",
         description: "",
         image: "",
         stack: "",
-        link: "",
-        date: "",
+        url: "",
+        date: today,
     });
 
     const [error, setError] = useState(false);
@@ -21,6 +28,8 @@ export function ProjectNew() {
         setProject({ ...project, [event.target.name]: event.target.value });
     }
 
+
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -59,7 +68,7 @@ export function ProjectNew() {
                 <label htmlFor="stack">Stack</label>
                 <input type="text" name="stack" value={project.stack} onChange={handleChange} />
                 <label htmlFor="link">Link</label>
-                <input type="text" name="link" value={project.link} onChange={handleChange} />
+                <input type="text" name="link" value={project.url} onChange={handleChange} />
                 <label htmlFor="date">Date</label>
                 <input type="text" name="date" value={project.date} onChange={handleChange} />
                 <button type="submit">Add Project</button>

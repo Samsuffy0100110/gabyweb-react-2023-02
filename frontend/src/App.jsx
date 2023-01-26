@@ -8,7 +8,7 @@ import { LoginForm } from "./components/login/LoginForm";
 import { Nav } from "./components/layouts/nav/Nav";
 import { Admin } from "./pages/admin/Admin";
 import { Home } from "./pages/home/Home";
-import { Logout } from "./utils/Logout";
+import { Logout } from "./pages/logout/Logout";
 import "./App.scss";
 
 function App() {

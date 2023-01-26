@@ -23,7 +23,7 @@ export function ProjectView() {
             <p>{project.description}</p>
             <img src={project.image} alt={project.title} width="200" />
             <p>{project.stack}</p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">{project.link}</a>
+            <a href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</a>
             <p>{project.date}</p>
             <Link to={`/admin`}>Retour</Link>
         </div>
