@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import style from './projectNew.module.scss';
-import React, { useState } from 'react';
+import style from "./projectNew.module.scss";
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 export function ProjectNew() {
-
     const date = new Date();
     const day = date.getDate();
     const month = date.getMonth() + 1;
@@ -26,10 +26,8 @@ export function ProjectNew() {
 
     const handleChange = (event) => {
         setProject({ ...project, [event.target.name]: event.target.value });
-    }
+    };
 
-
-    
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -44,33 +42,82 @@ export function ProjectNew() {
             console.log(data);
             setLoading(false);
         } catch (error) {
+            console.log(error);
             setError(true);
-            setErrorMessage(error.message);
+            setErrorMessage(error);
         } finally {
-            navigate("/admin");
+            Swal.fire({
+                title: "Project added!",
+                text: "You can add another project or go back to the admin panel.",
+                icon: "success",
+                showCancelButton: true,
+                confirmButtonColor: "#424242",
+                cancelButtonColor: "#0C8DA1",
+                confirmButtonText: "Add another project",
+                cancelButtonText: "Go back to admin panel",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    setProject({
+                        title: "",
+                        description: "",
+                        image: "",
+                        stack: "",
+                        url: "",
+                        date: today,
+                    });
+                } else {
+                    navigate("/admin");
+                }
+            });
         }
-    }
-
-    if (error) {
-        return <div>{errorMessage}</div>;
-    }
+    };
 
     return (
         <div className={style.project_form}>
             <h3>Add Project</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title">Title</label>
-                <input type="text" name="title" value={project.title} onChange={handleChange} />
+                <input
+                    type="text"
+                    name="title"
+                    value={project.title}
+                    onChange={handleChange}
+                />
                 <label htmlFor="description">Description</label>
-                <input type="text" name="description" value={project.description} onChange={handleChange} />
+                <input
+                    type="text"
+                    name="description"
+                    value={project.description}
+                    onChange={handleChange}
+                />
                 <label htmlFor="image">Image</label>
-                <input type="text" name="image" value={project.image} onChange={handleChange} />
+                <input
+                    type="text"
+                    name="image"
+                    value={project.image}
+                    onChange={handleChange}
+                />
                 <label htmlFor="stack">Stack</label>
-                <input type="text" name="stack" value={project.stack} onChange={handleChange} />
+                <input
+                    type="text"
+                    name="stack"
+                    value={project.stack}
+                    onChange={handleChange}
+                />
                 <label htmlFor="url">Link</label>
-                <input type="text" name="url" value={project.url} onChange={handleChange} />
+                <input
+                    type="text"
+                    name="url"
+                    value={project.url}
+                    onChange={handleChange}
+                />
                 <label htmlFor="date">Date</label>
-                <input type="text" name="date" value={project.date} onChange={handleChange} />
+                <input
+                    type="text"
+                    name="date"
+                    value={project.date}
+                    onChange={handleChange}
+                />
                 <button type="submit">Add Project</button>
             </form>
         </div>

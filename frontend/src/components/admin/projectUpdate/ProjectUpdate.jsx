@@ -1,6 +1,7 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import style from "./projectUpdate.module.scss";
+import Swal from "sweetalert2";
 
 export function ProjectUpdate () {
     const [project, setProject] = useState('');
@@ -40,7 +41,16 @@ export function ProjectUpdate () {
         } catch (error) {
             console.log(error);
         } finally {
-            navigate("/admin");
+            Swal.fire({
+                title: "Modification",
+                text: "Le projet a bien été modifié.",
+                icon: "success",
+                confirmButtonColor: "#0C8DA1",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate(`/admin`);
+                }
+            });
         }
     };
 

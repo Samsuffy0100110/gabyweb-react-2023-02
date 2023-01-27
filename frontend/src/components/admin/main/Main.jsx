@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import style from './main.module.scss';
+import Swal from "sweetalert2";
 
 export function Main() {
     const [projects, setProjects] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const baseURL = import.meta.env.VITE_BACKEND_URL;
@@ -15,7 +15,6 @@ export function Main() {
                 const response = await fetch(`${baseURL}/projects`);
                 const data = await response.json();
                 setProjects(data);
-                setLoading(false);
             } catch (error) {
                 setError(true);
                 setErrorMessage(error.message);
@@ -31,22 +30,23 @@ export function Main() {
             });
             const data = await response.json();
             console.log(data);
-            setLoading(false);
         } catch (error) {
+            console.log(error);
             setError(true);
             setErrorMessage(error.message);
         } finally {
-            window.location.reload();
+            Swal.fire({
+                title: "Suppression",
+                text: "Le projet a bien été supprimé.",
+                icon: "success",
+                confirmButtonColor: "#0C8DA1",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
         }
     };
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>{errorMessage}</div>;
-    }
 
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const formatDate = (date) => {
@@ -57,50 +57,60 @@ export function Main() {
         return dateUTCString;
     };
 
-    return (
-        <div className={style.container}>
-            <h3>Projects</h3>
-            <Link to="/admin/project/new">Add project</Link>
-            {projects.map((project) => (
-                <table key={project.id} className={style.admin_projects}>
-                    <thead>
-                        <tr>
-                            <th>Project Title</th>
-                            <th>Project Description</th>
-                            <th>Project Image</th>
-                            <th>Project Stack</th>
-                            <th>Project Link</th>
-                            <th>Project Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{project.title}</td>
-                            <td>{project.description}</td>
-                            <td><img src={project.image} alt={project.title} width="200" /></td>
-                            <td>{project.stack}</td>
-                            <td>{project.url}</td>
-                            <td>{formatDate(project.date)}</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>
-                                <Link to={`/admin/project/${project.id}`}>See</Link>
-                            </td>
-                            <td>
-                                <Link to={`/admin/project/${project.id}/update`}>Update</Link>
-                            </td>
-                            <td>
-                                <button onClick={() => handleDelete(project.id)}>Delete</button>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            ))}
-            <div>
-                <Link to="/logout">Logout</Link>
+    if (projects.length === 0) {
+        return (
+            <div className={style.container}>
+                <h3>Projects</h3>
+                <Link to="/admin/project/new">Add project</Link>
+                <p>No projects yet</p>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return (
+            <div className={style.container}>
+                <h3>Projects</h3>
+                <Link to="/admin/project/new">Add project</Link>
+                {projects.map((project) => (
+                    <table key={project.id} className={style.admin_projects}>
+                        <thead>
+                            <tr>
+                                <th>Project Title</th>
+                                <th>Project Description</th>
+                                <th>Project Image</th>
+                                <th>Project Stack</th>
+                                <th>Project Link</th>
+                                <th>Project Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{project.title}</td>
+                                <td>{project.description}</td>
+                                <td><img src={project.image} alt={project.title} width="200" /></td>
+                                <td>{project.stack}</td>
+                                <td>{project.url}</td>
+                                <td>{formatDate(project.date)}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <Link to={`/admin/project/${project.id}`}>See</Link>
+                                </td>
+                                <td>
+                                    <Link to={`/admin/project/${project.id}/update`}>Update</Link>
+                                </td>
+                                <td>
+                                    <button onClick={() => handleDelete(project.id)}>Delete</button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                ))}
+                <div>
+                    <Link to="/logout">Logout</Link>
+                </div>
+            </div>
+        );
+    }
 }
