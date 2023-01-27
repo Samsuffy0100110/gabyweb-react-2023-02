@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import style from './projectDashboard.module.scss';
 import { Link } from 'react-router-dom';
-import style from './main.module.scss';
 import Swal from "sweetalert2";
 
-export function Main() {
+export function ProjectDashboard() {
     const [projects, setProjects] = useState([]);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -107,9 +107,6 @@ export function Main() {
                         </tfoot>
                     </table>
                 ))}
-                <div>
-                    <Link to="/logout">Logout</Link>
-                </div>
             </div>
         );
     }

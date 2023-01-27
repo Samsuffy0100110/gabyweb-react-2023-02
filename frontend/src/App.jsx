@@ -1,10 +1,11 @@
-import { ProjectUpdate } from '@components/admin/projectUpdate/ProjectUpdate';
+import { ProjectDashboard } from '@pages/admin/projectDashboard/ProjectDashboard';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ProjectView } from '@components/admin/projectView/ProjectView';
-import { ProjectNew } from '@components/admin/projectNew/ProjectNew';
+import { ProjectUpdate } from '@pages/admin/projectUpdate/ProjectUpdate';
+import { ProjectView } from '@pages/admin/projectView/ProjectView';
+import { ProjectNew } from '@pages/admin/projectNew/ProjectNew';
 import { Footer } from "./components/layouts/footer/Footer";
-import { LoginForm } from "./components/login/LoginForm";
 import { ProtectedRoute } from './utils/ProtectedRoute';
+import { LoginForm } from "./pages/login/LoginForm";
 import { Nav } from "./components/layouts/nav/Nav";
 import { Project } from "./pages/project/Project";
 import { Logout } from "./pages/logout/Logout";
@@ -27,9 +28,6 @@ function App() {
                 <Admin />
               </ProtectedRoute>
             } />
-          <Route path="/admin/project/new" element={<ProjectNew />} />
-          <Route path="/admin/project/:id/update" element={<ProjectUpdate />} />
-          <Route path="/admin/project/:id" element={<ProjectView />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/logout" element={<Logout />} />
         </Routes>

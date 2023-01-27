@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import style from "./projectNew.module.scss";
+import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
@@ -73,7 +74,7 @@ export function ProjectNew() {
     };
 
     return (
-        <div className={style.project_form}>
+        <div>
             <h3>Add Project</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title">Title</label>
@@ -120,6 +121,7 @@ export function ProjectNew() {
                 />
                 <button type="submit">Add Project</button>
             </form>
+            <Link to={`/admin`}>Retour</Link>
         </div>
     );
 }
