@@ -39,7 +39,7 @@ export function LoginForm() {
     };
 
     return (
-        <div className={style.form}>
+        <div>
             <h3>Login</h3>
             <form onSubmit={handleSubmit}>
                 <div>

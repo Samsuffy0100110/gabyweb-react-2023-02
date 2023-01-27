@@ -55,7 +55,7 @@ export function ProjectNew() {
                 confirmButtonColor: "#424242",
                 cancelButtonColor: "#0C8DA1",
                 confirmButtonText: "Add another project",
-                cancelButtonText: "Go back to admin panel",
+                cancelButtonText: "Go back to admin panel project",
             }).then((result) => {
                 if (result.isConfirmed) {
                     setProject({
@@ -67,7 +67,7 @@ export function ProjectNew() {
                         date: today,
                     });
                 } else {
-                    navigate("/admin");
+                    navigate("/admin/projects");
                 }
             });
         }
@@ -121,7 +121,7 @@ export function ProjectNew() {
                 />
                 <button type="submit">Add Project</button>
             </form>
-            <Link to={`/admin`}>Retour</Link>
+            <Link to={`/admin/projects`}>Go back to projects</Link>
         </div>
     );
 }

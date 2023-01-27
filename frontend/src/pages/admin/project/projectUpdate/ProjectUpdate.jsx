@@ -48,7 +48,7 @@ export function ProjectUpdate () {
                 confirmButtonColor: "#0C8DA1",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    navigate(`/admin`);
+                    navigate(`/admin/projects`);
                 }
             });
         }
@@ -62,7 +62,7 @@ export function ProjectUpdate () {
 
     return (
         <div>
-            <h3>Update project</h3>
+            <h1>Update project</h1>
             <form onSubmit={handleUpdate}>
                 <label htmlFor="title">Title</label>
                 <input type="text" name="title" defaultValue={project.title} />
@@ -78,7 +78,7 @@ export function ProjectUpdate () {
                 <input type="text" name="date" defaultValue={projectDate.toISOString().slice(0, 10)} />
                 <button type="submit">Update</button>
             </form>
-            <Link to={`/admin`}>Retour</Link>
+            <Link to={`/admin/projects`}>Go back to projects</Link>
         </div>
     );
 }

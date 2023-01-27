@@ -22,6 +22,36 @@ h1 {
     margin: 0;
 }
 
+button {
+    background-color: $primary;
+    color: $third;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    font-family: $font-family-base;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: $secondary;
+}
+
+a {
+    text-decoration: none;
+    color: $primary;
+    transition: all 0.3s ease-in-out;
+    font-size: 1rem;
+    font-family: $font-family-base;
+}
+
+a:hover {
+    color: $secondary;
+    text-decoration: underline;
+}
+
+
+
 // @function pxToRem($px) {
 //     @return $px / 16px * 1rem;
 // }

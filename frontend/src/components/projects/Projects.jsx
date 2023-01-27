@@ -36,7 +36,7 @@ export function Projects() {
         <div className={style.container}>
             <h3>Projects</h3>
             {projects.map((project) => (
-                <div key={project.id}>
+                <div key={project.id} className={style.container}>
                     <Link to={`/project/${project.id}`}><img src={project.image} alt={project.title} width="200" /></Link>
                 </div>
             ))}

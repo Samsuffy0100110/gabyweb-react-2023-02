@@ -3,20 +3,20 @@ import style from './main.module.scss';
 
 export function Main() {
     return (
-        <div className={style.main}>
-            <h1 className={style.title}>Bienvenue sur l'interface d'administration</h1>
-            <div className={style.links}>
-                <Link to="/admin/projects" className={style.link}>
-                    <h2 className={style.linkTitle}>Projets</h2>
+        <div>
+            <h1>Bienvenue sur l'interface d'administration</h1>
+            <div>
+                <Link to="/admin/projects">
+                    <h2>Projets</h2>
                 </Link>
-                <Link to="/admin/stacks" className={style.link}>
-                    <h2 className={style.linkTitle}>Stacks</h2>
+                <Link to="/admin/stacks">
+                    <h2>Stacks</h2>
                 </Link>
-                <Link to="/admin/reviews" className={style.link}>
-                    <h2 className={style.linkTitle}>Reviews</h2>
+                <Link to="/admin/reviews">
+                    <h2>Reviews</h2>
                 </Link>
-                <Link to="/admin/services" className={style.link}>
-                    <h2 className={style.linkTitle}>Services</h2>
+                <Link to="/admin/services">
+                    <h2>Services</h2>
                 </Link>
             </div>
             <div>

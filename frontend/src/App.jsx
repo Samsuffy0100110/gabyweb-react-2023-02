@@ -1,8 +1,4 @@
-import { ProjectDashboard } from '@pages/admin/projectDashboard/ProjectDashboard';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ProjectUpdate } from '@pages/admin/projectUpdate/ProjectUpdate';
-import { ProjectView } from '@pages/admin/projectView/ProjectView';
-import { ProjectNew } from '@pages/admin/projectNew/ProjectNew';
 import { Footer } from "./components/layouts/footer/Footer";
 import { ProtectedRoute } from './utils/ProtectedRoute';
 import { LoginForm } from "./pages/login/LoginForm";

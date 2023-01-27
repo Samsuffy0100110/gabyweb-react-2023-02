@@ -60,6 +60,7 @@ export function ProjectDashboard() {
     if (projects.length === 0) {
         return (
             <div className={style.container}>
+                <Link to={`/admin`}>Retour</Link>
                 <h3>Projects</h3>
                 <Link to="/admin/project/new">Add project</Link>
                 <p>No projects yet</p>
@@ -68,6 +69,7 @@ export function ProjectDashboard() {
     } else {
         return (
             <div className={style.container}>
+                <Link to={`/admin`}>Retour</Link>
                 <h3>Projects</h3>
                 <Link to="/admin/project/new">Add project</Link>
                 {projects.map((project) => (
@@ -95,10 +97,14 @@ export function ProjectDashboard() {
                         <tfoot>
                             <tr>
                                 <td>
-                                    <Link to={`/admin/project/${project.id}`}>See</Link>
+                                    <Link to={`/admin/project/${project.id}`}>
+                                    <button>View</button>
+                                    </Link>
                                 </td>
                                 <td>
-                                    <Link to={`/admin/project/${project.id}/update`}>Update</Link>
+                                    <Link to={`/admin/project/${project.id}/update`}>
+                                    <button>Update</button>
+                                    </Link>
                                 </td>
                                 <td>
                                     <button onClick={() => handleDelete(project.id)}>Delete</button>

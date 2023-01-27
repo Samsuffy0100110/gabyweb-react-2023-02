@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import style from './services.module.scss';
+import style from './reviews.module.scss';
 
-export function Services() {
-    const [services, setServices] = useState([]);
+export function Reviews() {
+    const [advisors, setAdvisors] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
-        const getServices = async () => {
+        const getAdvisors = async () => {
             try {
-                const response = await fetch(`${baseURL}/services`);
+                const response = await fetch(`${baseURL}/reviews`);
                 const data = await response.json();
-                setServices(data);
+                setAdvisors(data);
                 setLoading(false);
             } catch (error) {
                 setError(true);
                 setErrorMessage(error.message);
             }
         };
-        getServices();
+        getAdvisors();
     }, []);
 
     if (loading) {
@@ -33,12 +33,12 @@ export function Services() {
 
     return (
         <div className={style.container}>
-            <h3>Services</h3>
-            {services.map((service) => (
-                <div key={service.id} className={style.container}>
-                    <img src={service.icon} alt={service.title} width="200" />
-                    <strong>{service.title}</strong>
-                    <p>{service.description}</p>
+            <h3>Advisors</h3>
+            {advisors.map((advisor) => (
+                <div key={advisor.id} className={style.container}>
+                    <img src={advisor.logo} alt={advisor.name} width="200" />
+                    <i>{advisor.description}</i>
+                    <small>{advisor.name}</small>
                 </div>
             ))}
         </div>

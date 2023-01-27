@@ -25,7 +25,7 @@ export function ProjectView() {
             <p>{project.stack}</p>
             <a href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</a>
             <p>{project.date}</p>
-            <Link to={`/admin`}>Retour</Link>
+            <Link to={`/admin/projects`}>Go back to projects</Link>
         </div>
     );
 }
