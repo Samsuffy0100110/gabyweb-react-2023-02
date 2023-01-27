@@ -5,3 +5,156 @@
     padding : 10px;
     width : 50%;
 }
+
+.contactForm {
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+}
+
+.contactForm input {
+    width : 100%;
+    background-color: $third;
+    border: none;
+    border-bottom: 1px solid $primary;
+    color: $primary;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+.contactForm textarea {
+    width : 100%;
+    background-color: $third;
+    border: none;
+    border-bottom: 1px solid $primary;
+    color: $primary;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+.contactForm button {
+    width : 100%;
+    background-color: $primary;
+    border: none;
+    color: $third;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+.formGroup {
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+}
+
+.formGroup input {
+    width : 100%;
+    background-color: $third;
+    border: none;
+    border-bottom: 1px solid $primary;
+    color: $primary;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+.formGroup textarea {
+    width : 100%;
+    background-color: $third;
+    border: none;
+    border-bottom: 1px solid $primary;
+    color: $primary;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+.formGroup button {
+    width : 100%;
+    background-color: $primary;
+    border: none;
+    color: $third;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+.formGroup input:focus {
+    outline: none;
+}
+
+.formGroup textarea:focus {
+    outline: none;
+}
+
+.radioGroup {
+    display : flex;
+    flex-direction : row;
+    justify-content : center;
+    align-items : center;
+}
+
+.radioGroup input {
+    width : 100%;
+    background-color: $third;
+    border: none;
+    border-bottom: 1px solid $primary;
+    color: $primary;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+.radio {
+    display : flex;
+    flex-direction : row;
+    justify-content : center;
+    align-items : center;
+}
+
+.radio input {
+    width : 100%;
+    background-color: $third;
+    border: none;
+    border-bottom: 1px solid $primary;
+    color: $primary;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+.checkbox {
+    display : flex;
+    flex-direction : row;
+    justify-content : center;
+    align-items : center;
+}
+
+.checkbox input {
+    width : 100%;
+    background-color: $third;
+    border: none;
+    border-bottom: 1px solid $primary;
+    color: $primary;
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+.checkbox input:focus {
+    outline: none;
+}
+
+.disabled {
+    display : none;
+}
+
+.mandatory {
+    color : $mandatory;
+}
+
