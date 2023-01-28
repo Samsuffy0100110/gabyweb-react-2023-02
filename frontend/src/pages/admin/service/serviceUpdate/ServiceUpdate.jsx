@@ -65,7 +65,7 @@ export function ServiceUpdate () {
                 <input type="text" name="description" id="description" defaultValue={service.description} />
                 <label htmlFor="icon">Icone</label>
                 <input type="text" name="icon" id="icon" defaultValue={service.icon} />
-                <button type="submit">Modifier</button>
+                <button type="submit" className={style.update_button}>Modifier</button>
             </form>
             <Link to="/admin/services">Retour à la liste des services</Link>
         </div>

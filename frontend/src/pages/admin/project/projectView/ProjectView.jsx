@@ -58,7 +58,7 @@ export function ProjectView() {
     return (
         <div className={style.container}>
             <h1>Project and Stacks</h1>
-            <button onClick={() => navigate(`/admin/project/${project.id}/update`)}>Modifier</button>
+            <button onClick={() => navigate(`/admin/project/${project.id}/update`)} className={style.update_button}>Modifier</button>
             <button onClick={() => handleDelete(project.id)} className={style.delete_button}>Supprimer</button>
             <h2>{project.name}</h2>
             <p>{project.description}</p>
@@ -67,7 +67,7 @@ export function ProjectView() {
             <p>{project.date}</p>
             <h3>Stacks</h3>
                 {stacks.map(stack => (
-                        <img src={stack.image} alt={stack.name} width="100" />
+                        <img src={stack.image} alt={stack.name} width="50" />
                 ))}
             <Link to="/">Back</Link>
         </div>

@@ -38,7 +38,7 @@ export function Project() {
             <p>{project.date}</p>
             <h3>Stacks</h3>
                 {stacks.map(stack => (
-                        <img src={stack.image} alt={stack.name} width="100" />
+                        <img src={stack.image} alt={stack.name} width="50" />
                 ))}
             <Link to="/">Back</Link>
         </div>

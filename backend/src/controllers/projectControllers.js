@@ -3,7 +3,7 @@ const models = require("../models");
 
 const browse = (req, res) => {
   models.project
-    .findAll()
+    .findProjectsAndStacks()
     .then(([rows]) => {
       res.send(rows);
     })
