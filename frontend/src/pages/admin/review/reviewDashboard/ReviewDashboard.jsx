@@ -85,11 +85,11 @@ export function ReviewDashboard() {
                             <tr>
                                 <td>
                                     <Link to={`/admin/review/${review.id}/update`}>
-                                        <button>Modifier</button>
+                                        <button className={style.update_button}>Modifier</button>
                                     </Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(review.id)}>Supprimer</button>
+                                    <button onClick={() => handleDelete(review.id)} className={style.delete_button}>Supprimer</button>
                                 </td>
                             </tr>
                         </tfoot>

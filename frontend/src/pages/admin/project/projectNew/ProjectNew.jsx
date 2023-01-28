@@ -119,7 +119,7 @@ export function ProjectNew() {
                     value={project.date}
                     onChange={handleChange}
                 />
-                <button type="submit">Add Project</button>
+                <button type="submit">Ajouter</button>
             </form>
             <Link to={`/admin/projects`}>Go back to projects</Link>
         </div>

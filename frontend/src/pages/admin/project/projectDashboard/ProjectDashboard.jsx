@@ -57,6 +57,8 @@ export function ProjectDashboard() {
         return dateUTCString;
     };
 
+    console.log(projects);
+
     if (projects.length === 0) {
         return (
             <div className={style.container}>
@@ -103,11 +105,11 @@ export function ProjectDashboard() {
                                 </td>
                                 <td>
                                     <Link to={`/admin/project/${project.id}/update`}>
-                                    <button>Update</button>
+                                    <button className={style.update_button}>Update</button>
                                     </Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(project.id)}>Delete</button>
+                                    <button onClick={() => handleDelete(project.id)} className={style.delete_button}>Delete</button>
                                 </td>
                             </tr>
                         </tfoot>

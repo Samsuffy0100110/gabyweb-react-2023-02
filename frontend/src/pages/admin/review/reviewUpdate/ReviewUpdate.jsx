@@ -65,7 +65,7 @@ export function ReviewUpdate () {
                 <input type="text" name="review" id="review" defaultValue={review.review} />
                 <label htmlFor="logo">Logo</label>
                 <input type="text" name="logo" id="logo" defaultValue={review.logo} />
-                <button type="submit">Modifier</button>
+                <button type="submit" className={style.update_button}>Modifier</button>
             </form>
             <Link to="/admin/reviews">Retour à la liste des avis</Link>
         </div>

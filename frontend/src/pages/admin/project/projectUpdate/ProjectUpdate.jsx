@@ -76,7 +76,7 @@ export function ProjectUpdate () {
                 <input type="text" name="url" defaultValue={project.url} />
                 <label htmlFor="date">Date</label>
                 <input type="text" name="date" defaultValue={projectDate.toISOString().slice(0, 10)} />
-                <button type="submit">Update</button>
+                <button type="submit" className={style.update_button}>Update</button>
             </form>
             <Link to={`/admin/projects`}>Go back to projects</Link>
         </div>

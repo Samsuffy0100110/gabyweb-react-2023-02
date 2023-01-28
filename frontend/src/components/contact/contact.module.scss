@@ -110,24 +110,6 @@
     font-size: 1.2rem;
 }
 
-.radio {
-    display : flex;
-    flex-direction : row;
-    justify-content : center;
-    align-items : center;
-}
-
-.radio input {
-    width : 100%;
-    background-color: $third;
-    border: none;
-    border-bottom: 1px solid $primary;
-    color: $primary;
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.2rem;
-}
-
 .checkbox {
     display : flex;
     flex-direction : row;
@@ -150,9 +132,6 @@
     outline: none;
 }
 
-.disabled {
-    display : none;
-}
 
 .mandatory {
     color : $mandatory;

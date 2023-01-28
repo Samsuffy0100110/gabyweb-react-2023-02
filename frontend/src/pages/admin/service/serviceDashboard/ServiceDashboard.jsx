@@ -85,11 +85,11 @@ export function ServiceDashboard() {
                             <tr>
                                 <td>
                                     <Link to={`/admin/service/${service.id}/update`}>
-                                        <button className={style.editButton}>Modifier</button>
+                                        <button className={style.update_button}>Modifier</button>
                                     </Link>
                                 </td>
                                 <td>
-                                    <button className={style.deleteButton} onClick={() => handleDelete(review.id)}>Supprimer</button>
+                                    <button className={style.delete_button} onClick={() => handleDelete(review.id)}>Supprimer</button>
                                 </td>
                             </tr>
                         </tfoot>
