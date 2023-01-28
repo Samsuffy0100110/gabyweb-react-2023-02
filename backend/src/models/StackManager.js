@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 const AbstractManager = require("./AbstractManager");
 
-class ServiceManager extends AbstractManager {
+class StackManager extends AbstractManager {
     constructor() {
         super({ table: "stack" });
     }
@@ -23,6 +23,22 @@ class ServiceManager extends AbstractManager {
             [id]
         );
     }
+
+    insert(stack) {
+        return this.connection.query(
+            `INSERT INTO ${this.table} (name, image) values (?, ?)`,
+            [stack.name, stack.image]
+        );
+    }
+
+    update(stack) {
+        return this.connection.query(
+            `update ${this.table} set name = ?, image = ? where id = ?`,
+            [stack.name, stack.image, stack.id]
+        );
+    }
 }
 
-module.exports = ServiceManager;
+
+
+module.exports = StackManager;

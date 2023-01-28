@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import style from './reviewDashboard.module.scss';
+import style from './stackDashboard.module.scss';
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
 
-export function ReviewDashboard() {
-    const [reviews, setReviews] = useState([]);
+export function StackDashboard() {
+    const [stacks, setStacks] = useState([]);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
-        const getReviews = async () => {
+        const getStacks = async () => {
             try {
-                const response = await fetch(`${baseURL}/reviews`);
+                const response = await fetch(`${baseURL}/stacks`);
                 const data = await response.json();
-                setReviews(data);
+                setStacks(data);
             } catch (error) {
                 setError(true);
                 setErrorMessage(error.message);
             }
         };
-        getReviews();
+        getStacks();
     }, []);
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`${baseURL}/review/${id}`, {
+            const response = await fetch(`${baseURL}/stack/${id}`, {
                 method: "DELETE",
             });
             const data = await response.json();
@@ -37,7 +37,7 @@ export function ReviewDashboard() {
         } finally {
             Swal.fire({
                 title: "Suppression",
-                text: "L\' avis a bien été supprimé.",
+                text: "La stack a bien été supprimée.",
                 icon: "success",
                 confirmButtonColor: "#0C8DA1",
             }).then((result) => {
@@ -48,14 +48,14 @@ export function ReviewDashboard() {
         }
     };
 
-    if (reviews.length === 0) {
+    if (stacks.length === 0) {
         return (
             <div className={style.container}>
                 <Link to={`/admin`}>Retour</Link>
-                <h1>Avis</h1>
-                <p>Aucun avis n\'a été ajouté.</p>
-                <Link to="/admin/review/new">
-                    <button>Ajouter un avis</button>
+                <h1>Stacks</h1>
+                <p>Aucune stack n\'a été ajoutée.</p>
+                <Link to="/admin/stack/new">
+                    <button>Ajouter une stack</button>
                 </Link>
             </div>
         );
@@ -63,33 +63,31 @@ export function ReviewDashboard() {
         return (
             <div className={style.container}>
                 <Link to={`/admin`}>Retour</Link>
-                <h1>Avis</h1>
-                <Link to="/admin/review/new">Ajouter un avis</Link>
-                {reviews.map((review) => (
-                    <table key={review.id} className={style.admin_reviews}>
+                <h1>Stacks</h1>
+                <Link to="/admin/stack/new">Ajouter une stack</Link>
+                {stacks.map((stack) => (
+                    <table key={stack.id} className={style.admin_stacks}>
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Message</th>
-                                <th>Logo</th>
+                                <th>Nom</th>
+                                <th>Icone</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{review.name}</td>
-                                <td>{review.review}</td>
-                                <td><img src={review.logo} alt={review.name} /></td>
+                                <td>{stack.name}</td>
+                                <td><img src={stack.image} alt={stack.name} /></td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td>
-                                    <Link to={`/admin/review/${review.id}/update`}>
+                                    <Link to={`/admin/stack/${stack.id}/update`}>
                                         <button className={style.update_button}>Modifier</button>
                                     </Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(review.id)} className={style.delete_button}>Supprimer</button>
+                                    <button className={style.delete_button} onClick={() => handleDelete(stack.id)}>Supprimer</button>
                                 </td>
                             </tr>
                         </tfoot>

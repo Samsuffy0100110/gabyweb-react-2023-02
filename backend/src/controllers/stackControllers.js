@@ -2,19 +2,21 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-    models.service
+    models.stack
         .findAll()
         .then(([rows]) => {
             res.send(rows);
-        })
+        }
+        )
         .catch((err) => {
             console.error(err);
             res.sendStatus(500);
-        });
+        }
+        );
 };
 
 const read = (req, res) => {
-    models.service
+    models.stack
         .find(req.params.id)
         .then(([rows]) => {
             if (rows[0] == null) {
@@ -30,40 +32,38 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-    const service = req.body;
+    const stack = req.body;
 
     // TODO validations (length, format...)
 
-    service.id = parseInt(req.params.id, 10);
+    stack.id = parseInt(req.params.id, 10);
 
-    models.service
-        .update(service)
+    models.stack
+        .update(stack)
         .then(([result]) => {
             if (result.affectedRows === 0) {
                 res.sendStatus(404);
             } else {
                 res.sendStatus(204);
             }
-        })
+        }
+        )
         .catch((err) => {
             console.error(err);
             res.sendStatus(500);
-        });
+        }
+        );
 };
 
 const add = (req, res) => {
-    const service = req.body;
+    const stack = req.body;
 
     // TODO validations (length, format...)
 
-    models.service
-        .insert(service)
+    models.stack
+        .insert(stack)
         .then(([result]) => {
-            if (result.affectedRows === 0) {
-                res.sendStatus(404);
-            } else {
-                res.sendStatus(201);
-            }
+            res.send({ id: result.insertId });
         })
         .catch((err) => {
             console.error(err);
@@ -72,7 +72,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-    models.service
+    models.stack
         .delete(req.params.id)
         .then(([result]) => {
             if (result.affectedRows === 0) {

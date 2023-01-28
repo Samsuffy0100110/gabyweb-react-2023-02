@@ -53,9 +53,9 @@ export function ServiceDashboard() {
             <div className={style.container}>
                 <Link to={`/admin`}>Retour</Link>
                 <h1>Services</h1>
-                <p className={style.emptyText}>Aucun service n'a été ajouté.</p>
+                <p>Aucun service n'a été ajouté.</p>
                 <Link to="/admin/service/new">
-                    <button className={style}>Ajouter un service</button>
+                    <button>Ajouter un service</button>
                 </Link>
             </div>
         );
@@ -89,7 +89,7 @@ export function ServiceDashboard() {
                                     </Link>
                                 </td>
                                 <td>
-                                    <button className={style.delete_button} onClick={() => handleDelete(review.id)}>Supprimer</button>
+                                    <button onClick={() => handleDelete(service.id)} className={style.delete_button}>Supprimer</button>
                                 </td>
                             </tr>
                         </tfoot>

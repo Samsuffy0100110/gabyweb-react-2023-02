@@ -7,6 +7,7 @@ const authControllers = require("./controllers/authControllers");
 const serviceControllers = require("./controllers/serviceControllers");
 const projectControllers = require("./controllers/projectControllers");
 const reviewControllers = require("./controllers/reviewControllers");
+const stackControllers = require("./controllers/stackControllers");
 
 router.post("/login", authControllers.login);
 
@@ -28,5 +29,11 @@ router.put("/project/:id", projectControllers.edit);
 router.post("/project", projectControllers.add);
 router.delete("/project/:id", projectControllers.destroy);
 router.get("/project/:id/stacks", projectControllers.stacks);
+
+router.get("/stacks", stackControllers.browse);
+router.get("/stack/:id", stackControllers.read);
+router.put("/stack/:id", stackControllers.edit);
+router.post("/stack", stackControllers.add);
+router.delete("/stack/:id", stackControllers.destroy);
 
 module.exports = router;
