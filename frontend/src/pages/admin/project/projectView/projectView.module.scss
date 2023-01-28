@@ -1,1 +1,9 @@
 @import '../../../../App.scss';
+
+.delete_button {
+    background-color: $mandatory;
+}
+
+.delete_button:hover {
+    background-color: $secondary;
+}
