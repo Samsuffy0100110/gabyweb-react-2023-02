@@ -54,7 +54,13 @@ export function ProjectDashboard() {
         const dateUTCString = dateUTC.toLocaleString("fr-FR", {
             timeZone: timeZone,
         });
-        return dateUTCString;
+        const dateUTCArray = dateUTCString.split(" ");
+        const dateUTCArrayDate = dateUTCArray[0].split("/");
+        const dateUTCArrayDay = dateUTCArrayDate[0];
+        const dateUTCArrayMonth = dateUTCArrayDate[1];
+        const dateUTCArrayYear = dateUTCArrayDate[2];
+        const dateUTCArrayFinal = `${dateUTCArrayDay}-${dateUTCArrayMonth}-${dateUTCArrayYear}`;
+        return dateUTCArrayFinal;
     };
 
     console.log(projects);

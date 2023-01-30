@@ -28,6 +28,21 @@ export function Project() {
         }
     }, [id]);
 
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const formatDate = (date) => {
+        const dateUTC = new Date(date);
+        const dateUTCString = dateUTC.toLocaleString("fr-FR", {
+            timeZone: timeZone,
+        });
+        const dateUTCArray = dateUTCString.split(" ");
+        const dateUTCArrayDate = dateUTCArray[0].split("/");
+        const dateUTCArrayDay = dateUTCArrayDate[0];
+        const dateUTCArrayMonth = dateUTCArrayDate[1];
+        const dateUTCArrayYear = dateUTCArrayDate[2];
+        const dateUTCArrayFinal = `${dateUTCArrayDay}-${dateUTCArrayMonth}-${dateUTCArrayYear}`;
+        return dateUTCArrayFinal;
+    };
+
     return (
         <div className={style.container}>
             <h1>Project and Stacks</h1>
@@ -35,7 +50,7 @@ export function Project() {
             <p>{project.description}</p>
             <img src={project.image} alt={project.title} width="200" />
             <a href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</a>
-            <p>{project.date}</p>
+            <p>{formatDate(project.date)}</p>
             <h3>Stacks</h3>
                 {stacks.map(stack => (
                         <img src={stack.image} alt={stack.name} width="50" />
