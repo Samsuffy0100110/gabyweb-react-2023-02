@@ -1,8 +1,24 @@
 @import '../../App.scss';
 
 .container {
-    border : 3px solid $primary;
-    padding : 10px;
-    width : 50%;
-    margin-left: auto;
+    background-color: $primary;
+    padding: 2rem;
+    margin: 5rem 2rem 5rem 2rem;
+    width: 30%;
+}
+
+.title {
+    color: $secondary;
+    font-size: 2rem;
+    color: $third;
+    border-bottom: 3px solid $secondary;
+    width: 80%;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 2rem;
+        margin: 5rem 0 5rem 0;
+    }
 }

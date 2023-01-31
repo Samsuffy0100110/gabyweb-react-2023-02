@@ -15,9 +15,9 @@ CREATE TABLE `service` (
 ) ENGINE=InnoDB;
 
 INSERT INTO `service` (`title`, `description`, `icon`) VALUES 
-('Web Design', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'fas fa-paint-brush')
-,('Web Development', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'fas fa-code')
-,('Digital Marketing', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'fas fa-chart-line');
+('Web Design', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'https://loremflickr.com/320/240')
+,('Web Development', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'https://loremflickr.com/320/240')
+,('Digital Marketing', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'https://loremflickr.com/320/240');
 
 CREATE TABLE project (
   `id` int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -31,6 +31,10 @@ CREATE TABLE project (
 
 INSERT INTO project (`title`, `description`, `date`, `image`, `stack`, `url`) VALUES 
 ('Pep\'s Design', 'Pep\'s Design est un projet de site de vente en ligne.', '2022-12-31 00:00:00', 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg', 'Symfony, Bootstrap, Twig, PHP, MySQL, HTML, SCSS, JavaScript', 'https://www.pepsdesign.fr')
+,('Gaby\'s Web', 'Gaby\'s Web est un projet de site de vente en ligne.', '2022-12-31 00:00:00', 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg', 'Symfony, Bootstrap, Twig, PHP, MySQL, HTML, SCSS, JavaScript', 'https://www.gabyweb.fr')
+,('Endogirl', 'Endogirl est un projet de site de vente en ligne.', '2022-12-31 00:00:00', 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg', 'Symfony, Bootstrap, Twig, PHP, MySQL, HTML, SCSS, JavaScript', 'https://www.endogirl.fr')
+,('Gaby\'s Web', 'Gaby\'s Web est un projet de site de vente en ligne.', '2022-12-31 00:00:00', 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg', 'Symfony, Bootstrap, Twig, PHP, MySQL, HTML, SCSS, JavaScript', 'https://www.gabyweb.fr')
+,('Endogirl', 'Endogirl est un projet de site de vente en ligne.', '2022-12-31 00:00:00', 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg', 'Symfony, Bootstrap, Twig, PHP, MySQL, HTML, SCSS, JavaScript', 'https://www.endogirl.fr')
 ,('Gaby\'s Web', 'Gaby\'s Web est un projet de site de vente en ligne.', '2022-12-31 00:00:00', 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg', 'Symfony, Bootstrap, Twig, PHP, MySQL, HTML, SCSS, JavaScript', 'https://www.gabyweb.fr');
 
 CREATE TABLE `stack` (
@@ -88,10 +92,10 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB;
 
 INSERT INTO `review` (`name`, `review`, `logo`) VALUES 
-('John Doe', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'fas fa-quote-left')
-,('Jane Doe', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'fas fa-quote-left')
-,('John Doe', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'fas fa-quote-left')
-,('Jane Doe', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'fas fa-quote-left');
+('John Doe', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png')
+,('Jane Doe', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'https://sass-lang.com/assets/img/styleguide/color-1c4aab2b.png')
+,('John Doe', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'https://vuejs.org/images/logo.png')
+,('Jane Doe', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor. Sed euismod, nunc sit amet aliquam tincidunt, nunc elit luctus nunc, eget aliquam massa nisl eget dolor.', 'http://svgur.com/i/1j0.svg');
 
 
 

@@ -22,13 +22,17 @@ export function Services() {
 
     return (
         <div className={style.container}>
-            <h3>Services</h3>
+            <h3 className={style.title}>Nos Services</h3>
+            <div className={style.row}>
             {services.map((service) => (
-                <div key={service.id} className={style.container}>
-                    <img src={iconPath + service.icon} alt={service.name} />
-                    <p>{service.description}</p>
+                <div key={service.id} className={style.card}>
+                    <img src={service.icon} alt={service.name} width="300" />
+                    <h3>{service.title}</h3>
+                    {/* <img src={iconPath + service.icon} alt={service.name} width="200" /> */}
+                    <p className={style.description}>{service.description}</p>
                 </div>
             ))}
+            </div>
         </div>
     );
 }

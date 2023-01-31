@@ -5,3 +5,9 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+@media screen and (max-width: 768px) {
+    .form_about {
+        flex-direction: column;
+    }
+}

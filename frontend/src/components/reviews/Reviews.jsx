@@ -22,14 +22,17 @@ export function Reviews() {
 
     return (
         <div className={style.container}>
-            <h3>Advisors</h3>
+            <h3 className={style.title}>Ils nous ont fait confiance</h3>
+            <div className={style.row}>
             {advisors.map((advisor) => (
-                <div key={advisor.id} className={style.container}>
-                    <img src={logoPath + advisor.logo} alt={advisor.name} width="200" height="200" />
-                    <i>{advisor.description}</i>
-                    <small>{advisor.name}</small>
+                <div key={advisor.id} className={style.card}>
+                    {/* <img src={logoPath + advisor.logo} alt={advisor.name} width="200" height="200" /> */}
+                    <img src={advisor.logo} alt={advisor.name} className={style.logo} />
+                    <i>"{advisor.review}"</i>
+                    <small className={style.name}>{advisor.name}</small>
                 </div>
             ))}
+            </div>
         </div>
     );
 }

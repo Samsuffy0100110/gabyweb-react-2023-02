@@ -23,11 +23,12 @@ export function Projects() {
 
     return (
         <div className={style.container}>
-            <h3>Projects</h3>
+            <h2 className={style.title}>Nos Réalisations</h2>
             {projects.map((project) => (
-                <div key={project.id} className={style.container}>
+                <div key={project.id} className={style.project_gallery}>
                     <Link to={`/project/${project.id}`}>
-                        <img src={imagePath + project.image} alt={project.name} width="200" height="200" />
+                        {/* <img src={imagePath + project.image} alt={project.name} width="200" height="200" /> */}
+                        <img src={project.image} alt={project.name} width="200"  />
                     </Link>
                 </div>
             ))}

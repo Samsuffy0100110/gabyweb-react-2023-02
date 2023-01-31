@@ -4,7 +4,7 @@ export function AboutUs() {
     return (
         <div className={style.container}>
             <div>
-                <h2>About Us</h2>
+                <h2 className={style.title}>A propos de nous</h2>
             </div>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod,
