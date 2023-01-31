@@ -22,7 +22,7 @@ export function Projects() {
     }, []);
 
     return (
-        <div className={style.container}>
+        <div className={style.container} id="projects">
             <h2 className={style.title}>Nos Réalisations</h2>
             {projects.map((project) => (
                 <div key={project.id} className={style.project_gallery}>

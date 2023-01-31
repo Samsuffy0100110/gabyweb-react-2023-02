@@ -1,6 +1,68 @@
 @import '../../../App.scss';
 
-.container {
-  border : 3px solid $primary;
-  padding : 10px;
+.footer__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  background-color: $third;
+  margin: 0 1rem 0 1rem;
+}
+
+.footer__copyRight {
+  font-size: 1.2rem;
+  color: $secondary;
+}
+
+.footer__socialMedia {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 10rem;
+}
+
+.footer__socialMedia__image {
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer__links__link {
+  color: $secondary;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.footer__links__link:hover {
+  color: $primary;
+}
+
+.footer__links__link:active {
+  color: $primary;
+}
+
+@media screen and (max-width: 768px) {
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer__copyRight {
+    margin-bottom: 1rem;
+  }
+
+  .footer__socialMedia {
+    margin-bottom: 1rem;
+  }
 }

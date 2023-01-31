@@ -21,7 +21,7 @@ export function Services() {
     }, []);
 
     return (
-        <div className={style.container}>
+        <div className={style.container} id="services">
             <h3 className={style.title}>Nos Services</h3>
             <div className={style.row}>
             {services.map((service) => (

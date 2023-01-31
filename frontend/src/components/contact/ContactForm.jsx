@@ -65,7 +65,7 @@ export function ContactForm() {
     }, [firstName, lastName, email, rgpd, message]);
 
     return (
-        <div className={style.contactForm}>
+        <div className={style.contactForm} id="contact">
             <form onSubmit={handleSubmit}>
                 <div className={style.formGroup}>
                 <label htmlFor="firstName">Prénom<span className={style.mandatory}> *</span></label>
