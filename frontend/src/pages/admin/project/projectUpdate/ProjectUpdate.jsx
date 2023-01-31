@@ -1,26 +1,32 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import style from "./projectUpdate.module.scss";
 import Swal from "sweetalert2";
 
-export function ProjectUpdate () {
+export function ProjectUpdate() {
     const [project, setProject] = useState('');
     const { id } = useParams();
+    const inputRef = useRef();
     const navigate = useNavigate();
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
+
     useEffect(() => {
-        try {
-            fetch(`${baseURL}/project/${id}`)
-                .then(res => res.json())
-                .then(data => setProject(data))
-        } catch (error) {
-            console.log(error);
-        }
-    }, [id]);
+        const getProject = async () => {
+            try {
+                const response = await fetch(`${baseURL}/project/${id}`);
+                const data = await response.json();
+                setProject(data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getProject();
+    }, []);
 
     const handleUpdate = async (e) => {
         e.preventDefault();
+        const formData = new FormData(inputRef.current);
         const title = e.target.title.value;
         const description = e.target.description.value;
         const image = e.target.image.value;
@@ -29,6 +35,13 @@ export function ProjectUpdate () {
         const date = e.target.date.value;
         const body = { title, description, image, stack, url, date };
         try {
+            await fetch(`${baseURL}/project/image`, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "Accept": "multipart/form-data",
+                },
+            });
             const response = await fetch(`${baseURL}/project/${id}`, {
                 method: "PUT",
                 headers: {
@@ -42,13 +55,19 @@ export function ProjectUpdate () {
             console.log(error);
         } finally {
             Swal.fire({
-                title: "Modification",
-                text: "Le projet a bien été modifié.",
+                title: "Project updated!",
+                text: "You can update another project or go back to the admin panel.",
                 icon: "success",
-                confirmButtonColor: "#0C8DA1",
+                showCancelButton: true,
+                confirmButtonColor: "#424242",
+                cancelButtonColor: "#0C8DA1",
+                confirmButtonText: "Update another project",
+                cancelButtonText: "Go back to admin panel",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    navigate(`/admin/projects`);
+                    navigate(`/admin/project/update/${id}`);
+                } else if (result.isDismissed) {
+                    navigate("/admin");
                 }
             });
         }
@@ -62,23 +81,39 @@ export function ProjectUpdate () {
 
     return (
         <div>
-            <h1>Update project</h1>
-            <form onSubmit={handleUpdate}>
-                <label htmlFor="title">Title</label>
-                <input type="text" name="title" defaultValue={project.title} />
-                <label htmlFor="description">Description</label>
-                <input type="text" name="description" defaultValue={project.description} />
-                <label htmlFor="image">Image</label>
-                <input type="text" name="image" defaultValue={project.image} />
-                <label htmlFor="stack">Stack</label>
-                <input type="text" name="stack" defaultValue={project.stack} />
-                <label htmlFor="url">Link</label>
-                <input type="text" name="url" defaultValue={project.url} />
-                <label htmlFor="date">Date</label>
-                <input type="text" name="date" defaultValue={projectDate.toISOString().slice(0, 10)} />
-                <button type="submit" className={style.update_button}>Update</button>
+            <h1>Modifier le projet</h1>
+            <form ref={inputRef} onSubmit={handleUpdate} encType="multipart/form-data">
+                <div>
+                    <label htmlFor="title">Titre</label>
+                    <input type="text" name="title" id="title" defaultValue={project.title} />
+                </div>
+                <div>
+                    <label htmlFor="description">Description</label>
+                    <textarea name="description" id="description" defaultValue={project.description} />
+                </div>
+                <div>
+                    <label htmlFor="image">Image</label>
+                    <input type="file" name="image" id="image" />
+                </div>
+                <div>
+                    <label htmlFor="stack">Stack</label>
+                    <input type="text" name="stack" id="stack" defaultValue={project.stack} />
+                </div>
+                <div>
+                    <label htmlFor="url">URL</label>
+                    <input type="text" name="url" id="url" defaultValue={project.url} />
+                </div>
+                <div>
+                    <label htmlFor="date">Date</label>
+                    <input type="text" name="date" id="date" defaultValue={projectDate.toISOString().slice(0, 10)} />
+                </div>
+                <div>
+                    <button type="submit" className={style.update_button}>Update</button>
+                </div>
             </form>
-            <Link to={`/admin/projects`}>Go back to projects</Link>
+            <Link to="/admin/project" className={style.link}>
+                <button>Retour</button>
+            </Link>
         </div>
     );
 }

@@ -1,11 +1,12 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import style from "./stackUpdate.module.scss";
 import Swal from "sweetalert2";
 
-export function StackUpdate () {
+export function StackUpdate() {
     const [stack, setStack] = useState('');
     const { id } = useParams();
+    const inputRef = useRef();
     const navigate = useNavigate();
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -21,10 +22,18 @@ export function StackUpdate () {
 
     const handleUpdate = async (e) => {
         e.preventDefault();
+        const formData = new FormData(inputRef.current);
         const name = e.target.name.value;
         const image = e.target.image.value;
         const body = { name, image };
         try {
+            await fetch(`${baseURL}/stack/image`, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "Accept": "multipart/form-data",
+                },
+            });
             const response = await fetch(`${baseURL}/stack/${id}`, {
                 method: "PUT",
                 headers: {
@@ -57,12 +66,28 @@ export function StackUpdate () {
     return (
         <div>
             <h1>Modifier une stack</h1>
-            <form onSubmit={handleUpdate}>
-                <label htmlFor="name">Nom</label>
-                <input type="text" name="name" id="name" defaultValue={stack.name} />
-                <label htmlFor="image">Image</label>
-                <input type="text" name="image" id="image" defaultValue={stack.image} />
-                <button type="submit" className={style.update_button}>Modifier</button>
+            <form onSubmit={handleUpdate} ref={inputRef} encType="multipart/form-data">
+                <div>
+                    <label htmlFor="name">Nom</label>
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        defaultValue={stack.name}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="image">Image</label>
+                    <input
+                        type="file"
+                        name="image"
+                        id="image"
+                        accept="image/*"
+                    />
+                </div>
+                <div>
+                    <button type="submit" className={style.update_button}>Update</button>
+                </div>
             </form>
             <Link to="/admin/stacks">Retour</Link>
         </div>

@@ -1,7 +1,7 @@
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./projectNew.module.scss";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 export function ProjectNew() {
@@ -10,6 +10,9 @@ export function ProjectNew() {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
     const today = `${year}-${month}-${day}`;
+    const inputRef = useRef();
+    const navigate = useNavigate();
+    const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     const [project, setProject] = useState({
         title: "",
@@ -20,11 +23,6 @@ export function ProjectNew() {
         date: today,
     });
 
-    const [error, setError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
-    const navigate = useNavigate();
-    const baseURL = import.meta.env.VITE_BACKEND_URL;
-
     const handleChange = (event) => {
         setProject({ ...project, [event.target.name]: event.target.value });
     };
@@ -32,6 +30,17 @@ export function ProjectNew() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
+            const formData = new FormData();
+            for (let i = 0; i < inputRef.current.files.length; i++) {
+                formData.append("image", inputRef.current.files[i]);
+            }
+            await fetch(`${baseURL}/project/image`, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "Accept": "multipart/form-data",
+                },
+            });
             const response = await fetch(`${baseURL}/project`, {
                 method: "POST",
                 headers: {
@@ -41,11 +50,8 @@ export function ProjectNew() {
             });
             const data = await response.json();
             console.log(data);
-            setLoading(false);
         } catch (error) {
             console.log(error);
-            setError(true);
-            setErrorMessage(error);
         } finally {
             Swal.fire({
                 title: "Project added!",
@@ -76,7 +82,7 @@ export function ProjectNew() {
     return (
         <div>
             <h3>Add Project</h3>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <label htmlFor="title">Title</label>
                 <input
                     type="text"
@@ -93,10 +99,12 @@ export function ProjectNew() {
                 />
                 <label htmlFor="image">Image</label>
                 <input
-                    type="text"
+                    type="file"
                     name="image"
+                    accept="image/*"
                     value={project.image}
                     onChange={handleChange}
+                    ref={inputRef}
                 />
                 <label htmlFor="stack">Stack</label>
                 <input

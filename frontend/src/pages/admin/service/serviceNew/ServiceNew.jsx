@@ -1,7 +1,7 @@
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./serviceNew.module.scss";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 export function ServiceNew() {
@@ -11,9 +11,8 @@ export function ServiceNew() {
         icon: "",
     });
 
-    const [error, setError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+    const inputRef = useRef();
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     const handleChange = (e) => {
@@ -23,6 +22,15 @@ export function ServiceNew() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            const formData = new FormData();
+            formData.append("icon", inputRef.current.files[0]);
+            await fetch(`${baseURL}/service/icon`, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    Accept: "multipart/form-data",
+                },
+            });
             const response = await fetch(`${baseURL}/service`, {
                 method: "POST",
                 headers: {
@@ -32,11 +40,8 @@ export function ServiceNew() {
             });
             const data = await response.json();
             console.log(data);
-            setLoading(false);
         } catch (error) {
             console.log(error);
-            setError(true);
-            setErrorMessage(error);
         } finally {
             Swal.fire({
                 title: "Service added!",
@@ -81,8 +86,10 @@ export function ServiceNew() {
                 />
                 <label htmlFor="icon">Icon</label>
                 <input
-                    type="text"
+                    type="file"
                     name="icon"
+                    ref={inputRef}
+                    accept="image/*"
                     value={service.icon}
                     onChange={handleChange}
                 />

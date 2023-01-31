@@ -5,8 +5,6 @@ import Swal from "sweetalert2";
 
 export function ServiceDashboard() {
     const [services, setServices] = useState([]);
-    const [error, setError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
@@ -16,8 +14,7 @@ export function ServiceDashboard() {
                 const data = await response.json();
                 setServices(data);
             } catch (error) {
-                setError(true);
-                setErrorMessage(error.message);
+                console.log(error);
             }
         };
         getServices();
@@ -32,8 +29,6 @@ export function ServiceDashboard() {
             console.log(data);
         } catch (error) {
             console.log(error);
-            setError(true);
-            setErrorMessage(error.message);
         } finally {
             Swal.fire({
                 title: "Suppression",

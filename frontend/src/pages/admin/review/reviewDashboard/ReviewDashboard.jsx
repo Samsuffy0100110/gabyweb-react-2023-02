@@ -5,8 +5,6 @@ import Swal from "sweetalert2";
 
 export function ReviewDashboard() {
     const [reviews, setReviews] = useState([]);
-    const [error, setError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
@@ -16,8 +14,7 @@ export function ReviewDashboard() {
                 const data = await response.json();
                 setReviews(data);
             } catch (error) {
-                setError(true);
-                setErrorMessage(error.message);
+                console.log(error);
             }
         };
         getReviews();
@@ -32,8 +29,6 @@ export function ReviewDashboard() {
             console.log(data);
         } catch (error) {
             console.log(error);
-            setError(true);
-            setErrorMessage(error.message);
         } finally {
             Swal.fire({
                 title: "Suppression",

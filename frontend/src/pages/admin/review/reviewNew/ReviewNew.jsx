@@ -1,7 +1,7 @@
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./reviewNew.module.scss";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 export function ReviewNew() {
@@ -11,9 +11,8 @@ export function ReviewNew() {
         logo: "",
     });
 
-    const [error, setError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+    const inputRef = useRef();
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     const handleChange = (e) => {
@@ -23,6 +22,15 @@ export function ReviewNew() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            const formData = new FormData();
+            formData.append("logo", inputRef.current.files[0]);
+            await fetch(`${baseURL}/review/logo`, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    Accept: "multipart/form-data",
+                },
+            });
             const response = await fetch(`${baseURL}/review`, {
                 method: "POST",
                 headers: {
@@ -32,11 +40,8 @@ export function ReviewNew() {
             });
             const data = await response.json();
             console.log(data);
-            setLoading(false);
         } catch (error) {
             console.log(error);
-            setError(true);
-            setErrorMessage(error);
         } finally {
             Swal.fire({
                 title: "Avis ajouté!",
@@ -64,7 +69,7 @@ export function ReviewNew() {
     return (
         <div>
             <h1>Ajouter un avis</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <label htmlFor="name">Nom</label>
                 <input
                     type="text"
@@ -83,9 +88,11 @@ export function ReviewNew() {
                 />
                 <label htmlFor="logo">Logo</label>
                 <input
-                    type="text"
+                    type="file"
                     name="logo"
                     id="logo"
+                    ref={inputRef}
+                    accept="image/*"
                     value={review.logo}
                     onChange={handleChange}
                 />

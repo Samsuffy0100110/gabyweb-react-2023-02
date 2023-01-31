@@ -5,8 +5,6 @@ import Swal from "sweetalert2";
 
 export function ProjectDashboard() {
     const [projects, setProjects] = useState([]);
-    const [error, setError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
@@ -16,8 +14,7 @@ export function ProjectDashboard() {
                 const data = await response.json();
                 setProjects(data);
             } catch (error) {
-                setError(true);
-                setErrorMessage(error.message);
+                console.log(error);
             }
         };
         getProjects();
@@ -32,8 +29,6 @@ export function ProjectDashboard() {
             console.log(data);
         } catch (error) {
             console.log(error);
-            setError(true);
-            setErrorMessage(error.message);
         } finally {
             Swal.fire({
                 title: "Suppression",
@@ -96,7 +91,7 @@ export function ProjectDashboard() {
                             <tr>
                                 <td>{project.title}</td>
                                 <td>{project.description}</td>
-                                <td><img src={project.image} alt={project.title} width="200" /></td>
+                                <td><img src={project.image} alt={project.title} width="100px" /></td>
                                 <td>{project.stack}</td>
                                 <td>{project.url}</td>
                                 <td>{formatDate(project.date)}</td>
