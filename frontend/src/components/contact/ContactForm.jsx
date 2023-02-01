@@ -12,24 +12,22 @@ export function ContactForm() {
     const [organization, setOrganization] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [radioChecked, setRadioChecked] = useState([ ]);
+    const [radioChecked, setRadioChecked] = useState([]);
     const [rgpd, setChecked] = useState(false);
     const [message, setMessage] = useState('');
-    const [mandatory, setMandatory] = useState('');
     const [disabled, setDisabled] = useState(true);
 
 
     const radios = [
-        { name: 'Un site vitrine', value: 'Un site vitrine' },
-        { name: 'Un site e-commerce', value: 'Un site e-commerce' },
-        { name: 'Refonte de site', value: 'Refonte de site' },
-        { name: 'Un site sur mesure', value: 'Un site sur mesure' },
-        { name: 'Renseignements', value: 'Renseignements' },
+        { name: 'Un site vitrine', value: 'Un site vitrine', icon: '🌐' },
+        { name: 'Un site e-commerce', value: 'Un site e-commerce', icon: '👜' },
+        { name: 'Refonte de site', value: 'Refonte de site', icon: '💻' },
+        { name: 'Renseignements', value: 'Renseignements', icon: '❗️' },
     ];
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (firstName && lastName && organization && email && phone && radioChecked && rgpd && message) {
+        if (firstName && lastName && email && radioChecked && rgpd && message) {
             emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
                 .then((result) => {
                     console.log(result.text);
@@ -51,78 +49,125 @@ export function ContactForm() {
             setRadioChecked([]);
             setChecked(false);
             setMessage('');
-        } else {
-            setMandatory('Tous les champs sont obligatoires.');
         }
     };
 
     useEffect(() => {
-        if (firstName && lastName && email && rgpd && message) {
+        if (firstName && lastName && email && radioChecked && rgpd && message) {
             setDisabled(false);
         } else {
             setDisabled(true);
         }
-    }, [firstName, lastName, email, rgpd, message]);
+    }, [firstName, lastName, email, radioChecked, rgpd, message]);
 
     return (
-        <div className={style.contactForm} id="contact">
-            <form onSubmit={handleSubmit}>
-                <div className={style.formGroup}>
-                <label htmlFor="firstName">Prénom<span className={style.mandatory}> *</span></label>
-                    <input type="text" name="firstName" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-                </div>
-                <div className={style.formGroup}>
-                    <label htmlFor="lastName">Nom<span className={style.mandatory}> *</span></label>
-                    <input type="text" name="lastName" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-                </div>
-                <div className={style.formGroup}>
-                    <label htmlFor="organization">Organisation</label>
-                    <input type="text" name="organization" id="organization" value={organization} onChange={(e) => setOrganization(e.target.value)} />
-                </div>
-                <div className={style.formGroup}>
-                    <label htmlFor="email">Email<span className={style.mandatory}> *</span></label>
-                    <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
-                <div className={style.formGroup}>
-                    <label htmlFor="phone">Téléphone</label>
-                    <input type="tel" name="phone" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
-                </div>
-                <div className={style.formGroup}>
-                    <label htmlFor="radio">Type de projet</label>
-                    <div className={style.radioGroup}>
-                        {radios.map((radio) => (
-                            <div key={radio.value}>
-                                <input 
-                                    type="radio" 
-                                    name="radio" id={radio.value} 
-                                    value={radio.value} 
-                                    checked={radioChecked === radio.value} 
-                                    onChange={(e) => setRadioChecked(e.target.value)}
-                                    className={style.radio}
+        <div className={style.container}>
+            <h2 className={style.title}>Une question, un projet ?</h2>
+            <p className={style.summary}>Besoin d’en parler avec nous, appeler nous où remplissez le formulaire de contact, on s’engage à répondre sous 48 h.</p>
+            <div className={style.contactForm} id="contact">
+                <form onSubmit={handleSubmit}>
+                    <div className={style.formGroup}>
+                        <input
+                            type="text"
+                            name="firstName"
+                            id="firstName"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            placeholder="Prénom *"
+                            label="Prénom *"
+                        />
+                        <input
+                            type="text"
+                            name="lastName"
+                            id="lastName"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            placeholder="Nom *"
+                            label="Nom *"
+                        />
+                    </div>
+                    <div className={style.formGroup}>
+                        <input
+                            type="text"
+                            name="organization"
+                            id="organization"
+                            value={organization}
+                            onChange={(e) => setOrganization(e.target.value)}
+                            placeholder="Organisation"
+                            label="Organisation"
+                        />
+                    </div>
+                    <div className={style.formGroup}>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email *"
+                            label="Email *"
+                        />
+                        <input
+                            type="tel"
+                            name="phone"
+                            id="phone"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            placeholder="Téléphone"
+                            label="Téléphone"
+                        />
+                    </div>
+                    <h3>Votre demande</h3>
+                    <div className={style.formGroup}>
+                        <div className={style.radioGroup}>
+                            {radios.map((radio) => (
+                                <div key={radio.value}>
+                                    <input
+                                        type="radio"
+                                        name="radio" id={radio.value}
+                                        value={radio.value}
+                                        checked={radioChecked === radio.value}
+                                        onChange={(e) => setRadioChecked(e.target.value)}
+                                        className={style.radio}
+                                        label={radio.name}
                                     />
-                                <label htmlFor={radio.value}>{radio.name}</label>
-                            </div>
-                        ))}
+                                    <label htmlFor={radio.value}>{radio.name + ' ' + radio.icon}</label>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-                <div className={style.formGroup}>
-                    <label htmlFor="message">Message<span className={style.mandatory}> *</span></label>
-                    <textarea name="message" id="message" value={message} onChange={(e) => setMessage(e.target.value)} />
-                </div>
-                <div className={style.formGroup}>
-                    <label htmlFor="checkbox">RGPD<span className={style.mandatory}> *</span></label>
-                    <div className={style.checkbox}>
-                        <input type="checkbox" id="checkbox" name="checkbox" checked={rgpd} onChange={(e) => setChecked(e.target.checked)} required />
-                        <label htmlFor="checkbox">I agree to the processing of my personal data</label>
+                    <h3>Un petit message ?</h3>
+                    <div className={style.formGroup}>
+                        <textarea
+                            name="message"
+                            id="message"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            placeholder="Bonjour Gaby Web... *"
+                            label="Message *"
+                            rows={5}
+                        />
                     </div>
-                </div>
-                <div className={style.formGroup}>
-                    <button type="submit" disabled={disabled}>Envoyer</button>
-                </div>
-                <div className={style.formGroup}>
-                    <p>{mandatory}</p>
-                </div>
-            </form>
+                    <div className={style.formGroup}>
+                        <div className={style.checkbox}>
+                            <label htmlFor="checkbox">RGPD<span className={style.mandatory}> *</span></label>
+                            <input
+                                type="checkbox"
+                                id="checkbox"
+                                name="checkbox"
+                                checked={rgpd}
+                                onChange={(e) => setChecked(e.target.checked)}
+                                required
+                            />
+                            <label htmlFor="checkbox">Je consens à ce que les données que j'ai soumises soient collectées et stockées en vue d'être utilisées pour traiter ma demande. Voir notre politique de protection des données personnelles. Vous disposez d'un droit d'accès, de rectification et d'opposition.</label>
+                        </div>
+                    </div>
+                    <div className={style.formGroup}>
+                        <button>recaptcha</button>
+                        <button type="submit" disabled={disabled}>Envoyer</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };

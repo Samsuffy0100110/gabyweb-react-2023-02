@@ -1,9 +1,21 @@
 @import '../../App.scss';
 
 .container {
-    border : 3px solid $primary;
-    padding : 10px;
+    padding : 0 10%;
+    margin: 5rem;
     width : 50%;
+}
+
+.title {
+    font-size: 2rem;
+    border-bottom: 3px solid $primary;
+    width: 80%;
+}
+
+.summary {
+    color: $primary;
+    font-size: 1.2rem;
+    margin: 2rem 0 2rem 0;
 }
 
 .contactForm {
@@ -24,6 +36,18 @@
     font-size: 1.2rem;
 }
 
+.radioGroup {
+    display : flex;
+    flex-direction : row;
+    flex-wrap: wrap;
+    justify-content : space-between;
+    align-items : center;
+}
+
+.contactForm input:focus {
+    outline: none;
+}
+
 .contactForm textarea {
     width : 100%;
     background-color: $third;
@@ -33,6 +57,10 @@
     padding: 10px;
     margin: 10px;
     font-size: 1.2rem;
+}
+
+.contactForm textarea:focus {
+    outline: none;
 }
 
 .contactForm button {
@@ -47,93 +75,136 @@
 
 .formGroup {
     display : flex;
-    flex-direction : column;
-    justify-content : center;
-    align-items : center;
-}
-
-.formGroup input {
-    width : 100%;
-    background-color: $third;
-    border: none;
-    border-bottom: 1px solid $primary;
-    color: $primary;
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.2rem;
-}
-
-.formGroup textarea {
-    width : 100%;
-    background-color: $third;
-    border: none;
-    border-bottom: 1px solid $primary;
-    color: $primary;
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.2rem;
-}
-
-.formGroup button {
-    width : 100%;
-    background-color: $primary;
-    border: none;
-    color: $third;
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.2rem;
-}
-
-.formGroup input:focus {
-    outline: none;
-}
-
-.formGroup textarea:focus {
-    outline: none;
-}
-
-.radioGroup {
-    display : flex;
     flex-direction : row;
     justify-content : center;
     align-items : center;
 }
 
-.radioGroup input {
-    width : 100%;
-    background-color: $third;
-    border: none;
-    border-bottom: 1px solid $primary;
-    color: $primary;
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.2rem;
-}
 
 .checkbox {
     display : flex;
     flex-direction : row;
     justify-content : center;
     align-items : center;
+    padding: 1rem;
 }
-
-.checkbox input {
-    width : 100%;
-    background-color: $third;
-    border: none;
-    border-bottom: 1px solid $primary;
-    color: $primary;
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.2rem;
-}
-
-.checkbox input:focus {
-    outline: none;
-}
-
 
 .mandatory {
     color : $mandatory;
+}
+
+@media screen and (max-width: 1280px) {
+    .container {
+        width : 70%;
+        padding : 1rem;
+        margin: 0;
+    }
+
+    .title {
+        font-size: 1.8rem;
+        border-bottom: 2px solid $primary;
+        width: 100%;
+    }
+
+    .summary {
+        font-size: 1.1rem;
+    }
+
+    .contactForm input {
+        font-size: 1.1rem;
+    }
+
+    .contactForm textarea {
+        font-size: 1.1rem;
+    }
+
+    .contactForm button {
+        font-size: 1.1rem;
+    }
+
+    .checkbox {
+        padding: 0.5rem;
+    }
+
+    .mandatory {
+        font-size: 0.9rem;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .container {
+        width : 95%;
+        padding : 1rem;
+        margin: 0;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        border-bottom: 2px solid $primary;
+        width: 100%;
+    }
+
+    .summary {
+        font-size: 1rem;
+    }
+
+    .contactForm input {
+        font-size: 1rem;
+    }
+
+    .contactForm textarea {
+        font-size: 1rem;
+    }
+
+    .contactForm button {
+        font-size: 1rem;
+    }
+
+    .checkbox {
+        padding: 0.5rem;
+    }
+
+    .mandatory {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width : 95%;
+        padding : 1rem;
+        margin: 0;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        border-bottom: 2px solid $primary;
+        width: 100%;
+    }
+
+    .summary {
+        font-size: 1rem;
+    }
+
+    .contactForm input {
+        font-size: 1rem;
+    }
+
+    .contactForm textarea {
+        font-size: 1rem;
+    }
+
+    .contactForm button {
+        font-size: 1rem;
+    }
+
+    .checkbox {
+        padding: 0.5rem;
+    }
+
+    .mandatory {
+        font-size: 0.8rem;
+    }
 }
 

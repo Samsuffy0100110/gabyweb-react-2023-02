@@ -6,13 +6,18 @@ export function Footer() {
     const year = new Date().getFullYear();
     const socialMedia = [
         {
+            name: "linkedin",
+            link: "https://www.linkedin.com/",
+            image: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
+        },
+        {
             name: "instagram",
-            link: "http",
+            link: "https://www.instagram.com/?hl=fr",
             image: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg",
         },
         {
             name: "facebook",
-            link: "http",
+            link: "https://fr-fr.facebook.com/",
             image: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg",
         },
     ];

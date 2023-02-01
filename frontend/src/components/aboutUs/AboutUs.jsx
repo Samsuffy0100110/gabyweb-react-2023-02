@@ -15,6 +15,7 @@ export function AboutUs() {
                 nisl. Donec auctor, nisl eget consectetur lacinia, lacus nisl aliquam
                 mauris, et ultricies nisl nunc eget nunc.
             </p>
+            <p className={style.phone}><i>☎️</i> 05 56 78 90 12</p>
         </div>
     );
 }
