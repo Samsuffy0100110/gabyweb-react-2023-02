@@ -5,18 +5,31 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export function ServiceNew() {
+    const baseURL = import.meta.env.VITE_BACKEND_URL;
+    const [filePath, setFilePath] = useState("");
+    const navigate = useNavigate();
+    const inputRef = useRef();
     const [service, setService] = useState({
         title: "",
         description: "",
         icon: "",
     });
 
-    const navigate = useNavigate();
-    const inputRef = useRef();
-    const baseURL = import.meta.env.VITE_BACKEND_URL;
-
     const handleChange = (e) => {
-        setService({ ...service, [e.target.name]: e.target.value });
+        const file = inputRef.current.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setFilePath(reader.result);
+        };
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            setFilePath("");
+        }
+        setService({
+            ...service,
+            [e.target.name]: e.target.value,
+        });
     };
 
     const handleSubmit = async (e) => {
@@ -69,7 +82,7 @@ export function ServiceNew() {
     return (
         <div>
             <h1>Add a new service</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <label htmlFor="title">Title</label>
                 <input 
                     type="text" 
@@ -93,6 +106,9 @@ export function ServiceNew() {
                     value={service.icon}
                     onChange={handleChange}
                 />
+                <div className={style.imagePreview}>
+                    {filePath && <img src={filePath} alt="icon" width="100" />}
+                </div>
                 <button type="submit">Add service</button>
             </form>
             <Link to="/admin/services">Go back to services</Link>
