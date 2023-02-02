@@ -8,6 +8,7 @@ export function ReviewUpdate () {
     const { id } = useParams();
     const navigate = useNavigate();
     const [file, setFile] = useState(null);
+    const [logoPreview, setLogoPreview] = useState(null);
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
@@ -22,6 +23,7 @@ export function ReviewUpdate () {
 
     const handleChange = (e) => {
         setFile(e.target.files[0]);
+        setLogoPreview(URL.createObjectURL(e.target.files[0]));
 };
 
     const handleUpdate = async (e) => {
@@ -84,7 +86,7 @@ export function ReviewUpdate () {
                     defaultValue={review.name} 
                 />
                 <label htmlFor="review">Avis</label>
-                <input 
+                <textarea 
                     type="text" 
                     name="review" 
                     id="review" 
@@ -98,6 +100,13 @@ export function ReviewUpdate () {
                     accept="image/*" 
                     onChange={handleChange}
                 />
+                {logoPreview && (
+                    <img 
+                        src={logoPreview}
+                        alt="logo"
+                        className={style.logo_preview}
+                    />
+                )}
                 <button type="submit" className={style.update_button}>Modifier</button>
             </form>
             <Link to="/admin/reviews">Retour à la liste des avis</Link>

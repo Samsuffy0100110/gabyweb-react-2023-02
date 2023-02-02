@@ -6,12 +6,10 @@ import React from "react";
 export function Nav() {
   return (
     <nav className={style.nav}>
-      <ul className={style.nav__links}>
-        <li className={style.nav__link}>
           <Link to="/">
             <img src={logo} alt="logo" className={style.nav__logo} />
           </Link>
-        </li>
+      <ul className={style.nav__links}>
         <li className={style.nav__link}>
           <a href="#services">
             Nos Services

@@ -38,11 +38,6 @@ nav {
             &:hover {
                 color: $primary;
             }
-
-            .nav__logo {
-                width: 5rem;
-                margin-top: 0.5rem;
-            }
         }
     }
 
@@ -72,6 +67,10 @@ nav {
     }
 }
 
+.nav__logo {
+    width: 5rem;
+}
+
 @media screen and (max-width: 768px) {
     nav {
         padding: 0 1rem;
@@ -79,6 +78,12 @@ nav {
 
         .nav__links {
             display: none;
+        }
+
+        .nav__logo {
+            display: block;
+            width: 4rem;
+            margin-top: 0.5rem;
         }
 
         .button {

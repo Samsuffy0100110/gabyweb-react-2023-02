@@ -28,7 +28,7 @@ export function Projects() {
                 {projects.map((project) => (
                     <div key={project.id} className={style.project_gallery}>
                         <Link to={`/project/${project.id}`}>
-                            <img src={imagePath + project.image} alt={project.name} width="200" height="200" />
+                            <img src={imagePath + project.image} alt={project.name} width="400" height="300" />
                         </Link>
                     </div>
                 ))}

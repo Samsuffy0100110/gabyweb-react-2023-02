@@ -61,10 +61,10 @@ export function ContactForm() {
     }, [firstName, lastName, email, radioChecked, rgpd, message]);
 
     return (
-        <div className={style.container}>
+        <div className={style.container} id="contact">
             <h2 className={style.title}>Une question, un projet ?</h2>
             <p className={style.summary}>Besoin d’en parler avec nous, appeler nous où remplissez le formulaire de contact, on s’engage à répondre sous 48 h.</p>
-            <div className={style.contactForm} id="contact">
+            <div className={style.contactForm}>
                 <form onSubmit={handleSubmit}>
                     <div className={style.formGroup}>
                         <input

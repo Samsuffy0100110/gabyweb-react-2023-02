@@ -8,6 +8,7 @@ export function ServiceNew() {
     const baseURL = import.meta.env.VITE_BACKEND_URL;
     const [file, setFile] = useState(null);
     const navigate = useNavigate();
+    const [iconPreview, setIconPreview] = useState(null);
     const [service, setService] = useState({
         title: "",
         description: "",
@@ -17,6 +18,7 @@ export function ServiceNew() {
     const handleChange = (e) => {
         if (e.target.name === "icon") {
             setFile(e.target.files[0]);
+            setIconPreview(URL.createObjectURL(e.target.files[0]));
         } else {
             setService({
                 ...service,
@@ -90,7 +92,7 @@ export function ServiceNew() {
                     </div>
                     <div className={style.inputContainer}>
                         <label htmlFor="description">Description</label>
-                        <input
+                        <textarea
                             type="text"
                             name="description"
                             id="description"
@@ -106,6 +108,13 @@ export function ServiceNew() {
                             id="icon"
                             onChange={handleChange}
                         />
+                        {iconPreview && (
+                            <img
+                                src={iconPreview}
+                                alt="icon preview"
+                                className={style.iconPreview}
+                            />
+                        )}
                     </div>
                     <button type="submit">Create</button>
                 </form>

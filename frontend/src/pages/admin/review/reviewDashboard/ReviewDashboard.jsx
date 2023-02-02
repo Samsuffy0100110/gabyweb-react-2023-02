@@ -75,7 +75,7 @@ export function ReviewDashboard() {
                             <tr>
                                 <td>{review.name}</td>
                                 <td>{review.review}</td>
-                                <td><img src={logoPath + review.logo} alt={review.name} /></td>
+                                <td><img src={logoPath + review.logo} alt={review.name} width="100" /></td>
                             </tr>
                         </tbody>
                         <tfoot>

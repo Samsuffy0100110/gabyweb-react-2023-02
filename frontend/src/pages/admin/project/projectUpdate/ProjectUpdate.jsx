@@ -7,6 +7,7 @@ export function ProjectUpdate() {
     const [project, setProject] = useState('');
     const { id } = useParams();
     const [file, setFile] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
     const navigate = useNavigate();
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -26,6 +27,7 @@ export function ProjectUpdate() {
 
     const handleChange = (e) => {
         setFile(e.target.files[0]);
+        setImagePreview(URL.createObjectURL(e.target.files[0]));
 };
 
     const handleUpdate = async (e) => {
@@ -103,6 +105,7 @@ export function ProjectUpdate() {
                 <div>
                     <label htmlFor="stack">Stack</label>
                     <input type="text" name="stack" id="stack" defaultValue={project.stack} />
+                    {imagePreview && (<img src={imagePreview} alt="preview" />)}
                 </div>
                 <div>
                     <label htmlFor="url">URL</label>

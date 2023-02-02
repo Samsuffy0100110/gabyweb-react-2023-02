@@ -12,6 +12,7 @@ export function ProjectNew() {
     const today = `${year}-${month}-${day}`;
     const [file, setFile] = useState(null);
     const navigate = useNavigate();
+    const [imagePreview, setImagePreview] = useState(null);
     const baseURL = import.meta.env.VITE_BACKEND_URL;
     const [project, setProject] = useState({
         title: "",
@@ -25,6 +26,7 @@ export function ProjectNew() {
     const handleChange = (event) => {
         if (event.target.name === "image") {
             setFile(event.target.files[0]);
+            setImagePreview(URL.createObjectURL(event.target.files[0]));
         } else {
             setProject({
                 ...project,
@@ -102,7 +104,7 @@ export function ProjectNew() {
                     onChange={handleChange}
                 />
                 <label htmlFor="description">Description</label>
-                <input
+                <textarea
                     type="text"
                     name="description"
                     value={project.description}
@@ -115,6 +117,14 @@ export function ProjectNew() {
                     accept="image/*"
                     onChange={handleChange}
                 />
+                {imagePreview && (
+                    <img
+                        src={imagePreview}
+                        alt="preview"
+                        className={style.preview}
+                        width="100"
+                    />
+                )}
                 <label htmlFor="stack">Stack</label>
                 <input
                     type="text"

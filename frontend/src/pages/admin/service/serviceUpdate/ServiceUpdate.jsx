@@ -8,6 +8,7 @@ export function ServiceUpdate () {
     const { id } = useParams();
     const [file, setFile] = useState(null);
     const navigate = useNavigate();
+    const [iconPreview, setIconPreview] = useState(null);
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
@@ -22,6 +23,7 @@ export function ServiceUpdate () {
 
     const handleChange = (e) => {
             setFile(e.target.files[0]);
+            setIconPreview(URL.createObjectURL(e.target.files[0]));
     };
 
     const handleUpdate = async (e) => {
@@ -81,20 +83,26 @@ export function ServiceUpdate () {
                     defaultValue={service.title}
                 />
                 <label htmlFor="description">Description</label>
-                <input 
+                <textarea 
                     type="text" 
                     name="description" 
                     id="description" 
                     defaultValue={service.description}
                 />
                 <label htmlFor="icon">Icone</label>
-                <input 
-                    type="file" 
-                    name="icon" 
-                    id="icon" 
-                    accept="image/*" 
+                <input
+                    type="file"
+                    name="icon"
+                    id="icon"
                     onChange={handleChange}
                 />
+                {iconPreview && (
+                    <img 
+                        src={iconPreview}
+                        alt="icon"
+                        className={style.icon_preview}
+                    />
+                )}
                 <button type="submit" className={style.update_button}>Modifier</button>
             </form>
             <Link to="/admin/services">Retour à la liste des services</Link>

@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 export function ReviewNew() {
     const navigate = useNavigate();
     const [file, setFile] = useState(null);
+    const [logoPreview, setLogoPreview] = useState(null);
     const baseURL = import.meta.env.VITE_BACKEND_URL;
     const [review, setReview] = useState({
         name: "",
@@ -17,6 +18,7 @@ export function ReviewNew() {
     const handleChange = (e) => {
         if (e.target.name === "logo") {
             setFile(e.target.files[0]);
+            setLogoPreview(URL.createObjectURL(e.target.files[0]));
         } else {
             setReview({
                 ...review,
@@ -89,7 +91,7 @@ export function ReviewNew() {
                     onChange={handleChange}
                 />
                 <label htmlFor="review">Avis</label>
-                <input
+                <textarea
                     type="text"
                     name="review"
                     id="review"
@@ -104,6 +106,14 @@ export function ReviewNew() {
                     accept="image/*"
                     onChange={handleChange}
                 />
+                {logoPreview && (
+                    <img
+                        src={logoPreview}
+                        alt="Logo"
+                        className={style.logoPreview}
+                        width="100"
+                    />
+                )}
                 <button type="submit">Ajouter</button>
             </form>
             <Link to="/admin/reviews">Retour à la liste des avis</Link>

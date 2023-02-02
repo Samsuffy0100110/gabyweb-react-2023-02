@@ -93,7 +93,7 @@ export function ProjectDashboard() {
                             <tr>
                                 <td>{project.title}</td>
                                 <td>{project.description}</td>
-                                <td><img src={`${imagePath}${project.image}`} alt={project.title} /></td>
+                                <td><img src={imagePath + project.image} alt={project.title} width="200px" /></td>
                                 <td>{project.stack}</td>
                                 <td>{project.url}</td>
                                 <td>{formatDate(project.date)}</td>
