@@ -24,14 +24,16 @@ export function Projects() {
     return (
         <div className={style.container} id="projects">
             <h2 className={style.title}>Nos Réalisations</h2>
-            {projects.map((project) => (
-                <div key={project.id} className={style.project_gallery}>
-                    <Link to={`/project/${project.id}`}>
-                        {/* <img src={imagePath + project.image} alt={project.name} width="200" height="200" /> */}
-                        <img src={project.image} alt={project.name} width="200"  />
-                    </Link>
-                </div>
-            ))}
+            <div className={style.gallery}>
+                {projects.map((project) => (
+                    <div key={project.id} className={style.project_gallery}>
+                        <Link to={`/project/${project.id}`}>
+                            {/* <img src={imagePath + project.image} alt={project.name} width="200" height="200" /> */}
+                            <img src={project.image} alt={project.name} width="200" />
+                        </Link>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
