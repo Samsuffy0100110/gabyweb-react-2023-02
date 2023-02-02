@@ -7,7 +7,7 @@ export function ReviewUpdate () {
     const [review, setReview] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
-    const inputRef = useRef();
+    const [file, setFile] = useState(null);
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
     useEffect(() => {
@@ -20,13 +20,14 @@ export function ReviewUpdate () {
         }
     }, [id]);
 
+    const handleChange = (e) => {
+        setFile(e.target.files[0]);
+};
+
     const handleUpdate = async (e) => {
         e.preventDefault();
-        const formData = new FormData(inputRef.current);
-        const review = e.target.review.value;
-        const logo = e.target.logo.value;
-        const name = e.target.name.value;
-        const body = { name, review, logo };
+        const formData = new FormData();
+        formData.append("logo", file);
         try {
             await fetch(`${baseURL}/review/logo`, {
                 method: "POST",
@@ -35,6 +36,10 @@ export function ReviewUpdate () {
                     "Accept": "multipart/form-data",
                 },
             });
+            const review = e.target.review.value;
+            const logo = file.name;
+            const name = e.target.name.value;
+            const body = { name, review, logo };
             const response = await fetch(`${baseURL}/review/${id}`, {
                 method: "PUT",
                 headers: {
@@ -67,13 +72,32 @@ export function ReviewUpdate () {
     return (
         <div>
             <h1>Modifier un avis</h1>
-            <form onSubmit={handleUpdate} encType="multipart/form-data" ref={inputRef}>
+            <form 
+                onSubmit={handleUpdate} 
+                encType="multipart/form-data"
+            >
                 <label htmlFor="name">Nom</label>
-                <input type="text" name="name" id="name" defaultValue={review.name} />
+                <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    defaultValue={review.name} 
+                />
                 <label htmlFor="review">Avis</label>
-                <input type="text" name="review" id="review" defaultValue={review.review} />
+                <input 
+                    type="text" 
+                    name="review" 
+                    id="review" 
+                    defaultValue={review.review}
+                />
                 <label htmlFor="logo">Logo</label>
-                <input type="file" name="logo" id="logo" accept="image/*" />
+                <input 
+                    type="file" 
+                    name="logo" 
+                    id="logo" 
+                    accept="image/*" 
+                    onChange={handleChange}
+                />
                 <button type="submit" className={style.update_button}>Modifier</button>
             </form>
             <Link to="/admin/reviews">Retour à la liste des avis</Link>

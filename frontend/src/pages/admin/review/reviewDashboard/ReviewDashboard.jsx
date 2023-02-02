@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 export function ReviewDashboard() {
     const [reviews, setReviews] = useState([]);
     const baseURL = import.meta.env.VITE_BACKEND_URL;
+    const uploadPath = "/review/";
+    const logoPath = baseURL + uploadPath;
 
     useEffect(() => {
         const getReviews = async () => {
@@ -73,7 +75,7 @@ export function ReviewDashboard() {
                             <tr>
                                 <td>{review.name}</td>
                                 <td>{review.review}</td>
-                                <td><img src={review.logo} alt={review.name} /></td>
+                                <td><img src={logoPath + review.logo} alt={review.name} /></td>
                             </tr>
                         </tbody>
                         <tfoot>

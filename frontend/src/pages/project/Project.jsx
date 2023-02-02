@@ -6,7 +6,9 @@ export function Project() {
     const [project, setProject] = useState('');
     const [stacks, setStacks] = useState([]);
     const { id } = useParams();
+    const uploadPath = "/project/";
     const baseURL = import.meta.env.VITE_BACKEND_URL;
+    const imagePath = baseURL + uploadPath;
 
     useEffect(() => {
         try {
@@ -48,7 +50,7 @@ export function Project() {
             <h1>Project and Stacks</h1>
             <h2>{project.name}</h2>
             <p>{project.description}</p>
-            <img src={project.image} alt={project.title} width="200" />
+            <img src={imagePath + project.image} alt={project.name} width="200" />
             <a href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</a>
             <p>{formatDate(project.date)}</p>
             <h3>Stacks</h3>

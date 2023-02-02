@@ -1,12 +1,12 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from "./serviceUpdate.module.scss";
 import Swal from "sweetalert2";
 
 export function ServiceUpdate () {
     const [service, setService] = useState('');
     const { id } = useParams();
-    const inputRef = useRef();
+    const [file, setFile] = useState(null);
     const navigate = useNavigate();
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -20,21 +20,23 @@ export function ServiceUpdate () {
         }
     }, [id]);
 
+    const handleChange = (e) => {
+            setFile(e.target.files[0]);
+    };
+
     const handleUpdate = async (e) => {
         e.preventDefault();
-        const formData = new FormData(inputRef.current);
-        const title = e.target.title.value;
-        const description = e.target.description.value;
-        const icon = e.target.icon.value;
-        const body = { title, description, icon };
         try {
+            const formData = new FormData();
+            formData.append("icon", file);
             await fetch(`${baseURL}/service/icon`, {
                 method: "POST",
                 body: formData,
-                headers: {
-                    "Accept": "multipart/form-data",
-                },
             });
+            const title = e.target.title.value;
+            const description = e.target.description.value;
+            const icon = file.name;
+            const body = { title, description, icon };
             const response = await fetch(`${baseURL}/service/${id}`, {
                 method: "PUT",
                 headers: {
@@ -67,13 +69,32 @@ export function ServiceUpdate () {
     return (
         <div>
             <h1>Modifier un service</h1>
-            <form onSubmit={handleUpdate} ref={inputRef} encType="multipart/form-data">
+            <form 
+                onSubmit={handleUpdate} 
+                encType="multipart/form-data"
+            >
                 <label htmlFor="title">Titre</label>
-                <input type="text" name="title" id="title" defaultValue={service.title} />
+                <input 
+                    type="text" 
+                    name="title" 
+                    id="title" 
+                    defaultValue={service.title}
+                />
                 <label htmlFor="description">Description</label>
-                <input type="text" name="description" id="description" defaultValue={service.description} />
+                <input 
+                    type="text" 
+                    name="description" 
+                    id="description" 
+                    defaultValue={service.description}
+                />
                 <label htmlFor="icon">Icone</label>
-                <input type="file" name="icon" id="icon" accept="image/*" />
+                <input 
+                    type="file" 
+                    name="icon" 
+                    id="icon" 
+                    accept="image/*" 
+                    onChange={handleChange}
+                />
                 <button type="submit" className={style.update_button}>Modifier</button>
             </form>
             <Link to="/admin/services">Retour à la liste des services</Link>

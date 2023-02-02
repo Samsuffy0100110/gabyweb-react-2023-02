@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 export function ProjectDashboard() {
     const [projects, setProjects] = useState([]);
     const baseURL = import.meta.env.VITE_BACKEND_URL;
+    const uploadPath = "/project/";
+    const imagePath = baseURL + uploadPath;
 
     useEffect(() => {
         const getProjects = async () => {
@@ -91,7 +93,7 @@ export function ProjectDashboard() {
                             <tr>
                                 <td>{project.title}</td>
                                 <td>{project.description}</td>
-                                <td><img src={project.image} alt={project.title} width="100px" /></td>
+                                <td><img src={`${imagePath}${project.image}`} alt={project.title} /></td>
                                 <td>{project.stack}</td>
                                 <td>{project.url}</td>
                                 <td>{formatDate(project.date)}</td>

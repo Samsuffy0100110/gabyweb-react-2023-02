@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 export function ServiceDashboard() {
     const [services, setServices] = useState([]);
     const baseURL = import.meta.env.VITE_BACKEND_URL;
+    const uploadPath = "/service/";
+    const iconPath = baseURL + uploadPath;
 
     useEffect(() => {
         const getServices = async () => {
@@ -73,7 +75,7 @@ export function ServiceDashboard() {
                             <tr>
                                 <td>{service.title}</td>
                                 <td>{service.description}</td>
-                                <td><img src={service.icon} alt="icon" /></td>
+                                <td><img src={`${iconPath}${service.icon}`} alt={service.title} width="100" /></td>
                             </tr>
                         </tbody>
                         <tfoot>

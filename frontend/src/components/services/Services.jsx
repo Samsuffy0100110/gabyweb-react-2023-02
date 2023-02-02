@@ -26,9 +26,8 @@ export function Services() {
             <div className={style.row}>
             {services.map((service) => (
                 <div key={service.id} className={style.card}>
-                    <img src={service.icon} alt={service.name} width="300" />
+                    <img src={iconPath + service.icon} alt={service.name} width="200" />
                     <h3>{service.title}</h3>
-                    {/* <img src={iconPath + service.icon} alt={service.name} width="200" /> */}
                     <p className={style.description}>{service.description}</p>
                 </div>
             ))}

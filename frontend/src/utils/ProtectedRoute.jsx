@@ -1,16 +1,13 @@
 import { ProjectDashboard } from "@pages/admin/project/projectDashboard/ProjectDashboard";
 import { ServiceDashboard } from "@pages/admin/service/serviceDashboard/ServiceDashboard";
 import { ReviewDashboard } from "@pages/admin/review/reviewDashboard/ReviewDashboard";
-import { StackDashboard } from "@pages/admin/stack/stackDashboard/StackDashboard";
 import { ProjectUpdate } from "@pages/admin/project/projectUpdate/ProjectUpdate";
 import { ServiceUpdate } from "@pages/admin/service/serviceUpdate/ServiceUpdate";
 import { ReviewUpdate } from "@pages/admin/review/reviewUpdate/ReviewUpdate";
 import { ProjectView } from "@pages/admin/project/projectView/ProjectView";
-import { StackUpdate } from "@pages/admin/stack/stackUpdate/StackUpdate";
 import { ProjectNew } from "@pages/admin/project/projectNew/ProjectNew";
 import { ServiceNew } from "@pages/admin/service/serviceNew/ServiceNew";
 import { ReviewNew } from "@pages/admin/review/reviewNew/ReviewNew";
-import { StackNew } from "@pages/admin/stack/stackNew/StackNew";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Admin } from "../pages/admin/Admin";
@@ -35,9 +32,6 @@ export function ProtectedRoute() {
             <Route path="/project/new" element={<ProjectNew />} />
             <Route path="/project/:id/update" element={<ProjectUpdate />} />
             <Route path="/project/:id" element={<ProjectView />} />
-            <Route path="/stacks" element={<StackDashboard />} />
-            <Route path="/stack/new" element={<StackNew />} />
-            <Route path="/stack/:id/update" element={<StackUpdate />} />
             <Route path="/services" element={<ServiceDashboard />} />
             <Route path="/service/new" element={<ServiceNew />} />
             <Route path="/service/:id/update" element={<ServiceUpdate />} />

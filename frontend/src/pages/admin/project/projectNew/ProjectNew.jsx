@@ -10,10 +10,9 @@ export function ProjectNew() {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
     const today = `${year}-${month}-${day}`;
-    const inputRef = useRef();
+    const [file, setFile] = useState(null);
     const navigate = useNavigate();
     const baseURL = import.meta.env.VITE_BACKEND_URL;
-
     const [project, setProject] = useState({
         title: "",
         description: "",
@@ -24,16 +23,21 @@ export function ProjectNew() {
     });
 
     const handleChange = (event) => {
-        setProject({ ...project, [event.target.name]: event.target.value });
+        if (event.target.name === "image") {
+            setFile(event.target.files[0]);
+        } else {
+            setProject({
+                ...project,
+                [event.target.name]: event.target.value,
+            });
+        }
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             const formData = new FormData();
-            for (let i = 0; i < inputRef.current.files.length; i++) {
-                formData.append("image", inputRef.current.files[i]);
-            }
+            formData.append("image", file);
             await fetch(`${baseURL}/project/image`, {
                 method: "POST",
                 body: formData,
@@ -46,7 +50,14 @@ export function ProjectNew() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(project),
+                body: JSON.stringify({
+                    title: project.title,
+                    description: project.description,
+                    image: file.name,
+                    stack: project.stack,
+                    url: project.url,
+                    date: project.date,
+                }),
             });
             const data = await response.json();
             console.log(data);
@@ -102,9 +113,7 @@ export function ProjectNew() {
                     type="file"
                     name="image"
                     accept="image/*"
-                    value={project.image}
                     onChange={handleChange}
-                    ref={inputRef}
                 />
                 <label htmlFor="stack">Stack</label>
                 <input

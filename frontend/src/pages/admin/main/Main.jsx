@@ -9,9 +9,6 @@ export function Main() {
                 <Link to="/admin/projects">
                     <h2>Projets</h2>
                 </Link>
-                <Link to="/admin/stacks">
-                    <h2>Stacks</h2>
-                </Link>
                 <Link to="/admin/reviews">
                     <h2>Reviews</h2>
                 </Link>

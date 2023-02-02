@@ -5,25 +5,31 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export function ReviewNew() {
+    const navigate = useNavigate();
+    const [file, setFile] = useState(null);
+    const baseURL = import.meta.env.VITE_BACKEND_URL;
     const [review, setReview] = useState({
         name: "",
         review: "",
         logo: "",
     });
 
-    const navigate = useNavigate();
-    const inputRef = useRef();
-    const baseURL = import.meta.env.VITE_BACKEND_URL;
-
     const handleChange = (e) => {
-        setReview({ ...review, [e.target.name]: e.target.value });
+        if (e.target.name === "logo") {
+            setFile(e.target.files[0]);
+        } else {
+            setReview({
+                ...review,
+                [e.target.name]: e.target.value,
+            });
+        }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const formData = new FormData();
-            formData.append("logo", inputRef.current.files[0]);
+            formData.append("logo", file);
             await fetch(`${baseURL}/review/logo`, {
                 method: "POST",
                 body: formData,
@@ -36,7 +42,11 @@ export function ReviewNew() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(review),
+                body: JSON.stringify({
+                    name: review.name,
+                    review: review.review,
+                    logo: file.name,
+                }),
             });
             const data = await response.json();
             console.log(data);
@@ -91,9 +101,7 @@ export function ReviewNew() {
                     type="file"
                     name="logo"
                     id="logo"
-                    ref={inputRef}
                     accept="image/*"
-                    value={review.logo}
                     onChange={handleChange}
                 />
                 <button type="submit">Ajouter</button>

@@ -9,6 +9,8 @@ export function ProjectView() {
     const { id } = useParams();
     const navigate = useNavigate();
     const baseURL = import.meta.env.VITE_BACKEND_URL;
+    const uploadPath = "/project/";
+    const imagePath = baseURL + uploadPath;
 
     useEffect(() => {
         try {
@@ -77,7 +79,7 @@ export function ProjectView() {
             <button onClick={() => handleDelete(project.id)} className={style.delete_button}>Supprimer</button>
             <h2>{project.name}</h2>
             <p>{project.description}</p>
-            <img src={project.image} alt={project.title} width="200" />
+            <img src={imagePath + project.image} alt={project.name} width="200" />
             <a href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</a>
             <p>{formatDate(project.date)}</p>
             <h3>Stacks</h3>

@@ -22,6 +22,11 @@ export function Nav() {
             Nos Réalisations
           </a>
         </li>
+        <li className={style.nav__link}>
+          <Link to="/admin">
+            Admin
+          </Link>
+        </li>
         </ul>
           <a href="#contact" className={style.button}>Contact/Devis</a>
             

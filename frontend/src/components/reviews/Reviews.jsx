@@ -26,8 +26,7 @@ export function Reviews() {
             <div className={style.row}>
             {advisors.map((advisor) => (
                 <div key={advisor.id} className={style.card}>
-                    {/* <img src={logoPath + advisor.logo} alt={advisor.name} width="200" height="200" /> */}
-                    <img src={advisor.logo} alt={advisor.name} className={style.logo} />
+                    <img src={logoPath + advisor.logo} alt={advisor.name} width="200" />
                     <i>"{advisor.review}"</i>
                     <small className={style.name}>{advisor.name}</small>
                 </div>

@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 export function ProjectUpdate() {
     const [project, setProject] = useState('');
     const { id } = useParams();
-    const inputRef = useRef();
+    const [file, setFile] = useState(null);
     const navigate = useNavigate();
     const baseURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -24,17 +24,15 @@ export function ProjectUpdate() {
         getProject();
     }, []);
 
+    const handleChange = (e) => {
+        setFile(e.target.files[0]);
+};
+
     const handleUpdate = async (e) => {
         e.preventDefault();
-        const formData = new FormData(inputRef.current);
-        const title = e.target.title.value;
-        const description = e.target.description.value;
-        const image = e.target.image.value;
-        const stack = e.target.stack.value;
-        const url = e.target.url.value;
-        const date = e.target.date.value;
-        const body = { title, description, image, stack, url, date };
         try {
+            const formData = new FormData();
+            formData.append("image", file);
             await fetch(`${baseURL}/project/image`, {
                 method: "POST",
                 body: formData,
@@ -42,6 +40,13 @@ export function ProjectUpdate() {
                     "Accept": "multipart/form-data",
                 },
             });
+            const title = e.target.title.value;
+            const description = e.target.description.value;
+            const image = file.name;
+            const stack = e.target.stack.value;
+            const url = e.target.url.value;
+            const date = e.target.date.value;
+            const body = { title, description, image, stack, url, date };
             const response = await fetch(`${baseURL}/project/${id}`, {
                 method: "PUT",
                 headers: {
@@ -82,7 +87,7 @@ export function ProjectUpdate() {
     return (
         <div>
             <h1>Modifier le projet</h1>
-            <form ref={inputRef} onSubmit={handleUpdate} encType="multipart/form-data">
+            <form onSubmit={handleUpdate} encType="multipart/form-data">
                 <div>
                     <label htmlFor="title">Titre</label>
                     <input type="text" name="title" id="title" defaultValue={project.title} />
@@ -93,7 +98,7 @@ export function ProjectUpdate() {
                 </div>
                 <div>
                     <label htmlFor="image">Image</label>
-                    <input type="file" name="image" id="image" />
+                    <input type="file" name="image" id="image" onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="stack">Stack</label>

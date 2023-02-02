@@ -6,23 +6,23 @@ class ProjectManager extends AbstractManager {
     super({ table: "project" });
   }
 
-  findProjectsAndStacks() {
-    return this.connection.query(
-      `SELECT
-        project.id,
-        project.title,
-        project.description,
-        project.date,
-        project.image,
-        project.url,
-        GROUP_CONCAT(stack.name) AS stack
-      FROM project
-      LEFT JOIN project_stack ON project.id = project_stack.project_id
-      LEFT JOIN stack ON project_stack.stack_id = stack.id
-      GROUP BY project.id
-      ORDER BY project.date DESC`
-    );
-  }
+  // findProjectsAndStacks() {
+  //   return this.connection.query(
+  //     `SELECT
+  //       project.id,
+  //       project.title,
+  //       project.description,
+  //       project.date,
+  //       project.image,
+  //       project.url,
+  //       GROUP_CONCAT(stack.name) AS stack
+  //     FROM project
+  //     LEFT JOIN project_stack ON project.id = project_stack.project_id
+  //     LEFT JOIN stack ON project_stack.stack_id = stack.id
+  //     GROUP BY project.id
+  //     ORDER BY project.date DESC`
+  //   );
+  // }
 
   insert(project) {
     return this.connection.query(
