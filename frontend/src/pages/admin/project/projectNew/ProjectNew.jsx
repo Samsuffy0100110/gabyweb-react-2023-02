@@ -9,7 +9,7 @@ export function ProjectNew() {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-    const today = `${year}-${month}-${day}`;
+    const today = `${day}-${month}-${year}`;
     const [file, setFile] = useState(null);
     const navigate = useNavigate();
     const [imagePreview, setImagePreview] = useState(null);
@@ -46,7 +46,7 @@ export function ProjectNew() {
                     "Accept": "multipart/form-data",
                 },
             });
-            const response = await fetch(`${baseURL}/project`, {
+            await fetch(`${baseURL}/project`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -59,8 +59,6 @@ export function ProjectNew() {
                     date: project.date,
                 }),
             });
-            const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.log(error);
         } finally {
@@ -90,7 +88,7 @@ export function ProjectNew() {
     };
 
     return (
-        <div>
+        <div className={style.admin_container}>
             <h3>Add Project</h3>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <label htmlFor="name">name</label>

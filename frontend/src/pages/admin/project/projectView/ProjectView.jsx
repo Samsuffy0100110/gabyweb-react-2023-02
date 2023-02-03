@@ -37,8 +37,6 @@ export function ProjectView() {
             const response = await fetch(`${baseURL}/project/${id}`, {
                 method: "DELETE",
             });
-            const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.log(error);
             setError(true);
@@ -73,7 +71,7 @@ export function ProjectView() {
     };
 
     return (
-        <div className={style.container}>
+        <div className={style.admin_container}>
             <h1>Project and Stacks</h1>
             <button onClick={() => navigate(`/admin/project/${project.id}/update`)} className={style.update_button}>Modifier</button>
             <button onClick={() => handleDelete(project.id)} className={style.delete_button}>Supprimer</button>
@@ -86,7 +84,7 @@ export function ProjectView() {
                 {stacks.map(stack => (
                         <img src={stack.image} alt={stack.name} width="50" />
                 ))} */}
-            <Link to="/">Back</Link>
+            <Link to="/admin/projects">Retour</Link>
         </div>
     )
 }

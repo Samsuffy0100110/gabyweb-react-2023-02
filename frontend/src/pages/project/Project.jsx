@@ -1,5 +1,7 @@
+import { Footer } from "@components/layouts/footer/Footer";
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Nav } from "@components/layouts/nav/Nav";
 import style from "./project.module.scss";
 
 export function Project() {
@@ -46,18 +48,20 @@ export function Project() {
     };
 
     return (
-        <div className={style.container}>
+        <main className={style.container}>
+            <Nav />
             <h1>Project and Stacks</h1>
             <h2>{project.name}</h2>
             <p>{project.description}</p>
             <img src={imagePath + project.image} alt={project.name} width="200" />
             <a href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</a>
             <p>{formatDate(project.date)}</p>
-            <h3>Stacks</h3>
+            {/* <h3>Stacks</h3>
                 {stacks.map(stack => (
                         <img src={stack.image} alt={stack.name} width="50" />
-                ))}
+                ))} */}
             <Link to="/">Back</Link>
-        </div>
+            <Footer />
+        </main>
     )
 }

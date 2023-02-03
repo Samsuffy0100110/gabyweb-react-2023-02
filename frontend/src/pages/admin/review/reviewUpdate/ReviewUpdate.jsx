@@ -54,15 +54,13 @@ const deleteOldLogo = async (fileName) => {
             const logo = file.name;
             const name = e.target.name.value;
             const body = { name, review, logo };
-            const response = await fetch(`${baseURL}/review/${id}`, {
+            await fetch(`${baseURL}/review/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(body),
             });
-            const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.log(error);
         } finally {
@@ -79,12 +77,8 @@ const deleteOldLogo = async (fileName) => {
         }
     };
 
-    if (!review) {
-        return <div>Loading...</div>;
-    }
-
     return (
-        <div>
+        <div className={style.admin_container}>
             <h1>Modifier un avis</h1>
             <form 
                 onSubmit={handleUpdate} 

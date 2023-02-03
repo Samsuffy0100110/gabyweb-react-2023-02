@@ -51,15 +51,13 @@ export function ServiceUpdate () {
             const description = e.target.description.value;
             const icon = file.name;
             const body = { title, description, icon };
-            const response = await fetch(`${baseURL}/service/${id}`, {
+            await fetch(`${baseURL}/service/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(body),
             });
-            const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.log(error);
         } finally {
@@ -77,7 +75,7 @@ export function ServiceUpdate () {
     };
 
     return (
-        <div>
+        <div className={style.admin_container}>
             <h1>Modifier un service</h1>
             <form 
                 onSubmit={handleUpdate} 

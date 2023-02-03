@@ -82,7 +82,7 @@ export function ProjectDashboard() {
 
     if (projects.length === 0) {
         return (
-            <div className={style.container}>
+            <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
                 <h3>Projects</h3>
                 <Link to="/admin/project/new">Add project</Link>
@@ -91,7 +91,7 @@ export function ProjectDashboard() {
         );
     } else {
         return (
-            <div className={style.container}>
+            <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
                 <h3>Projects</h3>
                 <Link to="/admin/project/new">Add project</Link>

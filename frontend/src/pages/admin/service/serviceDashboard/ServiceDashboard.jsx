@@ -66,7 +66,7 @@ export function ServiceDashboard() {
 
     if (services.length === 0) {
         return (
-            <div className={style.container}>
+            <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
                 <h1>Services</h1>
                 <p>Aucun service n'a été ajouté.</p>
@@ -77,7 +77,7 @@ export function ServiceDashboard() {
         );
     } else {
         return (
-            <div className={style.container}>
+            <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
                 <h1>Services</h1>
                 <Link to="/admin/service/new">Add a service</Link>

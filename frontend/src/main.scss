@@ -35,6 +35,11 @@ a:hover {
     text-decoration: underline;
 }
 
+.admin_container {
+    background-color: $secondary;
+    color: $third;
+}
+
 // @function pxToRem($px) {
 //     @return $px / 16px * 1rem;
 // }

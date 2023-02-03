@@ -59,15 +59,13 @@ export function ProjectUpdate() {
             const url = e.target.url.value;
             const date = e.target.date.value;
             const body = { name, description, image, url, date };
-            const response = await fetch(`${baseURL}/project/${id}`, {
+            await fetch(`${baseURL}/project/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(body),
             });
-            const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.log(error);
         } finally {
@@ -94,10 +92,8 @@ export function ProjectUpdate() {
         return <div>Loading...</div>;
     }
 
-    const projectDate = new Date(project.date);
-
     return (
-        <div>
+        <div className={style.admin_container}>
             <h1>Modifier le projet</h1>
             <form onSubmit={handleUpdate} encType="multipart/form-data">
                 <div>
@@ -132,7 +128,7 @@ export function ProjectUpdate() {
                         type="text"
                         name="date"
                         id="date"
-                        defaultValue={projectDate.toISOString().slice(0, 10)}
+                        defaultValue={new Date(project.date).toISOString().slice(0, 10)}
                     />
                 </div>
                 <div>
@@ -141,7 +137,7 @@ export function ProjectUpdate() {
                     </button>
                 </div>
             </form>
-            <Link to="/admin/project" className={style.link}>
+            <Link to="/admin/projects" className={style.link}>
                 <button>Retour</button>
             </Link>
         </div>

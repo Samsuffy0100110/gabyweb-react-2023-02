@@ -1,17 +1,1 @@
 @import '../../App.scss';
-
-.container {
-    background-color: $secondary;
-    color: $third;
-}
-
-@media screen and (min-width: 768px) {
-    .admin_container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        background-color: $secondary;
-        color: $third;
-    }
-}

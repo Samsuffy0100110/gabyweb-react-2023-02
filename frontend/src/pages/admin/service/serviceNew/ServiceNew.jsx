@@ -76,50 +76,48 @@ export function ServiceNew() {
     };
 
     return (
-        <div className={style.container}>
-            <div className={style.formContainer}>
-                <h1 className={style.title}>Create a new service</h1>
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
-                    <div className={style.inputContainer}>
-                        <label htmlFor="title">Title</label>
-                        <input
-                            type="text"
-                            name="title"
-                            id="title"
-                            value={service.title}
-                            onChange={handleChange}
+        <div className={style.admin_container}>
+            <h1 className={style.title}>Create a new service</h1>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <div>
+                    <label htmlFor="title">Title</label>
+                    <input
+                        type="text"
+                        name="title"
+                        id="title"
+                        value={service.title}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="description">Description</label>
+                    <textarea
+                        type="text"
+                        name="description"
+                        id="description"
+                        value={service.description}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="icon">Icon</label>
+                    <input
+                        type="file"
+                        name="icon"
+                        id="icon"
+                        onChange={handleChange}
+                    />
+                    {iconPreview && (
+                        <img
+                            src={iconPreview}
+                            alt="icon preview"
+                            className={style.iconPreview}
                         />
-                    </div>
-                    <div className={style.inputContainer}>
-                        <label htmlFor="description">Description</label>
-                        <textarea
-                            type="text"
-                            name="description"
-                            id="description"
-                            value={service.description}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className={style.inputContainer}>
-                        <label htmlFor="icon">Icon</label>
-                        <input
-                            type="file"
-                            name="icon"
-                            id="icon"
-                            onChange={handleChange}
-                        />
-                        {iconPreview && (
-                            <img
-                                src={iconPreview}
-                                alt="icon preview"
-                                className={style.iconPreview}
-                            />
-                        )}
-                    </div>
-                    <button type="submit">Create</button>
-                </form>
-                <Link to="/admin/services">Go back to services</Link>
-            </div>
+                    )}
+                </div>
+                <button type="submit">Create</button>
+            </form>
+            <Link to="/admin/services">Go back to services</Link>
         </div>
     );
 }

@@ -68,7 +68,7 @@ export function ReviewDashboard() {
 
     if (reviews.length === 0) {
         return (
-            <div className={style.container}>
+            <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
                 <h1>Avis</h1>
                 <p>Aucun avis n\'a été ajouté.</p>
@@ -79,7 +79,7 @@ export function ReviewDashboard() {
         );
     } else {
         return (
-            <div className={style.container}>
+            <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
                 <h1>Avis</h1>
                 <Link to="/admin/review/new">Ajouter un avis</Link>
