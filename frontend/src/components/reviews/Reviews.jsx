@@ -21,7 +21,7 @@ export function Reviews() {
     }, []);
 
     return (
-        <div className={style.container}>
+        <div className={style.container} id="reviews">
             <h3 className={style.title}>Ils nous ont fait confiance</h3>
             <div className={style.row}>
             {advisors.map((advisor) => (

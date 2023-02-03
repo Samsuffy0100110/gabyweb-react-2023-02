@@ -22,7 +22,21 @@
 
 .project_gallery {
     width: 30%;
-    margin: 1rem;
-    padding: 1rem;
+    padding: 0.3rem;
     text-align: center;
+}
+
+.project_image {
+    width: 80%;
+    height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .project_gallery {
+        width: 100%;
+    }
+
+    .title {
+        width: 100%;
+    }
 }

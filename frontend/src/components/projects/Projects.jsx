@@ -21,6 +21,15 @@ export function Projects() {
         getProjects();
     }, []);
 
+    const handleOver = (e) => {
+        e.target.style.opacity = 0.1;
+        e.target.style.transition = "all 0.5s ease";
+    };
+
+    const handleOut = (e) => {
+        e.target.style.opacity = 1;
+    };
+    
     return (
         <div className={style.container} id="projects">
             <h2 className={style.title}>Nos Réalisations</h2>
@@ -28,7 +37,13 @@ export function Projects() {
                 {projects.map((project) => (
                     <div key={project.id} className={style.project_gallery}>
                         <Link to={`/project/${project.id}`}>
-                            <img src={imagePath + project.image} alt={project.name} width="400" height="300" />
+                            <img 
+                                src={project.image} 
+                                alt={project.name} 
+                                className={style.project_image}
+                                onMouseOver={handleOver}
+                                onMouseOut={handleOut}
+                            />
                         </Link>
                     </div>
                 ))}

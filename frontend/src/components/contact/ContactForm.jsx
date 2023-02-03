@@ -93,7 +93,7 @@ export function ContactForm() {
                             id="organization"
                             value={organization}
                             onChange={(e) => setOrganization(e.target.value)}
-                            placeholder="Organisation"
+                            placeholder="Organisation / Entreprise"
                             label="Organisation"
                         />
                     </div>
@@ -163,7 +163,6 @@ export function ContactForm() {
                         </div>
                     </div>
                     <div className={style.formGroup}>
-                        <button>recaptcha</button>
                         <button type="submit" disabled={disabled}>Envoyer</button>
                     </div>
                 </form>

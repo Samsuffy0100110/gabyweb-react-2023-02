@@ -12,7 +12,7 @@ export function Nav() {
       <ul className={style.nav__links}>
         <li className={style.nav__link}>
           <a href="#services">
-            Nos Services
+            Nos Préstations
           </a>
         </li>
         <li className={style.nav__link}>

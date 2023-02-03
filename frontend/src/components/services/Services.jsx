@@ -22,7 +22,7 @@ export function Services() {
 
     return (
         <div className={style.container} id="services">
-            <h3 className={style.title}>Nos Services</h3>
+            <h3 className={style.title}>Nos Préstations</h3>
             <div className={style.row}>
             {services.map((service) => (
                 <div key={service.id} className={style.card}>
