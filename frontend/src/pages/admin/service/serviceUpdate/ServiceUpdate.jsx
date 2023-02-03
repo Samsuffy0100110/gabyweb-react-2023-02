@@ -26,6 +26,18 @@ export function ServiceUpdate () {
             setIconPreview(URL.createObjectURL(e.target.files[0]));
     };
 
+    const deleteOldIcon = async (fileName) => {
+        try {
+            const response = await fetch(`${baseURL}/service/icon/${fileName}`, {
+                method: "DELETE",
+            });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
@@ -64,10 +76,6 @@ export function ServiceUpdate () {
         }
     };
 
-    if (!service) {
-        return <div>Loading...</div>;
-    }
-
     return (
         <div>
             <h1>Modifier un service</h1>
@@ -103,7 +111,7 @@ export function ServiceUpdate () {
                         className={style.icon_preview}
                     />
                 )}
-                <button type="submit" className={style.update_button}>Modifier</button>
+                <button type="submit" className={style.update_button} onClick={() => deleteOldIcon(service.icon)}>Modifier</button>
             </form>
             <Link to="/admin/services">Retour à la liste des services</Link>
         </div>

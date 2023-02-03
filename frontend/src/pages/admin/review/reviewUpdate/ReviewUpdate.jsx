@@ -26,6 +26,18 @@ export function ReviewUpdate () {
         setLogoPreview(URL.createObjectURL(e.target.files[0]));
 };
 
+const deleteOldLogo = async (fileName) => {
+    try {
+        const response = await fetch(`${baseURL}/review/logo/${fileName}`, {
+            method: "DELETE",
+        });
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
     const handleUpdate = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -107,7 +119,7 @@ export function ReviewUpdate () {
                         className={style.logo_preview}
                     />
                 )}
-                <button type="submit" className={style.update_button}>Modifier</button>
+                <button type="submit" className={style.update_button} onClick={() => deleteOldLogo(review.logo)}>Modifier</button>
             </form>
             <Link to="/admin/reviews">Retour à la liste des avis</Link>
         </div>
