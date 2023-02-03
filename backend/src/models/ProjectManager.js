@@ -26,13 +26,12 @@ class ProjectManager extends AbstractManager {
 
   insert(project) {
     return this.connection.query(
-      `INSERT INTO ${this.table} (title, description, date, image, stack, url) values (?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO ${this.table} (name, description, date, image, url) values (?, ?, ?, ?, ?)`,
       [
-        project.title,
+        project.name,
         project.description,
         project.date,
         project.image,
-        project.stack,
         project.url,
       ]
     );
@@ -40,13 +39,12 @@ class ProjectManager extends AbstractManager {
 
   update(project) {
     return this.connection.query(
-      `update ${this.table} set title = ?, description = ?, date = ?, image = ?, stack = ?, url = ? where id = ?`,
+      `update ${this.table} set name = ?, description = ?, date = ?, image = ?, url = ? where id = ?`,
       [
-        project.title,
+        project.name,
         project.description,
         project.date,
         project.image,
-        project.stack,
         project.url,
         project.id,
       ]

@@ -82,10 +82,10 @@ export function ProjectView() {
             <img src={imagePath + project.image} alt={project.name} width="200" />
             <a href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</a>
             <p>{formatDate(project.date)}</p>
-            <h3>Stacks</h3>
+            {/* <h3>Stacks</h3>
                 {stacks.map(stack => (
                         <img src={stack.image} alt={stack.name} width="50" />
-                ))}
+                ))} */}
             <Link to="/">Back</Link>
         </div>
     )

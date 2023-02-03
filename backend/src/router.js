@@ -9,6 +9,7 @@ const serviceUpload = multer({ dest: "uploads/service/" });
 const projectUpload = multer({ dest: "uploads/project/" });
 const reviewUpload = multer({ dest: "uploads/review/" });
 
+
 const authControllers = require("./controllers/authControllers");
 const serviceControllers = require("./controllers/serviceControllers");
 const projectControllers = require("./controllers/projectControllers");
@@ -31,6 +32,18 @@ router.post("/service/icon/", serviceUpload.single("icon"), (req, res) => {
         });
 });
 
+router.delete("/service/icon/:fileName", (req, res) => {
+    const filePath = `uploads/service/${req.params.fileName}`;
+    fs.unlink(filePath, (err) => {
+        if (err) {
+            console.error(err);
+            res.sendStatus(500);
+        } else {
+            res.sendStatus(204);
+        }
+    });
+});
+
 router.get("/reviews", reviewControllers.browse);
 router.get("/review/:id", reviewControllers.read);
 router.put("/review/:id", reviewControllers.edit);
@@ -45,6 +58,18 @@ router.post("/review/logo", reviewUpload.single("logo"), (req, res) => {
             if (err) throw err;
             res.send("File uploaded");
         });
+});
+
+router.delete("/review/logo/:fileName", (req, res) => {
+    const filePath = `uploads/review/${req.params.fileName}`;
+    fs.unlink(filePath, (err) => {
+        if (err) {
+            console.error(err);
+            res.sendStatus(500);
+        } else {
+            res.sendStatus(204);
+        }
+    });
 });
 
 router.get("/projects", projectControllers.browse);
@@ -62,6 +87,18 @@ router.post("/project/image", projectUpload.single("image"), (req, res) => {
 			if (err) throw err;
 			res.send("File uploaded");
 		});
+});
+
+router.delete("/project/image/:fileName", (req, res) => {
+    const filePath = `uploads/project/${req.params.fileName}`;
+    fs.unlink(filePath, (err) => {
+        if (err) {
+            console.error(err);
+            res.sendStatus(500);
+        } else {
+            res.sendStatus(204);
+        }
+    });
 });
 
 module.exports = router;

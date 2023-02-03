@@ -22,27 +22,46 @@ export function ServiceDashboard() {
         getServices();
     }, []);
 
-    const handleDelete = async (id) => {
+    const deleteIcon = async (fileName) => {
         try {
-            const response = await fetch(`${baseURL}/service/${id}`, {
+            await fetch(`${baseURL}/service/icon/${fileName}`, {
                 method: "DELETE",
             });
-            const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.log(error);
-        } finally {
-            Swal.fire({
-                title: "Suppression",
-                text: "Le service a bien été supprimé.",
-                icon: "success",
-                confirmButtonColor: "#0C8DA1",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.reload();
-                }
-            });
         }
+    };
+
+    const handleDelete = async (id) => {
+        const service = services.find((service) => service.id === id);
+        const fileName = service.icon;
+        Swal.fire({
+            title: "Êtes-vous sûr ?",
+            text: "Vous ne pourrez pas revenir en arrière !",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#0C8DA1",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Oui, supprimer !",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await fetch(`${baseURL}/service/${id}`, {
+                        method: "DELETE",
+                    });
+                    deleteIcon(fileName);
+                    setServices(services.filter((service) => service.id !== id));
+                    Swal.fire({
+                        title: "Supprimé !",
+                        text: "Le service a été supprimé.",
+                        icon: "success",
+                        confirmButtonColor: "#0C8DA1",
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        });
     };
 
     if (services.length === 0) {

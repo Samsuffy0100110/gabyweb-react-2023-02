@@ -22,27 +22,45 @@ export function ProjectDashboard() {
         getProjects();
     }, []);
 
-    const handleDelete = async (id) => {
+    const deleteImage = async (fileName) => {
         try {
-            const response = await fetch(`${baseURL}/project/${id}`, {
+            await fetch(`${baseURL}/project/image/${fileName}`, {
                 method: "DELETE",
             });
-            const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.log(error);
-        } finally {
-            Swal.fire({
-                title: "Suppression",
-                text: "Le projet a bien été supprimé.",
-                icon: "success",
-                confirmButtonColor: "#0C8DA1",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.reload();
-                }
-            });
         }
+    };
+
+    const handleDelete = async (id) => {
+        const project = projects.find((project) => project.id === id);
+        const fileName = project.image;
+        Swal.fire({
+            title: "Êtes-vous sûr ?",
+            text: "Vous ne pourrez pas revenir en arrière !",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#0C8DA1",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Oui, supprimer !",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await fetch(`${baseURL}/project/${id}`, {
+                        method: "DELETE",
+                    });
+                    deleteImage(fileName);
+                    setProjects(projects.filter((project) => project.id !== id));
+                    Swal.fire({
+                        title: "Supprimé !",
+                        text: "Le projet a été supprimé.",
+                        icon: "success",
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        });
     };
 
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -93,7 +111,7 @@ export function ProjectDashboard() {
                             <tr>
                                 <td>{project.title}</td>
                                 <td>{project.description}</td>
-                                <td><img src={imagePath + project.image} alt={project.title} width="200px" /></td>
+                                <td><img src={imagePath + project.image} alt={project.name} width="200px" /></td>
                                 <td>{project.stack}</td>
                                 <td>{project.url}</td>
                                 <td>{formatDate(project.date)}</td>

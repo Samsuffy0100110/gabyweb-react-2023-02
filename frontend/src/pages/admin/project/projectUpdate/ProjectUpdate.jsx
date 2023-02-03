@@ -42,13 +42,12 @@ export function ProjectUpdate() {
                     "Accept": "multipart/form-data",
                 },
             });
-            const title = e.target.title.value;
+            const name = e.target.name.value;
             const description = e.target.description.value;
             const image = file.name;
-            const stack = e.target.stack.value;
             const url = e.target.url.value;
             const date = e.target.date.value;
-            const body = { title, description, image, stack, url, date };
+            const body = { name, description, image, url, date };
             const response = await fetch(`${baseURL}/project/${id}`, {
                 method: "PUT",
                 headers: {
@@ -91,8 +90,8 @@ export function ProjectUpdate() {
             <h1>Modifier le projet</h1>
             <form onSubmit={handleUpdate} encType="multipart/form-data">
                 <div>
-                    <label htmlFor="title">Titre</label>
-                    <input type="text" name="title" id="title" defaultValue={project.title} />
+                    <label htmlFor="name">Titre</label>
+                    <input type="text" name="name" id="name" defaultValue={project.name} />
                 </div>
                 <div>
                     <label htmlFor="description">Description</label>
@@ -101,10 +100,6 @@ export function ProjectUpdate() {
                 <div>
                     <label htmlFor="image">Image</label>
                     <input type="file" name="image" id="image" onChange={handleChange} />
-                </div>
-                <div>
-                    <label htmlFor="stack">Stack</label>
-                    <input type="text" name="stack" id="stack" defaultValue={project.stack} />
                     {imagePreview && (<img src={imagePreview} alt="preview" />)}
                 </div>
                 <div>

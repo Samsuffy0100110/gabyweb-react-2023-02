@@ -15,10 +15,9 @@ export function ProjectNew() {
     const [imagePreview, setImagePreview] = useState(null);
     const baseURL = import.meta.env.VITE_BACKEND_URL;
     const [project, setProject] = useState({
-        title: "",
+        name: "",
         description: "",
         image: "",
-        stack: "",
         url: "",
         date: today,
     });
@@ -53,10 +52,9 @@ export function ProjectNew() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    title: project.title,
+                    name: project.name,
                     description: project.description,
                     image: file.name,
-                    stack: project.stack,
                     url: project.url,
                     date: project.date,
                 }),
@@ -78,10 +76,9 @@ export function ProjectNew() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     setProject({
-                        title: "",
+                        name: "",
                         description: "",
                         image: "",
-                        stack: "",
                         url: "",
                         date: today,
                     });
@@ -96,11 +93,11 @@ export function ProjectNew() {
         <div>
             <h3>Add Project</h3>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <label htmlFor="title">Title</label>
+                <label htmlFor="name">name</label>
                 <input
                     type="text"
-                    name="title"
-                    value={project.title}
+                    name="name"
+                    value={project.name}
                     onChange={handleChange}
                 />
                 <label htmlFor="description">Description</label>
@@ -125,13 +122,6 @@ export function ProjectNew() {
                         width="100"
                     />
                 )}
-                <label htmlFor="stack">Stack</label>
-                <input
-                    type="text"
-                    name="stack"
-                    value={project.stack}
-                    onChange={handleChange}
-                />
                 <label htmlFor="url">Link</label>
                 <input
                     type="text"

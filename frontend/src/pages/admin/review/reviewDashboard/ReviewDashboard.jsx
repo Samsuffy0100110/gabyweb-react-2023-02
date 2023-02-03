@@ -22,27 +22,48 @@ export function ReviewDashboard() {
         getReviews();
     }, []);
 
-    const handleDelete = async (id) => {
+    const deleteLogo = async (fileName) => {
         try {
-            const response = await fetch(`${baseURL}/review/${id}`, {
+            await fetch(`${baseURL}/review/logo/${fileName}`, {
                 method: "DELETE",
             });
-            const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.log(error);
-        } finally {
-            Swal.fire({
-                title: "Suppression",
-                text: "L\' avis a bien été supprimé.",
-                icon: "success",
-                confirmButtonColor: "#0C8DA1",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.reload();
-                }
-            });
         }
+    };
+
+    const handleDelete = async (id) => {
+        const review = reviews.find((review) => review.id === id);
+        const fileName = review.logo;
+        Swal.fire({
+            title: "Êtes-vous sûr ?",
+            text: "Vous ne pourrez pas revenir en arrière !",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#0C8DA1",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Oui, supprimer !",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await fetch(`${baseURL}/review/${id}`, {
+                        method: "DELETE",
+                    });
+                    deleteLogo(fileName);
+                    setReviews(reviews.filter((review) => review.id !== id));
+                    Swal.fire({
+                        title: "Supprimé !",
+                        text: "L\'avis a été supprimé.",
+                        icon: "success",
+                        confirmButtonColor: "#0C8DA1",
+                    }
+                    );
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        });
     };
 
     if (reviews.length === 0) {
