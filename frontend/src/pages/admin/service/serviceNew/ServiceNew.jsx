@@ -36,7 +36,7 @@ export function ServiceNew() {
                 method: "POST",
                 body: formData,
             });
-            const response = await fetch(`${baseURL}/service`, {
+            await fetch(`${baseURL}/service`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -47,40 +47,25 @@ export function ServiceNew() {
                     icon: file.name,
                 }),
             });
-            const data = await response.json();
-            console.log(data);
+            Swal.fire({
+                title: "Service ajouté",
+                icon: "success",
+                confirmButtonText: "OK",
+                confirmButtonAriaLabel: "OK",
+                confirmButtonColor: "#0C8DA1",
+            });
+            navigate("/admin/services");
         } catch (error) {
             console.log(error);
-        } finally {
-            Swal.fire({
-                title: "Service added!",
-                text: "You can add another service or go back to the admin panel.",
-                icon: "success",
-                showCancelButton: true,
-                confirmButtonColor: "#424242",
-                cancelButtonColor: "#0C8DA1",
-                confirmButtonText: "Add another service",
-                cancelButtonText: "Go back to admin panel service",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    setService({
-                        title: "",
-                        description: "",
-                        icon: "",
-                    });
-                } else {
-                    navigate("/admin/services");
-                }
-            });
         }
     };
 
     return (
         <div className={style.admin_container}>
-            <h1 className={style.title}>Create a new service</h1>
+            <h1 className={style.title}>Créer un service</h1>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <div>
-                    <label htmlFor="title">Title</label>
+                    <label htmlFor="title">Titre du service</label>
                     <input
                         type="text"
                         name="title"
@@ -100,7 +85,7 @@ export function ServiceNew() {
                     />
                 </div>
                 <div>
-                    <label htmlFor="icon">Icon</label>
+                    <label htmlFor="icon">Icone</label>
                     <input
                         type="file"
                         name="icon"
@@ -112,12 +97,13 @@ export function ServiceNew() {
                             src={iconPreview}
                             alt="icon preview"
                             className={style.iconPreview}
+                            width="200"
                         />
                     )}
                 </div>
-                <button type="submit">Create</button>
+                <button type="submit">GO !!!</button>
             </form>
-            <Link to="/admin/services">Go back to services</Link>
+            <Link to="/admin/services">Retour à la liste des services</Link>
         </div>
     );
 }

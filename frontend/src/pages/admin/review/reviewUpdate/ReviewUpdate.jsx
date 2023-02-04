@@ -61,22 +61,19 @@ const deleteOldLogo = async (fileName) => {
                 },
                 body: JSON.stringify(body),
             });
+            Swal.fire({
+                title: "Avis modifié",
+                icon: "success",
+                confirmButtonText: "OK",
+                confirmButtonColor: "#0C8DA1",
+                confirmButtonAriaLabel: "OK",
+            });
+            navigate("/admin/reviews");
         } catch (error) {
             console.log(error);
-        } finally {
-            Swal.fire({
-                title: "Modification",
-                text: "L\' avis a bien été modifié.",
-                icon: "success",
-                confirmButtonColor: "#0C8DA1",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate(`/admin/reviews`);
-                }
-            });
         }
     };
-
+    
     return (
         <div className={style.admin_container}>
             <h1>Modifier un avis</h1>
@@ -84,21 +81,21 @@ const deleteOldLogo = async (fileName) => {
                 onSubmit={handleUpdate} 
                 encType="multipart/form-data"
             >
-                <label htmlFor="name">Nom</label>
+                <label htmlFor="name">Nom du porteur de projet</label>
                 <input 
                     type="text" 
                     name="name" 
                     id="name" 
                     defaultValue={review.name} 
                 />
-                <label htmlFor="review">Avis</label>
+                <label htmlFor="review">Commentaire</label>
                 <textarea 
                     type="text" 
                     name="review" 
                     id="review" 
                     defaultValue={review.review}
                 />
-                <label htmlFor="logo">Logo</label>
+                <label htmlFor="logo">Logo du porteur de projet</label>
                 <input 
                     type="file" 
                     name="logo" 
@@ -111,6 +108,7 @@ const deleteOldLogo = async (fileName) => {
                         src={logoPreview}
                         alt="logo"
                         className={style.logo_preview}
+                        width="200"
                     />
                 )}
                 <button type="submit" className={style.update_button} onClick={() => deleteOldLogo(review.logo)}>Modifier</button>

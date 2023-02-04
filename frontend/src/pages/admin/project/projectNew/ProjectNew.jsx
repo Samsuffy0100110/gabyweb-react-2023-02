@@ -9,7 +9,7 @@ export function ProjectNew() {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-    const today = `${day}-${month}-${year}`;
+    const today = `${year}-${month}-${day}`;
     const [file, setFile] = useState(null);
     const navigate = useNavigate();
     const [imagePreview, setImagePreview] = useState(null);
@@ -59,39 +59,25 @@ export function ProjectNew() {
                     date: project.date,
                 }),
             });
+            Swal.fire({
+                title: "Project ajouté",
+                icon: "success",
+                confirmButtonText: "OK",
+                confirmButtonColor: "#0C8DA1",
+                confirmButtonAriaLabel: "OK",
+            });
+            navigate("/admin/projects");
         } catch (error) {
             console.log(error);
-        } finally {
-            Swal.fire({
-                title: "Project added!",
-                text: "You can add another project or go back to the admin panel.",
-                icon: "success",
-                showCancelButton: true,
-                confirmButtonColor: "#424242",
-                cancelButtonColor: "#0C8DA1",
-                confirmButtonText: "Add another project",
-                cancelButtonText: "Go back to admin panel project",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    setProject({
-                        name: "",
-                        description: "",
-                        image: "",
-                        url: "",
-                        date: today,
-                    });
-                } else {
-                    navigate("/admin/projects");
-                }
-            });
         }
     };
 
+
     return (
         <div className={style.admin_container}>
-            <h3>Add Project</h3>
+            <h3>Ajouter un projet</h3>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <label htmlFor="name">name</label>
+                <label htmlFor="name">Nom du Projet</label>
                 <input
                     type="text"
                     name="name"
@@ -117,26 +103,26 @@ export function ProjectNew() {
                         src={imagePreview}
                         alt="preview"
                         className={style.preview}
-                        width="100"
+                        width="200"
                     />
                 )}
-                <label htmlFor="url">Link</label>
+                <label htmlFor="url">Lien du projet</label>
                 <input
                     type="text"
                     name="url"
                     value={project.url}
                     onChange={handleChange}
                 />
-                <label htmlFor="date">Date</label>
+                <label htmlFor="date">Date de création</label>
                 <input
                     type="text"
                     name="date"
                     value={project.date}
                     onChange={handleChange}
                 />
-                <button type="submit">Ajouter</button>
+                <button type="submit">Décollage !</button>
             </form>
-            <Link to={`/admin/projects`}>Go back to projects</Link>
+            <Link to={`/admin/projects`}>Retour à la liste des projets</Link>
         </div>
     );
 }

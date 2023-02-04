@@ -1,3 +1,6 @@
+import Instagram from "../../../assets/instagram.png";
+import Linkedin from "../../../assets/linkedin.png";
+import Facebook from "../../../assets/facebook.png";
 import style from "./footer.module.scss";
 import { Link } from "react-router-dom";
 import React from "react";
@@ -8,17 +11,17 @@ export function Footer() {
         {
             name: "linkedin",
             link: "https://www.linkedin.com/",
-            image: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
+            image: Linkedin,
         },
         {
             name: "instagram",
             link: "https://www.instagram.com/?hl=fr",
-            image: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg",
+            image: Instagram,
         },
         {
             name: "facebook",
             link: "https://fr-fr.facebook.com/",
-            image: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg",
+            image: Facebook,
         },
     ];
 

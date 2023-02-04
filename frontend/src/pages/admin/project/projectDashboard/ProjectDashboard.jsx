@@ -55,6 +55,7 @@ export function ProjectDashboard() {
                         title: "Supprimé !",
                         text: "Le projet a été supprimé.",
                         icon: "success",
+                        confirmButtonColor: "#0C8DA1",
                     });
                 } catch (error) {
                     console.log(error);
@@ -84,35 +85,33 @@ export function ProjectDashboard() {
         return (
             <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
-                <h3>Projects</h3>
-                <Link to="/admin/project/new">Add project</Link>
-                <p>No projects yet</p>
+                <h3>Tout les projets</h3>
+                <Link to="/admin/project/new">Ajouter un projet</Link>
+                <p>Pas de projets</p>
             </div>
         );
     } else {
         return (
             <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
-                <h3>Projects</h3>
-                <Link to="/admin/project/new">Add project</Link>
+                <h3>Tout les projets</h3>
+                <Link to="/admin/project/new">Ajouter un projet</Link>
                 {projects.map((project) => (
                     <table key={project.id} className={style.admin_projects}>
                         <thead>
                             <tr>
-                                <th>Project Title</th>
-                                <th>Project Description</th>
-                                <th>Project Image</th>
-                                <th>Project Stack</th>
-                                <th>Project Link</th>
-                                <th>Project Date</th>
+                                <th>Nom du projet</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Lien du projet</th>
+                                <th>Date de création</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{project.title}</td>
+                                <td>{project.name}</td>
                                 <td>{project.description}</td>
                                 <td><img src={imagePath + project.image} alt={project.name} width="200px" /></td>
-                                <td>{project.stack}</td>
                                 <td>{project.url}</td>
                                 <td>{formatDate(project.date)}</td>
                             </tr>
@@ -121,16 +120,16 @@ export function ProjectDashboard() {
                             <tr>
                                 <td>
                                     <Link to={`/admin/project/${project.id}`}>
-                                    <button>View</button>
+                                    <button>Voir le projet</button>
                                     </Link>
                                 </td>
                                 <td>
                                     <Link to={`/admin/project/${project.id}/update`}>
-                                    <button className={style.update_button}>Update</button>
+                                    <button className={style.update_button}>Modifier</button>
                                     </Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(project.id)} className={style.delete_button}>Delete</button>
+                                    <button onClick={() => handleDelete(project.id)} className={style.delete_button}>Supprimer</button>
                                 </td>
                             </tr>
                         </tfoot>

@@ -66,27 +66,19 @@ export function ProjectUpdate() {
                 },
                 body: JSON.stringify(body),
             });
+            Swal.fire({
+                title: "Projet modifié",
+                icon: "success",
+                confirmButtonText: "OK",
+                confirmButtonColor: "#0C8DA1",
+                confirmButtonAriaLabel: "OK",
+            });
+            navigate("/admin/projects");
         } catch (error) {
             console.log(error);
-        } finally {
-            Swal.fire({
-                title: "Project updated!",
-                text: "You can update another project or go back to the admin panel.",
-                icon: "success",
-                showCancelButton: true,
-                confirmButtonColor: "#424242",
-                cancelButtonColor: "#0C8DA1",
-                confirmButtonText: "Update another project",
-                cancelButtonText: "Go back to admin panel",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate(`/admin/project/update/${id}`);
-                } else if (result.isDismissed) {
-                    navigate("/admin");
-                }
-            });
         }
     };
+
 
     if (!project) {
         return <div>Loading...</div>;
@@ -115,8 +107,20 @@ export function ProjectUpdate() {
                 </div>
                 <div>
                     <label htmlFor="image">Image</label>
-                    <input type="file" name="image" id="image" onChange={handleChange} />
-                    {imagePreview && <img src={imagePreview} alt="preview" />}
+                    <input 
+                        type="file" 
+                        name="image" 
+                        id="image" 
+                        onChange={handleChange} 
+                    />
+                    {imagePreview && (
+                        <img 
+                            src={imagePreview}
+                            alt="preview"
+                            className={style.preview}
+                            width="200"
+                        />
+                    )}
                 </div>
                 <div>
                     <label htmlFor="url">URL</label>
@@ -132,13 +136,17 @@ export function ProjectUpdate() {
                     />
                 </div>
                 <div>
-                    <button type="submit" className={style.update_button} onClick={() => deleteOldImage(project.image)}>
-                        Update
+                    <button 
+                        type="submit" 
+                        className={style.update_button} 
+                        onClick={() => deleteOldImage(project.image)}
+                    >
+                        Modifier
                     </button>
                 </div>
             </form>
             <Link to="/admin/projects" className={style.link}>
-                <button>Retour</button>
+                <button>Retour à la liste des projets</button>
             </Link>
         </div>
     );

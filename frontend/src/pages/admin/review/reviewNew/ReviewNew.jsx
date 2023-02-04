@@ -39,7 +39,7 @@ export function ReviewNew() {
                     Accept: "multipart/form-data",
                 },
             });
-            const response = await fetch(`${baseURL}/review`, {
+            await fetch(`${baseURL}/review`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -50,34 +50,19 @@ export function ReviewNew() {
                     logo: file.name,
                 }),
             });
-            const data = await response.json();
-            console.log(data);
+            Swal.fire({
+                title: "Avis ajouté",
+                icon: "success",
+                confirmButtonText: "OK",
+                confirmButtonAriaLabel: "OK",
+                confirmButtonColor: "#0C8DA1",
+            });
+            navigate("/admin/reviews");
         } catch (error) {
             console.log(error);
-        } finally {
-            Swal.fire({
-                title: "Avis ajouté!",
-                text: "Vous pouvez ajouter un autre avis ou retourner au panneau d'administration.",
-                icon: "success",
-                showCancelButton: true,
-                confirmButtonColor: "#424242",
-                cancelButtonColor: "#0C8DA1",
-                confirmButtonText: "Ajouter un autre avis",
-                cancelButtonText: "Retourner au panneau d'administration",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    setReview({
-                        name: "",
-                        review: "",
-                        logo: "",
-                    });
-                } else {
-                    navigate("/admin/reviews");
-                }
-            });
         }
     };
-
+    
     return (
         <div className={style.admin_container}>
             <h1>Ajouter un avis</h1>
@@ -111,10 +96,10 @@ export function ReviewNew() {
                         src={logoPreview}
                         alt="Logo"
                         className={style.logoPreview}
-                        width="100"
+                        width="200"
                     />
                 )}
-                <button type="submit">Ajouter</button>
+                <button type="submit">C'est parti !</button>
             </form>
             <Link to="/admin/reviews">Retour à la liste des avis</Link>
         </div>

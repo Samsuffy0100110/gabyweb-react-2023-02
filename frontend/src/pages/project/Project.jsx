@@ -22,15 +22,15 @@ export function Project() {
         }
     }, [id]);
 
-    useEffect(() => {
-        try {
-            fetch(`${baseURL}/project/${id}/stacks`)
-                .then(res => res.json())
-                .then(data => setStacks(data))
-        } catch (error) {
-            console.log(error);
-        }
-    }, [id]);
+    // useEffect(() => {
+    //     try {
+    //         fetch(`${baseURL}/project/${id}/stacks`)
+    //             .then(res => res.json())
+    //             .then(data => setStacks(data))
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }, [id]);
 
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const formatDate = (date) => {
@@ -50,8 +50,7 @@ export function Project() {
     return (
         <main className={style.container}>
             <Nav />
-            <h1>Project and Stacks</h1>
-            <h2>{project.name}</h2>
+            <h1>{project.name}</h1>
             <p>{project.description}</p>
             <img src={imagePath + project.image} alt={project.name} width="200" />
             <a href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</a>
@@ -60,7 +59,7 @@ export function Project() {
                 {stacks.map(stack => (
                         <img src={stack.image} alt={stack.name} width="50" />
                 ))} */}
-            <Link to="/">Back</Link>
+            <Link to="/">Retour</Link>
             <Footer />
         </main>
     )

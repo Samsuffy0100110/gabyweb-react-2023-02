@@ -9,7 +9,7 @@ import style from "./home.module.scss";
 
 export function Home() {
   return (
-    <main>
+    <main className="scrollbar" id="style-scroll">
       <Nav />
       <Banner />
       <Services />

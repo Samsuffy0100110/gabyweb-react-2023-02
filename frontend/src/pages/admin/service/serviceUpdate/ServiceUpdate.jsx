@@ -58,19 +58,16 @@ export function ServiceUpdate () {
                 },
                 body: JSON.stringify(body),
             });
+            Swal.fire({
+                title: "Service modifié",
+                icon: "success",
+                confirmButtonText: "OK",
+                confirmButtonAriaLabel: "OK",
+                confirmButtonColor: "#0C8DA1",
+            });
+            navigate("/admin/services");
         } catch (error) {
             console.log(error);
-        } finally {
-            Swal.fire({
-                title: "Modification",
-                text: "Le service a bien été modifié.",
-                icon: "success",
-                confirmButtonColor: "#0C8DA1",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate(`/admin/services`);
-                }
-            });
         }
     };
 

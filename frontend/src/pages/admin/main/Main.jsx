@@ -5,19 +5,20 @@ export function Main() {
     return (
         <div>
             <h1>Bienvenue sur l'interface d'administration</h1>
+                <Link to="/">Retour au site</Link>
             <div>
                 <Link to="/admin/projects">
                     <h2>Projets</h2>
                 </Link>
                 <Link to="/admin/reviews">
-                    <h2>Reviews</h2>
+                    <h2>Avis</h2>
                 </Link>
                 <Link to="/admin/services">
-                    <h2>Services</h2>
+                    <h2>Préstations</h2>
                 </Link>
             </div>
             <div>
-                <Link to="/logout">Logout</Link>
+                <Link to="/logout">Se déconnecter</Link>
             </div>
         </div>
     );

@@ -68,7 +68,7 @@ export function ServiceDashboard() {
         return (
             <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
-                <h1>Services</h1>
+                <h1>Préstations</h1>
                 <p>Aucun service n'a été ajouté.</p>
                 <Link to="/admin/service/new">
                     <button>Ajouter un service</button>
@@ -79,7 +79,7 @@ export function ServiceDashboard() {
         return (
             <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
-                <h1>Services</h1>
+                <h1>Préstations</h1>
                 <Link to="/admin/service/new">Add a service</Link>
                 {services.map((service) => (
                     <table key={service.id} className={style.admin_services}>

@@ -40,7 +40,7 @@ export function LoginForm() {
 
     return (
         <div>
-            <h3>Login</h3>
+            <h3>Connexion</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="pseudo">pseudo</label>
@@ -53,7 +53,7 @@ export function LoginForm() {
                     />
                 </div>
                 <div>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Mot de passe</label>
                     <input
                         type="password"
                         name="password"
@@ -62,7 +62,7 @@ export function LoginForm() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit">Se connecter</button>
             </form>
             {error && <div>{errorMessage}</div>}
         </div>

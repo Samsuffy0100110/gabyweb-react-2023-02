@@ -56,9 +56,7 @@ export function ReviewDashboard() {
                         text: "L\'avis a été supprimé.",
                         icon: "success",
                         confirmButtonColor: "#0C8DA1",
-                    }
-                    );
-
+                    });
                 } catch (error) {
                     console.log(error);
                 }
@@ -87,9 +85,9 @@ export function ReviewDashboard() {
                     <table key={review.id} className={style.admin_reviews}>
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Message</th>
-                                <th>Logo</th>
+                                <th>Nom du porteur de projet</th>
+                                <th>Commentaire</th>
+                                <th>Logo du porteur de projet</th>
                             </tr>
                         </thead>
                         <tbody>
