@@ -6,6 +6,11 @@ import Swal from "sweetalert2";
 export function ProjectUpdate() {
     const [project, setProject] = useState("");
     const { id } = useParams();
+    const day = project.date ? project.date.slice(8, 10) : "";
+    const dayPlusOne = parseInt(day) + 1;
+    const month = project.date ? project.date.slice(5, 7) : "";
+    const year = project.date ? project.date.slice(0, 4) : "";
+    const today = `${year}-${month}-${dayPlusOne}`;
     const [file, setFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const navigate = useNavigate();
@@ -55,7 +60,7 @@ export function ProjectUpdate() {
             });
             const name = e.target.name.value;
             const description = e.target.description.value;
-            const image = file.name;
+            const image = file ? file.name : project.image;
             const url = e.target.url.value;
             const date = e.target.date.value;
             const body = { name, description, image, url, date };
@@ -132,7 +137,7 @@ export function ProjectUpdate() {
                         type="text"
                         name="date"
                         id="date"
-                        defaultValue={new Date(project.date).toISOString().slice(0, 10)}
+                        defaultValue={today}
                     />
                 </div>
                 <div>

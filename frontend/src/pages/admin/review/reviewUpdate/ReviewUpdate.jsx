@@ -51,7 +51,7 @@ const deleteOldLogo = async (fileName) => {
                 },
             });
             const review = e.target.review.value;
-            const logo = file.name;
+            const logo = file ? file.name : review.logo;
             const name = e.target.name.value;
             const body = { name, review, logo };
             await fetch(`${baseURL}/review/${id}`, {

@@ -49,7 +49,7 @@ export function ServiceUpdate () {
             });
             const title = e.target.title.value;
             const description = e.target.description.value;
-            const icon = file.name;
+            const icon = file ? file.name : service.icon;
             const body = { title, description, icon };
             await fetch(`${baseURL}/service/${id}`, {
                 method: "PUT",

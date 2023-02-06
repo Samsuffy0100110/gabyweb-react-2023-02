@@ -9,7 +9,7 @@ export function ProjectNew() {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-    const today = `${year}-${month}-${day}`;
+    const today = `${year}-${month < 10 ? `0${month}` : `${month}`}-${day < 10 ? `0${day}` : `${day}`}`;
     const [file, setFile] = useState(null);
     const navigate = useNavigate();
     const [imagePreview, setImagePreview] = useState(null);
