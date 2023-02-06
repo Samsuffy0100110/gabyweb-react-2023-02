@@ -9,6 +9,6 @@ export function Logout() {
         navigate("/");
     }, []);
     
-    return <div></div>;
+    return <></>;
     }
     

@@ -123,7 +123,7 @@ export function ContactForm() {
                             {radios.map((radio) => (
                                 <div key={radio.value}>
                                     <input
-                                        type="radio"
+                                        type="checkbox"
                                         name="radio" id={radio.value}
                                         value={radio.value}
                                         checked={radioChecked === radio.value}

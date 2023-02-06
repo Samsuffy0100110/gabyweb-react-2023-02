@@ -1,14 +1,16 @@
+import alex from "../../assets/alex.jpg";
+import yo from "../../assets/yo.jpg";
 import style from "./aboutUs.module.scss";
 
 export function AboutUs() {
     const photos = [
         {
             name: "Alexandre",
-            link: "https://this-person-does-not-exist.com/img/avatar-1f12805e50ff2011ab18c0360cf4f987.jpg",
+            link: alex,
         },
         {
             name: "Yoann",
-            link: "https://this-person-does-not-exist.com/img/avatar-8d47454b35f9774c536129530ffdc0a9.jpg",
+            link: yo,
         },
     ];
 
