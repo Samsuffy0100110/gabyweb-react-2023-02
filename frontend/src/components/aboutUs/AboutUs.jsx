@@ -4,11 +4,11 @@ export function AboutUs() {
     const photos = [
         {
             name: "Alexandre",
-            link: "https://this-person-does-not-exist.com/img/avatar-bf7a8424d024f29562d7bf4b18bfea30.jpg",
+            link: "https://this-person-does-not-exist.com/img/avatar-1f12805e50ff2011ab18c0360cf4f987.jpg",
         },
         {
             name: "Yoann",
-            link: "https://this-person-does-not-exist.com/img/avatar-28fc00ab5fd3c1fefffe10aa1754bb6c.jpg",
+            link: "https://this-person-does-not-exist.com/img/avatar-8d47454b35f9774c536129530ffdc0a9.jpg",
         },
     ];
 

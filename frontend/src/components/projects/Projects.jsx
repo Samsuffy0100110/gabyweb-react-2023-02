@@ -38,7 +38,7 @@ export function Projects() {
                     <div key={project.id} className={style.project_gallery}>
                         <Link to={`/project/${project.id}`}>
                             <img 
-                                src={project.image} 
+                                src={imagePath + project.image}
                                 alt={project.name} 
                                 className={style.project_image}
                                 onMouseOver={handleOver}
