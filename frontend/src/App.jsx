@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from './utils/ProtectedRoute';
 import { LoginForm } from "./pages/login/LoginForm";
-import { Project } from "./pages/project/Project";
 import { Logout } from "./pages/logout/Logout";
 import { Admin } from "./pages/admin/Admin";
 import { Home } from "./pages/home/Home";
@@ -13,7 +12,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/project/:id" element={<Project />} />
           <Route
             path="/admin/*"
             element={
