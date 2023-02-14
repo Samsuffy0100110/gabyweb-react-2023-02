@@ -44,13 +44,7 @@ export function Footer() {
                     ))}
                 </div>
                 <div className={style.footer__links}>
-                    <Link to="/about" className={style.footer__links__link}>Plan du Site</Link>
-                </div>
-                <div className={style.footer__links}>
-                    <Link to="/contact" className={style.footer__links__link}>Politique de confidentialité</Link>
-                </div>
-                <div className={style.footer__links}>
-                    <Link to="/contact" className={style.footer__links__link}>Mentions légales</Link>
+                    <Link to="/legals" className={style.footer__links__link}>Mentions légales</Link>
                 </div>
             </div>
         </footer>

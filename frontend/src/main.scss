@@ -30,6 +30,10 @@ a {
     font-family: $font-family-base;
 }
 
+footer {
+    position: sticky;
+}
+
 a:hover {
     color: $secondary;
     text-decoration: underline;

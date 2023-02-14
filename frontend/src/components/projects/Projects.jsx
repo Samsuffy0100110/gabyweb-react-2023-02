@@ -70,7 +70,7 @@ export function Projects() {
     };
 
     const handleOver = (e) => {
-        e.target.style.opacity = 0.1;
+        e.target.style.opacity = 0.5;
         e.target.style.transition = "all 0.5s ease";
     };
     

@@ -1,12 +1,13 @@
 import style from "./banner.module.scss";
 
 export function Banner() {
+  const siteName = import.meta.env.VITE_SITE_NAME;
   return (
     <div className={style.banner}>
       <div className={style.banner__content}>
         <div className={style.title__content}>
           <h1 className={style.title}>
-            GabyWeb
+            {siteName}
             <br />
             <span className={style.title__span}>Solution</span>
           </h1>
