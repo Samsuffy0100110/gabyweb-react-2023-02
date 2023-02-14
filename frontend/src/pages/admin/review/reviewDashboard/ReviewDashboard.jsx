@@ -8,6 +8,10 @@ export function ReviewDashboard() {
     const baseURL = import.meta.env.VITE_BACKEND_URL;
     const uploadPath = "/review/";
     const logoPath = baseURL + uploadPath;
+    const truncateDescription = (text, length) => {
+        const truncatedText = text.substring(0, length);
+        return truncatedText + "...";
+    };
 
     useEffect(() => {
         const getReviews = async () => {
@@ -93,7 +97,7 @@ export function ReviewDashboard() {
                         <tbody>
                             <tr>
                                 <td>{review.name}</td>
-                                <td>{review.review}</td>
+                                <td className={style.description}>{truncateDescription(review.description, 100)}</td>
                                 <td><img src={logoPath + review.logo} alt={review.name} width="100" /></td>
                             </tr>
                         </tbody>

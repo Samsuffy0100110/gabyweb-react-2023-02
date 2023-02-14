@@ -8,6 +8,10 @@ export function ServiceDashboard() {
     const baseURL = import.meta.env.VITE_BACKEND_URL;
     const uploadPath = "/service/";
     const iconPath = baseURL + uploadPath;
+    const truncateDescription = (text, length) => {
+        const truncatedText = text.substring(0, length);
+        return truncatedText + "...";
+    };
 
     useEffect(() => {
         const getServices = async () => {
@@ -93,7 +97,7 @@ export function ServiceDashboard() {
                         <tbody>
                             <tr>
                                 <td>{service.title}</td>
-                                <td>{service.description}</td>
+                                <td className={style.description}>{truncateDescription(service.description, 100)}</td>
                                 <td><img src={`${iconPath}${service.icon}`} alt={service.title} width="100" /></td>
                             </tr>
                         </tbody>

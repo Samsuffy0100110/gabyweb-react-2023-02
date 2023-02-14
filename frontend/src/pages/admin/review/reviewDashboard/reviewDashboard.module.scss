@@ -1,11 +1,18 @@
 @import '../../../../App.scss';
 
-.container {
+.admin_reviews {
     border : 3px solid $primary;
     padding : 10px;
+    border-radius : 5px;
+    margin: 1rem 0 1rem 0;
+    background-color : $secondary;
+    color : $third;
+    width: 100%;
+    text-align : center;
 }
 
-.admin_reviews{
-    border : 3px solid $primary;
-    padding : 10px;
+.description {
+    font-size : 1rem;
+    margin : 10px;
+    width: 20%;
 }

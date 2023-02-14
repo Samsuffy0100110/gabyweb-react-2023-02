@@ -8,6 +8,24 @@ export function ProjectDashboard() {
     const baseURL = import.meta.env.VITE_BACKEND_URL;
     const uploadPath = "/project/";
     const imagePath = baseURL + uploadPath;
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const formatDate = (date) => {
+        const dateUTC = new Date(date);
+        const dateUTCString = dateUTC.toLocaleString("fr-FR", {
+            timeZone: timeZone,
+        });
+        const dateUTCArray = dateUTCString.split(" ");
+        const dateUTCArrayDate = dateUTCArray[0].split("/");
+        const dateUTCArrayDay = dateUTCArrayDate[0];
+        const dateUTCArrayMonth = dateUTCArrayDate[1];
+        const dateUTCArrayYear = dateUTCArrayDate[2];
+        const dateUTCArrayFinal = `${dateUTCArrayDay}-${dateUTCArrayMonth}-${dateUTCArrayYear}`;
+        return dateUTCArrayFinal;
+    };
+    const truncateDescription = (text, length) => {
+        const truncatedText = text.substring(0, length);
+        return truncatedText + "...";
+    };
 
     useEffect(() => {
         const getProjects = async () => {
@@ -64,30 +82,12 @@ export function ProjectDashboard() {
         });
     };
 
-    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const formatDate = (date) => {
-        const dateUTC = new Date(date);
-        const dateUTCString = dateUTC.toLocaleString("fr-FR", {
-            timeZone: timeZone,
-        });
-        const dateUTCArray = dateUTCString.split(" ");
-        const dateUTCArrayDate = dateUTCArray[0].split("/");
-        const dateUTCArrayDay = dateUTCArrayDate[0];
-        const dateUTCArrayMonth = dateUTCArrayDate[1];
-        const dateUTCArrayYear = dateUTCArrayDate[2];
-        const dateUTCArrayFinal = `${dateUTCArrayDay}-${dateUTCArrayMonth}-${dateUTCArrayYear}`;
-        return dateUTCArrayFinal;
-    };
-
-    console.log(projects);
-
     if (projects.length === 0) {
         return (
             <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
                 <h3>Tout les projets</h3>
                 <Link to="/admin/project/new">Ajouter un projet</Link>
-                <p>Pas de projets</p>
             </div>
         );
     } else {
@@ -105,37 +105,48 @@ export function ProjectDashboard() {
                                 <th>Image</th>
                                 <th>Lien du projet</th>
                                 <th>Date de création</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>{project.name}</td>
-                                <td>{project.description}</td>
+                                <td className={style.description}>{truncateDescription(project.description, 100)}</td>
                                 <td><img src={imagePath + project.image} alt={project.name} width="200px" /></td>
                                 <td>{project.url}</td>
                                 <td>{formatDate(project.date)}</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
                                 <td>
                                     <Link to={`/admin/project/${project.id}`}>
-                                    <button>Voir le projet</button>
+                                        <button>Voir le projet</button>
                                     </Link>
-                                </td>
-                                <td>
                                     <Link to={`/admin/project/${project.id}/update`}>
-                                    <button className={style.update_button}>Modifier</button>
+                                        <button className={style.update_button}>Modifier</button>
                                     </Link>
-                                </td>
-                                <td>
                                     <button onClick={() => handleDelete(project.id)} className={style.delete_button}>Supprimer</button>
                                 </td>
                             </tr>
-                        </tfoot>
+                        </tbody>
                     </table>
                 ))}
             </div>
         );
     }
 }
+
+{/* <tfoot>
+<tr>
+    <td>
+        <Link to={`/admin/project/${project.id}`}>
+        <button>Voir le projet</button>
+        </Link>
+    </td>
+    <td>
+        <Link to={`/admin/project/${project.id}/update`}>
+        <button className={style.update_button}>Modifier</button>
+        </Link>
+    </td>
+    <td>
+        <button onClick={() => handleDelete(project.id)} className={style.delete_button}>Supprimer</button>
+    </td>
+</tr>
+</tfoot> */}
