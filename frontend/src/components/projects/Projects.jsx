@@ -76,9 +76,10 @@ export function Projects() {
                 {projects.map((project) => (
                     <div
                         className={style.project__gallery}
-                        key={project._id}
+                        key={project.id}
                     >
                         <img
+                            id="imageHover"
                             src={imagePath + project.image}
                             alt={project.name}
                             onClick={() => handleModal(project)}
