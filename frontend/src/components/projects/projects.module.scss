@@ -3,7 +3,7 @@
 .container {
     background-color: $primary;
     padding: 2rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     margin: 2rem 2rem 2rem 2rem;
 }
 
@@ -31,6 +31,8 @@
 .project_image {
     width: 80%;
     height: 100%;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .modal {
@@ -51,23 +53,140 @@
     background-color: $primary;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    border: 2px solid $third;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal__display {
+    display: flex;
+    justify-content: space-evenly;
+
+    .modal__image {
+        width: 50%;
+        margin-top: 3rem;
+    }
+
+    .modal__title {
+        color: $secondary;
+        font-size: 3rem;
+        color: $third;
+        border-bottom: 3px solid $secondary;
+    }
+
+    .modal__link__button {
+        background-color: $secondary;
+        color: $primary;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 300px;
+        cursor: pointer;
+        margin-top: 1rem;
+        transition: 0.3s;
+        font-size: 1.5rem;
+        font-weight: bold;
+
+        &:hover {
+            background-color: $third;
+            color: $secondary;
+        }
+    }
+
+    .modal__link {
+        text-decoration: none;
+    }
+    
+    .modal__date {
+        font-size: 1rem;
+        color: $third;
+    }
+
+    .modal__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+    }
 }
 
 .modal__close {
     color: $secondary;
     float: right;
-    font-size: 28px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 2rem;
     font-weight: bold;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        color: $third;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+    }
+}
+
+.modal__description {
+    color: $secondary;
+    font-size: 1rem;
+    color: $third;
+    border-bottom: 3px solid $secondary;
+    padding: 3rem;
+    margin-top: 2rem;
+    text-align: justify;
 }
 
 @media screen and (max-width: 768px) {
-    .project_gallery {
+    .project__gallery{
         width: 100%;
     }
 
     .title {
         width: 100%;
+    }
+
+    .modal__content {
+        width: 100%;
+    }
+
+    .modal__display {
+        flex-direction: column;
+        align-items: center;
+
+        .modal__image {
+            width: 100%;
+        }
+
+        .modal__info {
+            width: 100%;
+        }
+    }
+
+    .modal__description {
+        padding: 1rem;
+    }
+
+    .modal__link__button {
+        width: 100%;
+    }
+
+    .modal__title {
+        text-align: center;
+    }
+
+    .modal__date {
+        text-align: center;
+    }
+
+    .modal__close {
+        justify-content: center;
+    }
+
+    .modal__link {
+        text-align: center;
     }
 }

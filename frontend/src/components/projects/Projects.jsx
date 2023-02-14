@@ -19,7 +19,38 @@ export function Projects() {
         const dateUTCArrayDay = dateUTCArrayDate[0];
         const dateUTCArrayMonth = dateUTCArrayDate[1];
         const dateUTCArrayYear = dateUTCArrayDate[2];
-        const dateUTCArrayFinal = `${dateUTCArrayDay}-${dateUTCArrayMonth}-${dateUTCArrayYear}`;
+        const monthToMonthName = (month) => {
+            switch (month) {
+                case "01":
+                    return "Janvier";
+                case "02":
+                    return "Février";
+                case "03":
+                    return "Mars";
+                case "04":
+                    return "Avril";
+                case "05":
+                    return "Mai";
+                case "06":
+                    return "Juin";
+                case "07":
+                    return "Juillet";
+                case "08":
+                    return "Août";
+                case "09":
+                    return "Septembre";
+                case "10":
+                    return "Octobre";
+                case "11":
+                    return "Novembre";
+                case "12":
+                    return "Décembre";
+                default:
+                    return "Mois inconnu";
+            }
+        };
+        const dateUTCArrayMonthName = monthToMonthName(dateUTCArrayMonth);
+        const dateUTCArrayFinal = `Créer le ${dateUTCArrayDay} ${dateUTCArrayMonthName} ${dateUTCArrayYear}`;
         return dateUTCArrayFinal;
     };
 
@@ -42,9 +73,10 @@ export function Projects() {
         e.target.style.opacity = 0.1;
         e.target.style.transition = "all 0.5s ease";
     };
-
+    
     const handleOut = (e) => {
         e.target.style.opacity = 1;
+        e.target.style.transition = "all 0.5s ease";
     };
 
     return (
@@ -68,26 +100,32 @@ export function Projects() {
                 ))}
             </div>
             {modalOpen && (
-                <div className={style.modal} id="modal" style={{display: modalOpen ? "block" : "none"}}>
+                <div className={style.modal} id="modal" style={{ display: modalOpen ? "block" : "none" }}>
                     <div className={style.modal__content}>
-                        <img
-                            src={imagePath + modalProject.image}
-                            alt={modalProject.name}
-                        />
-                        <h3>{modalProject.name}</h3>
-                        <p>{modalProject.description}</p>
-                        <a href={modalProject.url} target="_blank">
-                            {modalProject.url}
-                        </a>
-                        <p>
-                            {formatDate(modalProject.date)} 
+                        <div className={style.modal__display}>
+                            <img
+                                src={imagePath + modalProject.image}
+                                alt={modalProject.name}
+                                className={style.modal__image}
+                            />
+                            <div className={style.modal__info}>
+                                <button className={style.modal__close} onClick={() => setModalOpen(false)} aria-label="Fermer la fenêtre">Fermer</button>
+                                <p className={style.modal__date}>
+                                    {formatDate(modalProject.date)}
+                                </p>
+                                <h2 className={style.modal__title}>
+                                    {modalProject.name}
+                                </h2>
+                                <a href={modalProject.url} target="_blank" rel="noreferrer" className={style.modal__link}>
+                                    <button className={style.modal__link__button}>
+                                        Visiter le site
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <p className={style.modal__description}>
+                            {modalProject.description}
                         </p>
-                        <button
-                            className={style.modal__close}
-                            onClick={() => setModalOpen(false)}
-                        >
-                            X
-                        </button>
                     </div>
                 </div>
             )}
