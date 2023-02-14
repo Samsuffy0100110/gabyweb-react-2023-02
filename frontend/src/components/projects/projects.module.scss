@@ -35,6 +35,11 @@
     transition: 0.3s;
     box-shadow: 0 0 10px 0 $secondary;
     border-radius: 0.2rem;
+
+    &:hover {
+        transition: 0.3s;
+        opacity: 0.5;
+    }
 }
 
 .modal {

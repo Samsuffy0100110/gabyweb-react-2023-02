@@ -69,16 +69,6 @@ export function Projects() {
         setModalOpen(true);
     };
 
-    const handleOver = (e) => {
-        e.target.style.opacity = 0.5;
-        e.target.style.transition = "all 0.5s ease";
-    };
-    
-    const handleOut = (e) => {
-        e.target.style.opacity = 1;
-        e.target.style.transition = "all 0.5s ease";
-    };
-
     return (
         <div className={style.container} id="projects">
             <h2 className={style.title}>Nos réalisations</h2>
@@ -93,8 +83,6 @@ export function Projects() {
                             alt={project.name}
                             onClick={() => handleModal(project)}
                             className={style.project_image}
-                            onMouseOver={handleOver}
-                            onMouseOut={handleOut}
                         />
                     </div>
                 ))}
