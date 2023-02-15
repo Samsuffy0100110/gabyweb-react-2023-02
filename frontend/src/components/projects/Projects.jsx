@@ -69,8 +69,14 @@ export function Projects() {
         setModalOpen(true);
     };
 
+    const handleclick = (e) => {
+        if (e.target.id === "modal") {
+            setModalOpen(false);
+        }
+    };
+
     return (
-        <div className={style.container} id="projects">
+        <div className={style.container} id="projects" onClick={handleclick} role="button" tabIndex={0}>
             <h2 className={style.title}>Nos réalisations</h2>
             <div className={style.gallery}>
                 {projects.map((project) => (
@@ -79,12 +85,14 @@ export function Projects() {
                         key={project.id}
                     >
                         <img
-                            id="imageHover"
                             src={imagePath + project.image}
                             alt={project.name}
-                            onClick={() => handleModal(project)}
-                            className={style.project_image}
+                            
+                            className={style.project__image}
                         />
+                        <div className={style.overlay} onClick={() => handleModal(project)}>
+                            <div className={style.overlay__name}>{project.name}</div>
+                        </div>
                     </div>
                 ))}
             </div>
