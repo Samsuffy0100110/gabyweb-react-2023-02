@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReCAPTCHA from "react-google-recaptcha";
 import style from './contact.module.scss';
 import emailjs from 'emailjs-com';
 import Swal from 'sweetalert2';
@@ -7,12 +8,14 @@ export function ContactForm() {
     const USER_ID = import.meta.env.VITE_EMAILJS_USER_ID;
     const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const reCaptchaKey = import.meta.env.VITE_RECAPTCHA_KEY;
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [organization, setOrganization] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [radioChecked, setRadioChecked] = useState([]);
+    const [captcha, setCaptcha] = useState('');
     const [rgpd, setChecked] = useState(false);
     const [message, setMessage] = useState('');
     const [disabled, setDisabled] = useState(true);
@@ -22,11 +25,10 @@ export function ContactForm() {
         { name: 'Refonte de site', value: 'Refonte de site', icon: '💻' },
         { name: 'Renseignements', value: 'Renseignements', icon: '❗️' },
     ];
-    const [reset , setReset] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (firstName && lastName && email && radioChecked && rgpd && message) {
+        if (firstName && lastName && email && radioChecked && rgpd && message && captcha) {
             emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
                 .then((result) => {
                     console.log(result.text);
@@ -48,28 +50,17 @@ export function ContactForm() {
             setRadioChecked([]);
             setChecked(false);
             setMessage('');
+            setCaptcha('');
         }
     };
 
     useEffect(() => {
-        if (firstName && lastName && email && radioChecked && rgpd && message) {
+        if (firstName && lastName && email && radioChecked && rgpd && message && captcha) {
             setDisabled(false);
         } else {
             setDisabled(true);
         }
-    }, [firstName, lastName, email, radioChecked, rgpd, message]);
-
-    const resetForm = () => {
-        setFirstName('');
-        setLastName('');
-        setOrganization('');
-        setEmail('');
-        setPhone('');
-        setRadioChecked([]);
-        setChecked(false);
-        setMessage('');
-    };
-
+    }, [firstName, lastName, email, radioChecked, rgpd, message, captcha]);
 
     return (
         <div className={style.container} id="contact">
@@ -173,7 +164,10 @@ export function ContactForm() {
                         </div>
                     </div>
                     <div className={style.formGroup}>
-                        <button type="button" onClick={resetForm}>Réinitialiser</button>
+                    <ReCAPTCHA
+                            sitekey={reCaptchaKey}
+                            onChange={(value) => setCaptcha(value)}
+                        />
                         <button type="submit" disabled={disabled}>Envoyer</button>
                     </div>
                 </form>
