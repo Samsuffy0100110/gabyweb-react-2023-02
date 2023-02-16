@@ -16,14 +16,13 @@ export function ContactForm() {
     const [rgpd, setChecked] = useState(false);
     const [message, setMessage] = useState('');
     const [disabled, setDisabled] = useState(true);
-
-
     const radios = [
         { name: 'Un site vitrine', value: 'Un site vitrine', icon: '🌐' },
         { name: 'Un site e-commerce', value: 'Un site e-commerce', icon: '👜' },
         { name: 'Refonte de site', value: 'Refonte de site', icon: '💻' },
         { name: 'Renseignements', value: 'Renseignements', icon: '❗️' },
     ];
+    const [reset , setReset] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -59,6 +58,18 @@ export function ContactForm() {
             setDisabled(true);
         }
     }, [firstName, lastName, email, radioChecked, rgpd, message]);
+
+    const resetForm = () => {
+        setFirstName('');
+        setLastName('');
+        setOrganization('');
+        setEmail('');
+        setPhone('');
+        setRadioChecked([]);
+        setChecked(false);
+        setMessage('');
+    };
+
 
     return (
         <div className={style.container} id="contact">
@@ -162,6 +173,7 @@ export function ContactForm() {
                         </div>
                     </div>
                     <div className={style.formGroup}>
+                        <button type="button" onClick={resetForm}>Réinitialiser</button>
                         <button type="submit" disabled={disabled}>Envoyer</button>
                     </div>
                 </form>
