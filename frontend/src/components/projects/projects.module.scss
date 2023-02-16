@@ -1,9 +1,14 @@
 @import '../../App.scss';
 
 .container {
-    background-color: $primary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem;
     margin: 2rem 0 2rem 0;
+    background-color: $primary;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px 0 $secondary;
 }
 
 .title {
@@ -17,17 +22,21 @@
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-top: 2rem;
     width: 80%;
+}
+
+.gallery__column {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
 }
 
 .project__gallery {
     width: 30%;
     padding: 0.3rem;
-    text-align: center;
     position: relative;
-
 }
 
 .project__image {

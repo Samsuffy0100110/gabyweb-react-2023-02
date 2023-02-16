@@ -66,7 +66,7 @@ export function ReviewNew() {
     return (
         <div className={style.admin_container}>
             <h1>Ajouter un avis</h1>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <form onSubmit={handleSubmit} encType="multipart/form-data" className={style.admin__form}>
                 <label htmlFor="name">Nom</label>
                 <input
                     type="text"

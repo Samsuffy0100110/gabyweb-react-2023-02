@@ -76,7 +76,7 @@ export function ProjectNew() {
     return (
         <div className={style.admin_container}>
             <h3>Ajouter un projet</h3>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <form onSubmit={handleSubmit} encType="multipart/form-data" className={style.admin__form}>
                 <label htmlFor="name">Nom du Projet</label>
                 <input
                     type="text"
@@ -115,7 +115,7 @@ export function ProjectNew() {
                 />
                 <label htmlFor="date">Date de création</label>
                 <input
-                    type="text"
+                    type="date"
                     name="date"
                     value={project.date}
                     onChange={handleChange}

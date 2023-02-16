@@ -63,7 +63,7 @@ export function ServiceNew() {
     return (
         <div className={style.admin_container}>
             <h1 className={style.title}>Créer un service</h1>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <form onSubmit={handleSubmit} encType="multipart/form-data" className={style.admin__form}>
                 <div>
                     <label htmlFor="title">Titre du service</label>
                     <input

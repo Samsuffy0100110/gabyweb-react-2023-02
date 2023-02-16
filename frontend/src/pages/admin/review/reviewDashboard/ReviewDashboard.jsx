@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import style from './reviewDashboard.module.scss';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import style from "./reviewDashboard.module.scss";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export function ReviewDashboard() {
@@ -57,7 +57,7 @@ export function ReviewDashboard() {
                     setReviews(reviews.filter((review) => review.id !== id));
                     Swal.fire({
                         title: "Supprimé !",
-                        text: "L\'avis a été supprimé.",
+                        text: "L'avis a été supprimé.",
                         icon: "success",
                         confirmButtonColor: "#0C8DA1",
                     });
@@ -85,36 +85,51 @@ export function ReviewDashboard() {
                 <Link to={`/admin`}>Retour</Link>
                 <h1>Avis</h1>
                 <Link to="/admin/review/new">Ajouter un avis</Link>
-                {reviews.map((review) => (
-                    <table key={review.id} className={style.admin_reviews}>
-                        <thead>
-                            <tr>
-                                <th>Nom du porteur de projet</th>
-                                <th>Commentaire</th>
-                                <th>Logo du porteur de projet</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{review.name}</td>
-                                <td className={style.description}>{truncateDescription(review.description, 100)}</td>
-                                <td><img src={logoPath + review.logo} alt={review.name} width="100" /></td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>
-                                    <Link to={`/admin/review/${review.id}/update`}>
-                                        <button className={style.update_button}>Modifier</button>
-                                    </Link>
-                                </td>
-                                <td>
-                                    <button onClick={() => handleDelete(review.id)} className={style.delete_button}>Supprimer</button>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                ))}
+                <div className={style.admin__reviews__container}>
+                    {reviews.map((review) => (
+                        <table key={review.id} className={style.admin__reviews}>
+                            <thead>
+                                <tr>
+                                    <th>Nom du porteur de projet</th>
+                                    <th>Commentaire</th>
+                                    <th>Logo du porteur de projet</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{review.name}</td>
+                                    <td className={style.description}>
+                                        {truncateDescription(review.description, 100)}
+                                    </td>
+                                    <td>
+                                        <img
+                                            src={logoPath + review.logo}
+                                            alt={review.name}
+                                            width="100"
+                                        />
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>
+                                        <Link to={`/admin/review/${review.id}/update`}>
+                                            <button className={style.update_button}>Modifier</button>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <button
+                                            onClick={() => handleDelete(review.id)}
+                                            className={style.delete_button}
+                                        >
+                                            Supprimer
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    ))}
+                </div>
             </div>
         );
     }
