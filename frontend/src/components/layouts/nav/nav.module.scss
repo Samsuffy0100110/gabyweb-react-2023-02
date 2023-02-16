@@ -67,6 +67,19 @@ nav {
     }
 }
 
+.nav a {
+    text-decoration: none;
+    color: $primary;
+    transition: all 0.3s ease-in-out;
+    font-size: 1rem;
+    font-family: $font-family-base;
+}
+
+.nav a:hover {
+    color: $secondary;
+    text-decoration: underline;
+}
+
 .nav__logo {
     width: 5rem;
 }

@@ -40,18 +40,16 @@
 }
 
 .footer__links__link {
+  text-decoration: none;
   color: $secondary;
+  transition: all 0.3s ease-in-out;
   font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
+  font-family: $font-family-base;
 }
 
 .footer__links__link:hover {
   color: $primary;
-}
-
-.footer__links__link:active {
-  color: $primary;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {

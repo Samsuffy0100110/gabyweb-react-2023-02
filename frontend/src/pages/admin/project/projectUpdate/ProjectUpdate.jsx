@@ -135,9 +135,7 @@ export function ProjectUpdate() {
                         onClick={() => deleteOldImage(project.image)}
                     />
             </form>
-            <Link to="/admin/projects" className={style.link}>
-                <button>Retour à la liste des projets</button>
-            </Link>
+            <Link to="/admin/projects">Retour à la liste des projets</Link>
         </div>
     );
 }

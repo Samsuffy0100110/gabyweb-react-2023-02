@@ -37,13 +37,27 @@ export function ProjectView() {
 
     return (
         <div className={style.admin_container}>
-            <h1>{project.name}</h1>
-            <button onClick={() => navigate(`/admin/project/${project.id}/update`)} className={style.update_button}>Modifier</button>
-            <p>{project.description}</p>
-            <img src={imagePath + project.image} alt={project.name} width="200" />
-            <a href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</a>
-            <p>{formatDate(project.date)}</p>
             <Link to="/admin/projects">Retour</Link>
+            <div className={style.admin__card}>
+                <div className={style.admin__card__header}>
+                    <h1 className={style.admin__card__title}>{project.name}</h1>
+                    <div className={style.admin__card__header__buttons}>
+                        <Link to={`/admin/project/${id}/edit`}>
+                        <button onClick={() => navigate(`/admin/project/${project.id}/update`)} className={style.update_button}>Modifier</button>
+                        </Link>
+                    </div>
+                </div>
+                <div className={style.admin__card__body}>
+                    <div className={style.admin__card__body__image}>
+                        <img src={`${imagePath}${project.image}`} alt={project.name} />
+                    </div>
+                    <div className={style.admin__card__body__content}>
+                        <p className={style.admin__card__body__content__text}>{project.description}</p>
+                        <a href={project.url} target="_blank" rel="noreferrer" className={style.admin__card__link}>{project.url}</a>
+                        <p className={style.admin__card__body__content__text}>{formatDate(project.date)}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

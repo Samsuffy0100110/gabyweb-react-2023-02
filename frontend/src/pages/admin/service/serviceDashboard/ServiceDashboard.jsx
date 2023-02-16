@@ -85,9 +85,9 @@ export function ServiceDashboard() {
                 <Link to={`/admin`}>Retour</Link>
                 <h1>Préstations</h1>
                 <Link to="/admin/service/new">Ajouter un service</Link>
-                <div className={style.admin__services__container}>
+                <div className={style.admin__table__container}>
                     {services.map((service) => (
-                        <table key={service.id} className={style.admin__services}>
+                        <table key={service.id}>
                             <thead>
                                 <tr>
                                     <th>Titre</th>

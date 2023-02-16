@@ -85,9 +85,9 @@ export function ReviewDashboard() {
                 <Link to={`/admin`}>Retour</Link>
                 <h1>Avis</h1>
                 <Link to="/admin/review/new">Ajouter un avis</Link>
-                <div className={style.admin__reviews__container}>
+                <div className={style.admin__table__container}>
                     {reviews.map((review) => (
-                        <table key={review.id} className={style.admin__reviews}>
+                        <table key={review.id}>
                             <thead>
                                 <tr>
                                     <th>Nom du porteur de projet</th>

@@ -30,14 +30,15 @@ a {
     font-family: $font-family-base;
 }
 
+a:hover {
+    color: $third;
+    text-decoration: underline;
+}
+
 footer {
     position: sticky;
 }
 
-a:hover {
-    color: $secondary;
-    text-decoration: underline;
-}
 
 .admin_container {
     background-color: $secondary;

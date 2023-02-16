@@ -96,7 +96,7 @@ export function ProjectDashboard() {
                 <Link to={`/admin`}>Retour</Link>
                 <h3>Tout les projets</h3>
                 <Link to="/admin/project/new">Ajouter un projet</Link>
-                <div className={style.admin__projects__container}>
+                <div className={style.admin__table__container}>
                     {projects.map((project) => (
                         <table key={project.id} className={style.admin__projects}>
                             <thead>
@@ -114,7 +114,7 @@ export function ProjectDashboard() {
                                     <td>{project.name}</td>
                                     <td className={style.description}>{truncateDescription(project.description, 100)}</td>
                                     <td><img src={imagePath + project.image} alt={project.name} width="200px" /></td>
-                                    <td>{project.url}</td>
+                                    <td><a href={project.url} target="_blank" rel="noreferrer">{project.url}</a></td>
                                     <td>{formatDate(project.date)}</td>
                                     <td>
                                         <Link to={`/admin/project/${project.id}`}>
