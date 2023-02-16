@@ -92,8 +92,7 @@ export function ProjectUpdate() {
     return (
         <div className={style.admin_container}>
             <h1>Modifier le projet</h1>
-            <form onSubmit={handleUpdate} encType="multipart/form-data">
-                <div>
+            <form onSubmit={handleUpdate} encType="multipart/form-data" className={style.admin__form}>
                     <label htmlFor="name">Titre</label>
                     <input
                         type="text"
@@ -101,16 +100,12 @@ export function ProjectUpdate() {
                         id="name"
                         defaultValue={project.name}
                     />
-                </div>
-                <div>
                     <label htmlFor="description">Description</label>
                     <textarea
                         name="description"
                         id="description"
                         defaultValue={project.description}
                     />
-                </div>
-                <div>
                     <label htmlFor="image">Image</label>
                     <input 
                         type="file" 
@@ -123,32 +118,22 @@ export function ProjectUpdate() {
                             src={imagePreview}
                             alt="preview"
                             className={style.preview}
-                            width="200"
                         />
                     )}
-                </div>
-                <div>
                     <label htmlFor="url">URL</label>
                     <input type="text" name="url" id="url" defaultValue={project.url} />
-                </div>
-                <div>
                     <label htmlFor="date">Date</label>
                     <input
-                        type="text"
+                        type="date"
                         name="date"
                         id="date"
                         defaultValue={today}
                     />
-                </div>
-                <div>
-                    <button 
-                        type="submit" 
-                        className={style.update_button} 
+                    <input
+                        type="submit"
+                        value="Modifier"
                         onClick={() => deleteOldImage(project.image)}
-                    >
-                        Modifier
-                    </button>
-                </div>
+                    />
             </form>
             <Link to="/admin/projects" className={style.link}>
                 <button>Retour à la liste des projets</button>

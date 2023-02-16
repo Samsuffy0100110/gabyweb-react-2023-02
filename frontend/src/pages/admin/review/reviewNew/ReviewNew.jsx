@@ -95,11 +95,10 @@ export function ReviewNew() {
                     <img
                         src={logoPreview}
                         alt="Logo"
-                        className={style.logoPreview}
-                        width="200"
+                        className={style.preview}
                     />
                 )}
-                <button type="submit">C'est parti !</button>
+                <input type="submit" value="Créer" />
             </form>
             <Link to="/admin/reviews">Retour à la liste des avis</Link>
         </div>

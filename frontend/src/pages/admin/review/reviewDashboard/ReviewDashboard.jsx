@@ -93,13 +93,14 @@ export function ReviewDashboard() {
                                     <th>Nom du porteur de projet</th>
                                     <th>Commentaire</th>
                                     <th>Logo du porteur de projet</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>{review.name}</td>
                                     <td className={style.description}>
-                                        {truncateDescription(review.description, 100)}
+                                        {truncateDescription(review.review, 100)}
                                     </td>
                                     <td>
                                         <img
@@ -108,16 +109,10 @@ export function ReviewDashboard() {
                                             width="100"
                                         />
                                     </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
                                     <td>
                                         <Link to={`/admin/review/${review.id}/update`}>
                                             <button className={style.update_button}>Modifier</button>
                                         </Link>
-                                    </td>
-                                    <td>
                                         <button
                                             onClick={() => handleDelete(review.id)}
                                             className={style.delete_button}
@@ -126,7 +121,7 @@ export function ReviewDashboard() {
                                         </button>
                                     </td>
                                 </tr>
-                            </tfoot>
+                            </tbody>
                         </table>
                     ))}
                 </div>

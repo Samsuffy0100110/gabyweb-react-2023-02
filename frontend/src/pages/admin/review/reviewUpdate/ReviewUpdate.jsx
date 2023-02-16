@@ -80,6 +80,7 @@ const deleteOldLogo = async (fileName) => {
             <form 
                 onSubmit={handleUpdate} 
                 encType="multipart/form-data"
+                className={style.admin__form}
             >
                 <label htmlFor="name">Nom du porteur de projet</label>
                 <input 
@@ -107,11 +108,10 @@ const deleteOldLogo = async (fileName) => {
                     <img 
                         src={logoPreview}
                         alt="logo"
-                        className={style.logo_preview}
-                        width="200"
+                        className={style.preview}
                     />
                 )}
-                <button type="submit" className={style.update_button} onClick={() => deleteOldLogo(review.logo)}>Modifier</button>
+                <input type="submit" value="Modifier" onClick={() => deleteOldLogo(review.logo)} />
             </form>
             <Link to="/admin/reviews">Retour à la liste des avis</Link>
         </div>

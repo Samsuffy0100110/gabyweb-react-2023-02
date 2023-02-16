@@ -64,7 +64,6 @@ export function ServiceNew() {
         <div className={style.admin_container}>
             <h1 className={style.title}>Créer un service</h1>
             <form onSubmit={handleSubmit} encType="multipart/form-data" className={style.admin__form}>
-                <div>
                     <label htmlFor="title">Titre du service</label>
                     <input
                         type="text"
@@ -73,8 +72,6 @@ export function ServiceNew() {
                         value={service.title}
                         onChange={handleChange}
                     />
-                </div>
-                <div>
                     <label htmlFor="description">Description</label>
                     <textarea
                         type="text"
@@ -83,8 +80,6 @@ export function ServiceNew() {
                         value={service.description}
                         onChange={handleChange}
                     />
-                </div>
-                <div>
                     <label htmlFor="icon">Icone</label>
                     <input
                         type="file"
@@ -96,12 +91,10 @@ export function ServiceNew() {
                         <img
                             src={iconPreview}
                             alt="icon preview"
-                            className={style.iconPreview}
-                            width="200"
+                            className={style.preview}
                         />
                     )}
-                </div>
-                <button type="submit">GO !!!</button>
+                <input type="submit" value="Créer" />
             </form>
             <Link to="/admin/services">Retour à la liste des services</Link>
         </div>

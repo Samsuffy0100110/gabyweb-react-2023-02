@@ -103,7 +103,6 @@ export function ProjectNew() {
                         src={imagePreview}
                         alt="preview"
                         className={style.preview}
-                        width="200"
                     />
                 )}
                 <label htmlFor="url">Lien du projet</label>
@@ -120,7 +119,7 @@ export function ProjectNew() {
                     value={project.date}
                     onChange={handleChange}
                 />
-                <button type="submit">Décollage !</button>
+                <input type="submit" value="Créer" />
             </form>
             <Link to={`/admin/projects`}>Retour à la liste des projets</Link>
         </div>

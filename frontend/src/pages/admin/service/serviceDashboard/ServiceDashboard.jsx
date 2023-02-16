@@ -84,15 +84,16 @@ export function ServiceDashboard() {
             <div className={style.admin_container}>
                 <Link to={`/admin`}>Retour</Link>
                 <h1>Préstations</h1>
-                <Link to="/admin/service/new">Add a service</Link>
+                <Link to="/admin/service/new">Ajouter un service</Link>
                 <div className={style.admin__services__container}>
                     {services.map((service) => (
-                        <table key={service.id} className={style.admin_services}>
+                        <table key={service.id} className={style.admin__services}>
                             <thead>
                                 <tr>
                                     <th>Titre</th>
                                     <th>Description</th>
                                     <th>Icones</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -100,20 +101,14 @@ export function ServiceDashboard() {
                                     <td>{service.title}</td>
                                     <td className={style.description}>{truncateDescription(service.description, 100)}</td>
                                     <td><img src={`${iconPath}${service.icon}`} alt={service.title} width="100" /></td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
                                     <td>
                                         <Link to={`/admin/service/${service.id}/update`}>
                                             <button className={style.update_button}>Modifier</button>
                                         </Link>
-                                    </td>
-                                    <td>
                                         <button onClick={() => handleDelete(service.id)} className={style.delete_button}>Supprimer</button>
                                     </td>
                                 </tr>
-                            </tfoot>
+                            </tbody>
                         </table>
                     ))}
                 </div>

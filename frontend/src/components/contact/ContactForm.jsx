@@ -145,7 +145,6 @@ export function ContactForm() {
                             onChange={(e) => setMessage(e.target.value)}
                             placeholder="Bonjour Gaby Web... *"
                             label="Message *"
-                            rows={5}
                         />
                     </div>
                     <div className={style.formGroup}>

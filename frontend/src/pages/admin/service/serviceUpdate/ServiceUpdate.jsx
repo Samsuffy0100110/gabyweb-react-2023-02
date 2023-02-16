@@ -77,6 +77,7 @@ export function ServiceUpdate () {
             <form 
                 onSubmit={handleUpdate} 
                 encType="multipart/form-data"
+                className={style.admin__form}
             >
                 <label htmlFor="title">Titre</label>
                 <input 
@@ -103,10 +104,10 @@ export function ServiceUpdate () {
                     <img 
                         src={iconPreview}
                         alt="icon"
-                        className={style.icon_preview}
+                        className={style.preview}
                     />
                 )}
-                <button type="submit" className={style.update_button} onClick={() => deleteOldIcon(service.icon)}>Modifier</button>
+                <input type="submit" value="Modifier" onClick={deleteOldIcon(service.icon)} />
             </form>
             <Link to="/admin/services">Retour à la liste des services</Link>
         </div>
