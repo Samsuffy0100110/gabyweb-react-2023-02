@@ -1,0 +1,69 @@
+@import '../../../App.scss';
+
+.footer__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  background-color: $third;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.footer__copyRight {
+  font-size: 1rem;
+  color: $secondary;
+  margin-left: 2rem;
+}
+
+.footer__socialMedia {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 10rem;
+}
+
+.footer__socialMedia__image {
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 2rem;
+}
+
+.footer__links__link {
+  text-decoration: none;
+  color: $secondary;
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+  font-family: $font-family-base;
+}
+
+.footer__links__link:hover {
+  color: $primary;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer__copyRight {
+    margin-bottom: 1rem;
+  }
+
+  .footer__socialMedia {
+    margin-bottom: 1rem;
+  }
+}

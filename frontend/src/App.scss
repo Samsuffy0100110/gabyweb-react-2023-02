@@ -1,26 +1,32 @@
-@import "./styles/variables";
-@import "./styles/global";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-.components{
-  border : 3px solid $primary;
-  padding : 10px;
-}
+$font-family-base: 'Poppins', sans-serif;
 
-.form {
-  border : 3px solid $primary;
-  padding : 10px;
-  width : 50%;
-}
+$primary: #0C8DA1;
+$secondary: #424242;
+$third: #F3F2F2;
+$mandatory: #FF0000;
+$warning: #FFA500;
+@import "./main";
+@import "./style/button";
+@import "./style/form";
+@import "./style/table";
 
-.about {
-  border : 3px solid $primary;
-  padding : 10px;
-  width : 50%;
-  margin-left: auto;
-}
 
-.form-and-about {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

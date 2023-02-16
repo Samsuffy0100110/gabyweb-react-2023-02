@@ -17,5 +17,12 @@
   "devDependencies": {
     "concurrently": "^7.0.0",
     "husky": "^7.0.0"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^3.10.0",
+    "emailjs-com": "^3.2.0",
+    "react-uuid": "^2.0.0",
+    "sweetalert2": "^11.7.1",
+    "uninstall": "^0.0.0"
   }
 }

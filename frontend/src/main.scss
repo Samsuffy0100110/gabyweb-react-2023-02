@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: $font-family-base;
+    background-color: $third;
+    color: $secondary;
+}
+
+p {
+    margin: 0;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: $primary;
+    transition: all 0.3s ease-in-out;
+    font-size: 1rem;
+    font-family: $font-family-base;
+}
+
+a:hover {
+    color: $third;
+    text-decoration: underline;
+}
+
+footer {
+    position: sticky;
+}
+
+
+.admin_container {
+    background-color: $secondary;
+    color: $third;
+    padding: 1rem;
+    border-radius: 0.2rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.scrollbar
+{
+	height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+#style-scroll::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+#style-scroll::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-scroll::-webkit-scrollbar-thumb
+{
+	background-color: $primary;
+	background-image: -webkit-linear-gradient(45deg,
+    rgba(255, 255, 255, .2) 25%,
+	transparent 25%,
+	transparent 50%,
+	rgba(255, 255, 255, .2) 50%,
+	rgba(255, 255, 255, .2) 75%,
+	transparent 75%,
+	transparent)
+}
+
+// @function pxToRem($px) {
+//     @return $px / 16px * 1rem;
+// }

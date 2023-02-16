@@ -1,10 +1,11 @@
-import Form from "./Form"
-import AboutUs from "./AboutUs"
+import { ContactForm } from "../contact/ContactForm";
+import { AboutUs } from "../aboutUs/AboutUs";
+import style from "./form&About.module.scss";
 
-export default function FormAndAbout () {
+export function FormAndAbout () {
     return (
-        <div className="form-and-about">
-            <Form />
+        <div className={style.form_about}>
+            <ContactForm />
             <AboutUs />
         </div>
     )

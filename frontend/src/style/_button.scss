@@ -1,0 +1,29 @@
+button {
+    background-color: $primary;
+    color: $third;
+    border: none;
+    padding: 0.5rem;
+    margin: 1rem;
+    font-size: 1rem;
+    border-radius: 2px;
+    font-family: $font-family-base;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: $secondary;
+}
+
+button:disabled {
+    background-color: $secondary;
+    cursor: not-allowed;
+}
+
+.delete_button:hover {
+    background-color: $mandatory;
+}
+
+.update_button:hover {
+    background-color: $warning;
+}
