@@ -26,8 +26,9 @@ export function Nav() {
           </Link>
         </li>
         </ul>
-          <a href="#contact" className={style.button}>Contact/Devis</a>
-            
+          <a href="#contact" className={style.button} style={{ color: "white", textDecoration: "none" }}>
+            Contactez-nous
+          </a>
     </nav>
   );
 }

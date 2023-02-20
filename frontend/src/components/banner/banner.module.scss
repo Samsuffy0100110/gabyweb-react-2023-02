@@ -32,6 +32,7 @@
 
 .title__span {
     color: $primary;
+    text-shadow: 1px 1px 2px $third;
 }
 
 .subtitle__content {
@@ -51,6 +52,7 @@
 
 .subtitle__span {
     color: $primary;
+    text-shadow: 1px 1px 2px $third;
 }
 
 @media screen and (max-width: 768px) {
@@ -74,6 +76,7 @@
         flex-direction: column;
         height: 100%;
         margin-top: 2rem;
+        margin-left: 2rem;
     }
     
     .title {
@@ -84,6 +87,7 @@
     
     .title__span {
         color: $primary;
+        text-shadow: 1px 1px 2px $third;
     }
     
     .subtitle__content {
@@ -93,6 +97,7 @@
         align-items: center;
         height: 100%;
         margin-left: 10rem;
+        margin-bottom: 2rem;
     }
     
     .subtitle {
@@ -103,5 +108,6 @@
     
     .subtitle__span {
         color: $primary;
+        text-shadow: 1px 1px 2px $third;
     }
 }
