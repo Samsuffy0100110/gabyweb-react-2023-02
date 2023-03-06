@@ -7,7 +7,7 @@ import { Admin } from "./pages/admin/Admin";
 import { Home } from "./pages/home/Home";
 import "./App.scss";
 
-function App() {
+export function App() {
   return (
     <div>
       <Router>
@@ -28,5 +28,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
