@@ -22,6 +22,8 @@ export function ContactForm() {
     const radios = [
         { name: 'Un site vitrine', value: 'Un site vitrine', icon: '🌐' },
         { name: 'Un site e-commerce', value: 'Un site e-commerce', icon: '👜' },
+        { name: 'Un site administrable', value: 'Un site administrable', icon: '📝' },
+        { name: 'Un site sur mesure', value: 'Un site sur mesure', icon: '🔧'},
         { name: 'Refonte de site', value: 'Refonte de site', icon: '💻' },
         { name: 'Renseignements', value: 'Renseignements', icon: '❗️' },
     ];

@@ -1,9 +1,9 @@
 @import '../../App.scss';
 
 .container {
-    padding : 0 10%;
+    padding: 0 10%;
     margin: 5rem;
-    width : 50%;
+    width: 50%;
 }
 
 .title {
@@ -19,14 +19,14 @@
 }
 
 .contactForm {
-    display : flex;
-    flex-direction : column;
-    justify-content : center;
-    align-items : center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .contactForm input {
-    width : 100%;
+    width: 100%;
     background-color: $third;
     border: none;
     border-bottom: 1px solid $primary;
@@ -37,11 +37,12 @@
 }
 
 .radioGroup {
-    display : flex;
-    flex-direction : row;
-    flex-wrap: wrap;
-    justify-content : center;
-    align-items : center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 1rem;
+    justify-items: center;
+    align-items: center;
 }
 
 .contactForm input:focus {
@@ -49,13 +50,11 @@
 }
 
 .contactForm textarea {
-    width : 100%;
+    width: 100%;
     background-color: $third;
     border: none;
     border-bottom: 1px solid $primary;
     color: $primary;
-    padding: 10px;
-    margin: 10px;
     font-size: 1.2rem;
 }
 
@@ -64,7 +63,7 @@
 }
 
 .contactForm button {
-    width : 100%;
+    width: 100%;
     background-color: $primary;
     border: none;
     color: $third;
@@ -75,28 +74,28 @@
 }
 
 .formGroup {
-    display : flex;
-    flex-direction : row;
-    justify-content : center;
-    align-items : center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .checkbox {
-    display : flex;
-    flex-direction : row;
-    justify-content : center;
-    align-items : center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
 }
 
 .mandatory {
-    color : $mandatory;
+    color: $mandatory;
 }
 
 @media screen and (max-width: 1280px) {
     .container {
-        width : 70%;
-        padding : 1rem;
+        width: 70%;
+        padding: 1rem;
         margin: 0;
     }
 
@@ -134,8 +133,8 @@
 
 @media screen and (max-width: 768px) {
     .container {
-        width : 95%;
-        padding : 1rem;
+        width: 95%;
+        padding: 1rem;
         margin: 0;
     }
 
@@ -150,9 +149,9 @@
     }
 
     .formGroup {
-        flex-direction : column;
+        flex-direction: column;
     }
-    
+
     .contactForm input {
         font-size: 1rem;
     }
@@ -177,8 +176,8 @@
 
 @media screen and (max-width: 480px) {
     .container {
-        width : 95%;
-        padding : 1rem;
+        width: 95%;
+        padding: 1rem;
         margin: 0;
     }
 
@@ -212,4 +211,3 @@
         font-size: 0.8rem;
     }
 }
-
