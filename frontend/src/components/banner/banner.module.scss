@@ -1,114 +1,82 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .banner {
-    background-image: url('../../assets/banner.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 400px;
-    border-radius: 0 0 50% 0;
+  background-image: url("../../assets/banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
 }
 
 .banner__content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: 100%;
-}
-
-.title__content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin-right: 30rem;
-    margin-top: 2rem;
-}
-
-.title {
-    color: $third;
-    font-size: 3rem;
-    font-weight: 00;
-}
-
-.title__span {
-    color: $primary;
-    text-shadow: 1px 1px 2px $third;
-}
-
-
-.subtitle__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    margin-top: 2rem;
-}
-
-.subtitle {
-    color: $third;
-    font-size: 2.5rem;
-    font-weight: 700;
-}
-
-.subtitle__span {
-    color: $primary;
-    text-shadow: 1px 1px 2px $third;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  padding: 3rem;
 }
 
 @media screen and (max-width: 768px) {
-    .banner {
-        background-image: url('../../assets/banner.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 300px;
-    }
-    
-    .banner__content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        height: 100%;
-    }
-    
-    .title__content {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        margin-top: 2rem;
-        margin-left: 2rem;
-    }
-    
-    .title {
-        color: $third;
-        font-size: 2rem;
-        font-weight: 00;
-    }
-    
-    .title__span {
-        color: $primary;
-        text-shadow: 1px 1px 2px $third;
-    }
-    
-    .subtitle__content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        margin-left: 10rem;
-        margin-bottom: 2rem;
-    }
-    
-    .subtitle {
-        color: $third;
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
-    
-    .subtitle__span {
-        color: $primary;
-        text-shadow: 1px 1px 2px $third;
-    }
+  .banner__content {
+    flex-direction: column;
+  }
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: $third;
+  margin-bottom: auto;
+  text-shadow: 1px 1px 1px $primary;
+  -webkit-text-stroke: 1px $primary;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+.title__span {
+  color: $primary;
+  text-shadow: 1px 1px 1px $third;
+  -webkit-text-stroke: 1px $third;
+}
+
+.banner__description {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: $third;
+  width: 40%;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .banner__description {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+}
+
+.subtitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: $third;
+  margin-top: auto;
+  text-shadow: 1px 1px 1px $primary;
+  -webkit-text-stroke: 1px $primary;
+}
+
+@media screen and (max-width: 768px) {
+  .subtitle {
+    font-size: 2rem;
+  }
+}
+
+.subtitle__span {
+  color: $primary;
+  text-shadow: 1px 1px 1px $third;
+  -webkit-text-stroke: 1px $third;
 }

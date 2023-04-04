@@ -13,31 +13,31 @@ import React, { useEffect, useState } from "react";
 import { Admin } from "../pages/admin/Admin";
 
 export function ProtectedRoute() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            setIsAuthenticated(true);
-        } else {
-            navigate("/login");
-        }
-    }, [navigate]);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      navigate("/login");
+    }
+  }, [navigate]);
 
-    return (
-        <Routes>
-            <Route path="/" element={<Admin />} />
-            <Route path="/projects" element={<ProjectDashboard />} />
-            <Route path="/project/new" element={<ProjectNew />} />
-            <Route path="/project/:id/update" element={<ProjectUpdate />} />
-            <Route path="/project/:id" element={<ProjectView />} />
-            <Route path="/services" element={<ServiceDashboard />} />
-            <Route path="/service/new" element={<ServiceNew />} />
-            <Route path="/service/:id/update" element={<ServiceUpdate />} />
-            <Route path="/reviews" element={<ReviewDashboard />} />
-            <Route path="/review/new" element={<ReviewNew />} />
-            <Route path="/review/:id/update" element={<ReviewUpdate />} />
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route path="/" element={<Admin />} />
+      <Route path="/projects" element={<ProjectDashboard />} />
+      <Route path="/project/new" element={<ProjectNew />} />
+      <Route path="/project/:id/update" element={<ProjectUpdate />} />
+      <Route path="/project/:id" element={<ProjectView />} />
+      <Route path="/services" element={<ServiceDashboard />} />
+      <Route path="/service/new" element={<ServiceNew />} />
+      <Route path="/service/:id/update" element={<ServiceUpdate />} />
+      <Route path="/reviews" element={<ReviewDashboard />} />
+      <Route path="/review/new" element={<ReviewNew />} />
+      <Route path="/review/:id/update" element={<ReviewUpdate />} />
+    </Routes>
+  );
 }

@@ -1,213 +1,212 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .container {
-    padding: 0 10%;
-    margin: 5rem;
-    width: 50%;
+  padding: 0 10%;
+  margin: 5rem;
+  width: 50%;
 }
 
 .title {
-    font-size: 2rem;
-    border-bottom: 3px solid $primary;
-    width: 80%;
+  font-size: 2rem;
+  border-bottom: 3px solid $primary;
+  width: 80%;
 }
 
 .summary {
-    color: $primary;
-    font-size: 1.2rem;
-    margin: 2rem 0 2rem 0;
+  color: $primary;
+  font-size: 1.2rem;
+  margin: 2rem 0 2rem 0;
 }
 
 .contactForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .contactForm input {
-    width: 100%;
-    background-color: $third;
-    border: none;
-    border-bottom: 1px solid $primary;
-    color: $primary;
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.2rem;
+  width: 100%;
+  background-color: $third;
+  border: none;
+  border-bottom: 1px solid $primary;
+  color: $primary;
+  padding: 10px;
+  margin: 10px;
+  font-size: 1.2rem;
 }
 
 .radioGroup {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 1rem;
-    justify-items: center;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 1rem;
+  justify-items: center;
+  align-items: center;
 }
 
 .contactForm input:focus {
-    outline: none;
+  outline: none;
 }
 
 .contactForm textarea {
-    width: 100%;
-    background-color: $third;
-    border: none;
-    border-bottom: 1px solid $primary;
-    color: $primary;
-    font-size: 1.2rem;
+  width: 100%;
+  background-color: $third;
+  border: none;
+  border-bottom: 1px solid $primary;
+  color: $primary;
+  font-size: 1.2rem;
 }
 
 .contactForm textarea:focus {
-    outline: none;
+  outline: none;
 }
 
 .contactForm button {
-    width: 100%;
-    background-color: $primary;
-    border: none;
-    color: $third;
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.2rem;
-    height: 75px;
+  width: 100%;
+  background-color: $primary;
+  border: none;
+  color: $third;
+  padding: 10px;
+  margin: 10px;
+  font-size: 1.2rem;
+  height: 75px;
 }
 
 .formGroup {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .checkbox {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
 .mandatory {
-    color: $mandatory;
+  color: $mandatory;
 }
 
 @media screen and (max-width: 1280px) {
-    .container {
-        width: 70%;
-        padding: 1rem;
-        margin: 0;
-    }
+  .container {
+    width: 70%;
+    padding: 1rem;
+    margin: 0;
+  }
 
-    .title {
-        font-size: 1.8rem;
-        border-bottom: 2px solid $primary;
-        width: 100%;
-    }
+  .title {
+    font-size: 1.8rem;
+    border-bottom: 2px solid $primary;
+    width: 100%;
+  }
 
-    .summary {
-        font-size: 1.1rem;
-    }
+  .summary {
+    font-size: 1.1rem;
+  }
 
-    .contactForm input {
-        font-size: 1.1rem;
-    }
+  .contactForm input {
+    font-size: 1.1rem;
+  }
 
-    .contactForm textarea {
-        font-size: 1.1rem;
-    }
+  .contactForm textarea {
+    font-size: 1.1rem;
+  }
 
-    .contactForm button {
-        font-size: 1.1rem;
-    }
+  .contactForm button {
+    font-size: 1.1rem;
+  }
 
-    .checkbox {
-        padding: 0.5rem;
-    }
+  .checkbox {
+    padding: 0.5rem;
+  }
 
-    .mandatory {
-        font-size: 0.9rem;
-    }
+  .mandatory {
+    font-size: 0.9rem;
+  }
 }
 
-
 @media screen and (max-width: 768px) {
-    .container {
-        width: 95%;
-        padding: 1rem;
-        margin: 0;
-    }
+  .container {
+    width: 95%;
+    padding: 1rem;
+    margin: 0;
+  }
 
-    .title {
-        font-size: 1.5rem;
-        border-bottom: 2px solid $primary;
-        width: 100%;
-    }
+  .title {
+    font-size: 1.5rem;
+    border-bottom: 2px solid $primary;
+    width: 100%;
+  }
 
-    .summary {
-        font-size: 1rem;
-    }
+  .summary {
+    font-size: 1rem;
+  }
 
-    .formGroup {
-        flex-direction: column;
-    }
+  .formGroup {
+    flex-direction: column;
+  }
 
-    .contactForm input {
-        font-size: 1rem;
-    }
+  .contactForm input {
+    font-size: 1rem;
+  }
 
-    .contactForm textarea {
-        font-size: 1rem;
-    }
+  .contactForm textarea {
+    font-size: 1rem;
+  }
 
-    .contactForm button {
-        font-size: 1rem;
-        height: 50px;
-    }
+  .contactForm button {
+    font-size: 1rem;
+    height: 50px;
+  }
 
-    .checkbox {
-        padding: 0.5rem;
-    }
+  .checkbox {
+    padding: 0.5rem;
+  }
 
-    .mandatory {
-        font-size: 0.8rem;
-    }
+  .mandatory {
+    font-size: 0.8rem;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .container {
-        width: 95%;
-        padding: 1rem;
-        margin: 0;
-    }
+  .container {
+    width: 95%;
+    padding: 1rem;
+    margin: 0;
+  }
 
-    .title {
-        font-size: 1.5rem;
-        border-bottom: 2px solid $primary;
-        width: 100%;
-    }
+  .title {
+    font-size: 1.5rem;
+    border-bottom: 2px solid $primary;
+    width: 100%;
+  }
 
-    .summary {
-        font-size: 1rem;
-    }
+  .summary {
+    font-size: 1rem;
+  }
 
-    .contactForm input {
-        font-size: 1rem;
-    }
+  .contactForm input {
+    font-size: 1rem;
+  }
 
-    .contactForm textarea {
-        font-size: 1rem;
-    }
+  .contactForm textarea {
+    font-size: 1rem;
+  }
 
-    .contactForm button {
-        font-size: 1rem;
-    }
+  .contactForm button {
+    font-size: 1rem;
+  }
 
-    .checkbox {
-        padding: 0.5rem;
-    }
+  .checkbox {
+    padding: 0.5rem;
+  }
 
-    .mandatory {
-        font-size: 0.8rem;
-    }
+  .mandatory {
+    font-size: 0.8rem;
+  }
 }

@@ -1,38 +1,38 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .legal__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 60%;
-    background-color: $third;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  background-color: $third;
+  margin: 0 auto;
 }
 
 .legal__title {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: $secondary;
-    margin-top: 5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: $secondary;
+  margin-top: 5rem;
 }
 
 strong {
-    color: $third;
-    border-bottom: 1px solid $secondary;
+  color: $third;
+  border-bottom: 1px solid $secondary;
 }
 
 .legal__content {
-    font-size: 1rem;
-    margin: 5rem;
-    text-align: justify;
-    background-color: $primary;
-    padding: 1rem;
-    border-radius: 0.2rem;
+  font-size: 1rem;
+  margin: 5rem;
+  text-align: justify;
+  background-color: $primary;
+  padding: 1rem;
+  border-radius: 0.2rem;
 }
 
 .legal__content p {
-    color: $secondary;
-    padding: 1rem;
+  color: $secondary;
+  padding: 1rem;
 }

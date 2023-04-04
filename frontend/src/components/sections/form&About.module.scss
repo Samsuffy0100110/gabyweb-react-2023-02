@@ -1,13 +1,13 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .form_about {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 768px) {
-    .form_about {
-        flex-direction: column;
-    }
+  .form_about {
+    flex-direction: column;
+  }
 }

@@ -1,55 +1,48 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .loginForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    background-color: $primary;
-    color: $secondary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: $primary;
+  color: $secondary;
+  font-family: $font-family-base;
+
+  .loginForm__input {
+    width: 400px;
+    padding: 0.5rem;
+    font-size: 1rem;
     font-family: $font-family-base;
+    background-color: $third;
+    color: $primary;
+  }
 
-    .loginForm__title {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    .loginForm__input {
-        width: 100%;
-        height: 2rem;
-        margin-bottom: 1rem;
-        border: none;
-        border-radius: 0.5rem;
-        padding: 0.5rem;
-        font-size: 1rem;
-
-    }
-
-    .loginForm__button {
-        width: 100%;
-        height: 2rem;
-        margin-bottom: 1rem;
-        border: none;
-        border-radius: 0.5rem;
-        padding: 0.5rem;
-        font-size: 1rem;
-        font-family: $font-family-base;
-        background-color: $secondary;
-        color: $primary;
-        cursor: pointer;
-    }
+  .loginForm__button {
+    width: 50%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: $font-family-base;
+    background-color: $third;
+    color: $primary;
+    cursor: pointer;
+  }
+  &__button:hover {
+    background-color: $secondary;
+    color: $third;
+  }
 }
 
 .formGroup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    background-color: $primary;
-    color: $secondary;
-    font-family: $font-family-base;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: $primary;
+  color: $secondary;
+  font-family: $font-family-base;
 }
