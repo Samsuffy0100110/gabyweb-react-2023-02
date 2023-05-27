@@ -20,16 +20,10 @@ export function ContactForm() {
   const [message, setMessage] = useState("");
   const [disabled, setDisabled] = useState(true);
   const radios = [
-    { name: "Un site vitrine", value: "Un site vitrine", icon: "🌐" },
-    { name: "Un site e-commerce", value: "Un site e-commerce", icon: "👜" },
-    {
-      name: "Un site administrable",
-      value: "Un site administrable",
-      icon: "📝",
-    },
-    { name: "Un site sur mesure", value: "Un site sur mesure", icon: "🔧" },
-    { name: "Refonte de site", value: "Refonte de site", icon: "💻" },
-    { name: "Renseignements", value: "Renseignements", icon: "❗️" },
+    { name: "Un site web", value: "Un site web", icon: "🌐" },
+    { name: "Refonte de site", value: "Refonte de site", icon: "🔧" },
+    { name: "Conseils", value: "Conseils", icon: "📝" },
+    { name: "Autres", value: "Autres", icon: "❗️" },
   ];
 
   const handleSubmit = (e) => {
@@ -147,10 +141,10 @@ export function ContactForm() {
             />
           </div>
           <h3>Votre demande</h3>
-          <div className={style.formGroup}>
-            <div className={style.radioGroup}>
-              {radios.map((radio) => (
-                <div key={radio.value}>
+          <div className={style.radioGroup}>
+            {radios.map((radio) => (
+              <div key={radio.value}>
+                <label htmlFor={radio.value} className={style.radioLabel}>
                   <input
                     type="checkbox"
                     name="radio"
@@ -158,15 +152,13 @@ export function ContactForm() {
                     value={radio.value}
                     checked={radioChecked === radio.value}
                     onChange={(e) => setRadioChecked(e.target.value)}
-                    className={style.radio}
+                    className={style.radioInput}
                     label={radio.name}
                   />
-                  <label htmlFor={radio.value}>
-                    {radio.name + " " + radio.icon}
-                  </label>
-                </div>
-              ))}
-            </div>
+                  {radio.name + " " + radio.icon}
+                </label>
+              </div>
+            ))}
           </div>
           <h3>Un petit message ?</h3>
           <div className={style.formGroup}>
@@ -179,25 +171,23 @@ export function ContactForm() {
               label="Message *"
             />
           </div>
+          <h3>RGPD</h3>
           <div className={style.formGroup}>
             <div className={style.checkbox}>
-              <label htmlFor="checkbox">
-                RGPD<span className={style.mandatory}> *</span>
-              </label>
-              <input
-                type="checkbox"
-                id="checkbox"
-                name="checkbox"
-                checked={rgpd}
-                onChange={(e) => setChecked(e.target.checked)}
-                required
-              />
               <label htmlFor="checkbox">
                 Je consens à ce que les données que j'ai soumises soient
                 collectées et stockées en vue d'être utilisées pour traiter ma
                 demande. Voir notre politique de protection des données
                 personnelles. Vous disposez d'un droit d'accès, de rectification
                 et d'opposition.
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  name="checkbox"
+                  checked={rgpd}
+                  onChange={(e) => setChecked(e.target.checked)}
+                  required
+                />
               </label>
             </div>
           </div>
